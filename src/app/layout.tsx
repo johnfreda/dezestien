@@ -83,10 +83,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Haal navigatie op uit Sanity
-  const query = groq`*[_type == "navigation"][0].items`;
-  const navItems = await client.fetch(query).catch(() => null);
-
   return (
     <html lang="nl" suppressHydrationWarning>
       <head>
@@ -98,7 +94,7 @@ export default async function RootLayout({
         style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
       >
         <Providers>
-          <Navbar items={navItems} />
+          <Navbar />
           {children}
           <Footer />
           <BackToTop />

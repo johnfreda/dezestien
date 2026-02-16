@@ -2,9 +2,7 @@ import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import HomeClient from '@/components/HomeClient';
 import { groq } from 'next-sanity';
-import { prisma } from '@/lib/prisma';
 import { Metadata } from 'next';
-import { unstable_cache } from 'next/cache';
 import { getYouTubeThumbnailUrl } from '@/lib/youtube-utils';
 
 export const revalidate = 60;
@@ -68,48 +66,9 @@ export default async function Home() {
 
   const articles = await client.fetch(query);
 
-  const slugs = articles.map((a: any) => a.slug);
-
-  // Gecachte Prisma queries — comment/view counts hoeven niet elke 60s ververst
-  const getCachedCounts = unstable_cache(
-    async (articleSlugs: string[]) => {
-      const [counts, views] = await Promise.all([
-        prisma.comment.groupBy({
-          by: ['articleSlug'],
-          where: { articleSlug: { in: articleSlugs } },
-          _count: { articleSlug: true },
-        }),
-        prisma.articleView.findMany({
-          where: { slug: { in: articleSlugs } },
-        }),
-      ]);
-
-      const commentCounts = counts.reduce((acc, curr) => {
-        acc[curr.articleSlug] = curr._count.articleSlug;
-        return acc;
-      }, {} as Record<string, number>);
-
-      const viewCounts = views.reduce((acc, curr) => {
-        acc[curr.slug] = curr.count;
-        return acc;
-      }, {} as Record<string, number>);
-
-      return { commentCounts, viewCounts };
-    },
-    ['homepage-counts'],
-    { revalidate: 300 } // 5 minuten cache
-  );
-
-  let commentCounts: Record<string, number> = {};
-  let viewCounts: Record<string, number> = {};
-
-  try {
-    const cached = await getCachedCounts(slugs);
-    commentCounts = cached.commentCounts;
-    viewCounts = cached.viewCounts;
-  } catch (e) {
-    console.error('[Homepage] Prisma query failed, using empty counts:', e);
-  }
+  // Comment/view counts disabled — no database yet
+  const commentCounts: Record<string, number> = {};
+  const viewCounts: Record<string, number> = {};
 
   // Map Sanity data naar ons interne formaat
   const formattedArticles = articles.map((article: any) => ({
