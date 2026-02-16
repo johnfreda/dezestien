@@ -12,11 +12,11 @@ import { YouTubeEmbed, SpotifyEmbed } from '@/components/Embeds';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Gaming Podcasts | DeZestien.nl',
+  title: 'Voetbalpodcasts | DeZestien.nl',
   description: 'Luister naar de beste Nederlandse voetbal podcasts op één plek. Van Gamekings tot Power Unlimited.',
   alternates: { canonical: 'https://www.dezestien.nl/podcasts' },
   openGraph: {
-    title: 'Gaming Podcasts - DeZestien.nl',
+    title: 'Voetbalpodcasts - DeZestien.nl',
     description: 'Alle Nederlandse voetbal podcasts op één plek',
     url: 'https://www.dezestien.nl/podcasts',
     siteName: 'DeZestien.nl',
@@ -104,7 +104,7 @@ export default async function PodcastsPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Gaming Podcasts - DeZestien.nl',
+    name: 'Voetbalpodcasts - DeZestien.nl',
     url: 'https://www.dezestien.nl/podcasts',
     description: 'Nederlandse voetbal podcasts verzameld op één plek',
     mainEntity: {
@@ -134,7 +134,7 @@ export default async function PodcastsPage() {
           <div className="inline-flex items-center gap-3 mb-4">
             <Headphones size={44} className="text-purple-500" />
             <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-              Gaming Podcasts
+              Voetbalpodcasts
             </h1>
           </div>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">

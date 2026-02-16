@@ -10,21 +10,21 @@ function getManaLevel(mana: number) {
   if (mana >= 2500) return { name: 'Legende', color: 'emerald', min: 2500, max: 5000, icon: Star }
   if (mana >= 1000) return { name: 'Elite', color: 'amber', min: 1000, max: 2500, icon: Crown }
   if (mana >= 500) return { name: 'Pro', color: 'purple', min: 500, max: 1000, icon: Zap }
-  if (mana >= 100) return { name: 'Gamer', color: 'blue', min: 100, max: 500, icon: Gamepad2 }
+  if (mana >= 100) return { name: 'Voetbalfan', color: 'blue', min: 100, max: 500, icon: Gamepad2 }
   return { name: 'Rookie', color: 'gray', min: 0, max: 100, icon: Shield }
 }
 
 const colorMap: Record<string, { text: string; bg: string; bar: string; border: string }> = {
   gray: { text: 'text-gray-400', bg: 'bg-gray-500/10', bar: 'from-gray-500 to-gray-400', border: 'border-gray-500/50' },
-  blue: { text: 'text-blue-400', bg: 'bg-blue-500/10', bar: 'from-blue-600 to-cyan-400', border: 'border-blue-500/50' },
-  purple: { text: 'text-purple-400', bg: 'bg-purple-500/10', bar: 'from-purple-600 to-blue-400', border: 'border-purple-500/50' },
+  blue: { text: 'text-green-400', bg: 'bg-green-500/10', bar: 'from-green-600 to-emerald-400', border: 'border-green-500/50' },
+  purple: { text: 'text-purple-400', bg: 'bg-purple-500/10', bar: 'from-purple-600 to-green-400', border: 'border-purple-500/50' },
   amber: { text: 'text-amber-400', bg: 'bg-amber-500/10', bar: 'from-amber-500 to-yellow-400', border: 'border-amber-500/50' },
-  emerald: { text: 'text-emerald-400', bg: 'bg-emerald-500/10', bar: 'from-emerald-500 to-cyan-400', border: 'border-emerald-500/50' },
+  emerald: { text: 'text-emerald-400', bg: 'bg-emerald-500/10', bar: 'from-emerald-500 to-emerald-400', border: 'border-emerald-500/50' },
 }
 
 const levels = [
   { name: 'Rookie', min: 0, color: 'gray' },
-  { name: 'Gamer', min: 100, color: 'blue' },
+  { name: 'Voetbalfan', min: 100, color: 'blue' },
   { name: 'Pro', min: 500, color: 'purple' },
   { name: 'Elite', min: 1000, color: 'amber' },
   { name: 'Legende', min: 2500, color: 'emerald' },
@@ -83,7 +83,7 @@ export default function ManaPage() {
   if (status === 'loading' || loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0b0f19]">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -98,7 +98,7 @@ export default function ManaPage() {
           <div className="flex flex-col gap-2">
             <button
               onClick={loadData}
-              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition"
+              className="flex items-center justify-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-500 text-white rounded-lg font-medium transition"
             >
               <RefreshCw size={16} />
               Probeer opnieuw
@@ -134,7 +134,7 @@ export default function ManaPage() {
             {/* Mana Amount */}
             <div className="text-center sm:text-left">
               <div className="flex items-center gap-3 justify-center sm:justify-start">
-                <Sparkles size={28} className="text-blue-400" />
+                <Sparkles size={28} className="text-green-400" />
                 <span className="text-5xl font-black text-white">{mana}</span>
               </div>
               <p className="text-gray-400 text-sm mt-1">Mana Punten</p>
@@ -197,11 +197,11 @@ export default function ManaPage() {
           <h2 className="text-lg font-bold text-white mb-3">Hoe verdien je mana?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="glass rounded-xl p-4 card-lift">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                <BookOpen size={18} className="text-blue-400" />
+              <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center mb-3">
+                <BookOpen size={18} className="text-green-400" />
               </div>
               <p className="text-white font-medium text-sm">Artikelen lezen</p>
-              <p className="text-blue-400 font-bold text-lg mt-1">+5 mana</p>
+              <p className="text-green-400 font-bold text-lg mt-1">+5 mana</p>
               <p className="text-gray-500 text-xs mt-1">Per gelezen artikel (na 15 sec)</p>
             </div>
             <div className="glass rounded-xl p-4 card-lift">
@@ -213,11 +213,11 @@ export default function ManaPage() {
               <p className="text-gray-500 text-xs mt-1">Per reactie op een artikel</p>
             </div>
             <div className="glass rounded-xl p-4 card-lift">
-              <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-3">
-                <MessagesSquare size={18} className="text-cyan-400" />
+              <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-3">
+                <MessagesSquare size={18} className="text-emerald-400" />
               </div>
               <p className="text-white font-medium text-sm">Forum bijdragen</p>
-              <p className="text-cyan-400 font-bold text-lg mt-1">+10 mana</p>
+              <p className="text-emerald-400 font-bold text-lg mt-1">+10 mana</p>
               <p className="text-gray-500 text-xs mt-1">Per topic of reply</p>
             </div>
             <div className="glass rounded-xl p-4 card-lift">
@@ -256,7 +256,7 @@ export default function ManaPage() {
                       })}
                     </p>
                   </div>
-                  <span className="text-blue-400 font-bold text-sm bg-blue-500/10 px-3 py-1 rounded-full">
+                  <span className="text-green-400 font-bold text-sm bg-green-500/10 px-3 py-1 rounded-full">
                     +{log.amount}
                   </span>
                 </div>

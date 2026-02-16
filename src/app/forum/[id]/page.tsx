@@ -175,7 +175,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
     <div id={`reply-${reply.id}`} className={depth > 0 ? 'ml-8 mt-4 border-l-2 border-gray-800 pl-4' : ''}>
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0">
-          <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+          <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">
             {reply.user.name ? reply.user.name[0].toUpperCase() : 'A'}
           </div>
         </div>
@@ -192,7 +192,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
                     {isOwner && (
                       <button
                         onClick={() => setIsEditing(true)}
-                        className="text-xs text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-1"
+                        className="text-xs text-gray-400 hover:text-green-400 transition-colors flex items-center gap-1"
                         title="Bewerken"
                       >
                         <Edit2 size={12} />
@@ -222,7 +222,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
                 <button
                   onClick={handleEdit}
                   disabled={submitting || !editContent.trim()}
-                  className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
+                  className="bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
                 >
                   {submitting ? <Loader2 className="animate-spin" size={14} /> : <Check size={14} />}
                   Opslaan
@@ -241,12 +241,12 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
             </div>
           ) : (
             <>
-              <div className="text-gray-300 leading-relaxed mb-2 prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-blue-500 prose-blockquote:text-gray-400 prose-ul:text-gray-300 prose-ol:text-gray-300">
+              <div className="text-gray-300 leading-relaxed mb-2 prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-green-500 prose-blockquote:text-gray-400 prose-ul:text-gray-300 prose-ol:text-gray-300">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   components={{
                     a: ({node, ...props}) => (
-                      <a {...props} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline" />
+                      <a {...props} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 hover:underline" />
                     ),
                     code: ({node, inline, ...props}: any) => {
                       if (inline) {
@@ -263,7 +263,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
               {canReply && (
                 <button
                   onClick={() => setShowReplyForm(!showReplyForm)}
-                  className="text-xs text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1 transition-colors mb-2"
+                  className="text-xs text-green-400 hover:text-green-300 font-semibold flex items-center gap-1 transition-colors mb-2"
                 >
                   <Reply size={12} />
                   Reageren
@@ -284,7 +284,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
                 <button
                   type="submit"
                   disabled={submitting || !replyContent.trim()}
-                  className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
+                  className="bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
                 >
                   {submitting ? <Loader2 className="animate-spin" size={14} /> : <><Send size={14} /> Reageren</>}
                 </button>
@@ -485,10 +485,10 @@ export default function TopicPage() {
     const colors: Record<string, string> = {
       'Algemeen': 'bg-gray-600',
       'Reviews': 'bg-purple-600',
-      'Nieuws': 'bg-blue-600',
-      'Hardware': 'bg-cyan-600',
+      'Nieuws': 'bg-green-600',
+      'Hardware': 'bg-emerald-600',
       'Tech': 'bg-emerald-600',
-      'Gaming': 'bg-pink-600',
+      'Voetbal': 'bg-pink-600',
     };
     return colors[category] || 'bg-gray-600';
   };
@@ -503,7 +503,7 @@ export default function TopicPage() {
     return (
       <div className="min-h-screen bg-[#0b0f19] text-gray-200 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
           <p className="text-gray-400 mt-4">Topic laden...</p>
         </div>
       </div>
@@ -557,7 +557,7 @@ export default function TopicPage() {
                   <div className="flex items-center gap-2 ml-auto">
                     <button
                       onClick={() => setIsEditingTopic(true)}
-                      className="text-xs text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-1"
+                      className="text-xs text-gray-400 hover:text-green-400 transition-colors flex items-center gap-1"
                       title="Bewerken"
                     >
                       <Edit2 size={14} />
@@ -580,20 +580,20 @@ export default function TopicPage() {
                     type="text"
                     value={editTitle}
                     onChange={(e) => setEditTitle(e.target.value)}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white font-bold text-xl focus:outline-none focus:border-blue-500"
+                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white font-bold text-xl focus:outline-none focus:border-green-500"
                     placeholder="Topic titel"
                   />
                   <select
                     value={editCategory}
                     onChange={(e) => setEditCategory(e.target.value)}
-                    className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
                   >
                     <option value="Algemeen">Algemeen</option>
                     <option value="Reviews">Reviews</option>
                     <option value="Nieuws">Nieuws</option>
                     <option value="Hardware">Hardware</option>
                     <option value="Tech">Tech</option>
-                    <option value="Gaming">Gaming</option>
+                    <option value="Voetbal">Voetbal</option>
                   </select>
                   <MarkdownEditor
                     value={editContent}
@@ -605,7 +605,7 @@ export default function TopicPage() {
                     <button
                       onClick={handleEditTopic}
                       disabled={submitting || !editTitle.trim() || editContent.trim().length < 10}
-                      className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-2 px-6 rounded-lg transition-colors flex items-center gap-2"
+                      className="bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-2 px-6 rounded-lg transition-colors flex items-center gap-2"
                     >
                       {submitting ? <Loader2 className="animate-spin" size={16} /> : <Check size={16} />}
                       Opslaan
@@ -643,12 +643,12 @@ export default function TopicPage() {
                       <span>{topic.views} views</span>
                     </div>
                   </div>
-                  <div className="prose prose-invert max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-blue-500 prose-blockquote:text-gray-400 prose-ul:text-gray-300 prose-ol:text-gray-300">
+                  <div className="prose prose-invert max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-green-500 prose-blockquote:text-gray-400 prose-ul:text-gray-300 prose-ol:text-gray-300">
                     <ReactMarkdown 
                       remarkPlugins={[remarkGfm]}
                       components={{
                         a: ({node, ...props}) => (
-                          <a {...props} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline" />
+                          <a {...props} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 hover:underline" />
                         ),
                         code: ({node, inline, ...props}: any) => {
                           if (inline) {
@@ -670,7 +670,7 @@ export default function TopicPage() {
         {/* Replies Section */}
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-            <MessageSquare size={24} className="text-blue-500" />
+            <MessageSquare size={24} className="text-green-500" />
             Reacties ({totalReplies})
           </h2>
 
@@ -715,12 +715,12 @@ export default function TopicPage() {
               />
               <div className="flex items-center justify-between">
                 <p className="text-xs text-gray-500">
-                  Je verdient <span className="text-blue-400 font-bold">50 Mana</span> per reactie!
+                  Je verdient <span className="text-green-400 font-bold">50 Mana</span> per reactie!
                 </p>
                 <button
                   type="submit"
                   disabled={submitting || !newReply.trim() || newReply.length < 3}
-                  className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors"
                 >
                   <Send size={18} />
                   {submitting ? 'Plaatsen...' : 'Reactie Plaatsen'}
@@ -729,12 +729,12 @@ export default function TopicPage() {
             </form>
           </div>
         ) : (
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 text-center">
-            <AlertCircle size={32} className="mx-auto text-blue-500 mb-3" />
-            <p className="text-blue-400 font-bold mb-4">Je moet ingelogd zijn om te reageren</p>
+          <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-center">
+            <AlertCircle size={32} className="mx-auto text-green-500 mb-3" />
+            <p className="text-green-400 font-bold mb-4">Je moet ingelogd zijn om te reageren</p>
             <Link
               href={`/login?callbackUrl=/forum/${topicId}`}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-lg transition-colors"
             >
               Inloggen
             </Link>

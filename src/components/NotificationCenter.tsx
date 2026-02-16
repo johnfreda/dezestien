@@ -115,8 +115,8 @@ export default function NotificationCenter() {
           if (el) {
             const top = el.getBoundingClientRect().top + window.pageYOffset - 80;
             window.scrollTo({ top, behavior: 'smooth' });
-            el.classList.add('ring-2', 'ring-blue-500/50');
-            setTimeout(() => el.classList.remove('ring-2', 'ring-blue-500/50'), 3000);
+            el.classList.add('ring-2', 'ring-green-500/50');
+            setTimeout(() => el.classList.remove('ring-2', 'ring-green-500/50'), 3000);
           }
         }, delay);
       });
@@ -132,7 +132,7 @@ export default function NotificationCenter() {
   };
 
   const getIcon = (type: string) => {
-    if (type === 'reply') return { icon: MessageSquare, color: 'bg-blue-500/15 text-blue-400' };
+    if (type === 'reply') return { icon: MessageSquare, color: 'bg-green-500/15 text-green-400' };
     return { icon: AtSign, color: 'bg-purple-500/15 text-purple-400' };
   };
 
@@ -188,7 +188,7 @@ export default function NotificationCenter() {
                   <button
                     onClick={markAllAsRead}
                     disabled={loading}
-                    className="flex items-center gap-1 text-[11px] text-blue-400 hover:text-blue-300 font-medium transition-colors disabled:opacity-50"
+                    className="flex items-center gap-1 text-[11px] text-green-400 hover:text-green-300 font-medium transition-colors disabled:opacity-50"
                   >
                     <Check size={12} />
                     {loading ? '...' : 'Alles gelezen'}
@@ -224,7 +224,7 @@ export default function NotificationCenter() {
                         key={notification.id}
                         onClick={() => handleNotificationClick(notification)}
                         className={`w-full text-left px-5 py-3.5 hover:bg-gray-800/40 active:bg-gray-800/60 transition-colors flex items-start gap-3 group ${
-                          !notification.read ? 'bg-blue-500/[0.03]' : ''
+                          !notification.read ? 'bg-green-500/[0.03]' : ''
                         }`}
                       >
                         {/* Icon */}
@@ -246,7 +246,7 @@ export default function NotificationCenter() {
                         {/* Unread dot + arrow */}
                         <div className="flex items-center gap-2 shrink-0 mt-1">
                           {!notification.read && (
-                            <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                            <div className="w-2 h-2 bg-green-500 rounded-full" />
                           )}
                           <ChevronRight size={14} className="text-gray-600 group-hover:text-gray-400 transition-colors" />
                         </div>

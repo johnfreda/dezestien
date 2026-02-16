@@ -133,7 +133,7 @@ export default function MarkdownEditor({ value, onChange, placeholder, rows = 6,
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         rows={rows}
-        className={`w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-blue-500 resize-none font-mono ${className}`}
+        className={`w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none font-mono ${className}`}
       />
     </div>
   );

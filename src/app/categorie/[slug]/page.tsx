@@ -18,20 +18,7 @@ type Props = {
 };
 
 // Specifieke meta descriptions per categorie voor betere CTR in Google
-const categoryDescriptions: Record<string, string> = {
-  'nieuws': 'Het laatste voetbalnieuws: releases, updates en breaking news uit de voetbalwereld. Dagelijks bijgewerkt.',
-  'reviews': 'Eerlijke en uitgebreide voetbalanalyse met scores. Ontdek welke games de moeite waard zijn.',
-  'specials': 'Wekelijkse voetbal specials: Week in Gaming, Gaming Geschiedenis en meer. Diepgaande achtergrondverhalen.',
-  'features': 'Diepgaande voetbal features, analyses en achtergrondverhalen over de games die ertoe doen.',
-  'opinie': 'Scherpe meningen en opiniestukken over voetbal trends, controverses en de toekomst van games.',
-  'podcasts': 'Luister naar onze voetbal podcasts op YouTube, Spotify en Apple Podcasts.',
-  'hardware': 'Reviews en nieuws over voetbal hardware: consoles, controllers, headsets en meer.',
-  'tech': 'Het laatste tech nieuws: hardware, software en voetbal technologie updates.',
-  'videos': 'Gaming video content: trailers, gameplay en video essays.',
-  'indie': 'Indie game nieuws en reviews. Ontdek de beste onafhankelijke games.',
-  'mods': 'De beste game mods: installatie guides, nieuwe releases en community creaties.',
-  'geruchten': 'Gaming geruchten en leaks: wat staat er op de planning in de voetbalwereld?',
-};
+import { categoryDescriptions } from "./category-descriptions";
 
 // Dynamische Metadata voor Categorie Pagina's (SEO)
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -61,17 +48,21 @@ export default async function CategoryPage({ params }: Props) {
   // Mapping URL slug (meervoud) -> Sanity Category (enkelvoud)
   // URL: /categorie/reviews -> Sanity: "Review"
   let categoryFilter = slug;
-  if (slug.toLowerCase() === 'reviews') categoryFilter = 'Review';
-  if (slug.toLowerCase() === 'specials' || slug.toLowerCase() === 'features') categoryFilter = 'Special';
+  if (slug.toLowerCase() === 'eredivisie') categoryFilter = 'Eredivisie';
+  if (slug.toLowerCase() === 'champions-league') categoryFilter = 'Champions League';
   if (slug.toLowerCase() === 'opinies' || slug.toLowerCase() === 'opinie') categoryFilter = 'Opinie';
   if (slug.toLowerCase() === 'podcasts' || slug.toLowerCase() === 'podcast') categoryFilter = 'Podcast';
   if (slug.toLowerCase() === 'geruchten') categoryFilter = 'Gerucht';
   if (slug.toLowerCase() === 'videos') categoryFilter = 'Video';
   if (slug.toLowerCase() === 'nieuws') categoryFilter = 'Nieuws';
-  if (slug.toLowerCase() === 'indie') categoryFilter = 'Indie';
-  if (slug.toLowerCase() === 'mods') categoryFilter = 'Mods';
-  if (slug.toLowerCase() === 'hardware') categoryFilter = 'Hardware';
-  if (slug.toLowerCase() === 'tech') categoryFilter = 'Tech';
+  if (slug.toLowerCase() === 'europa-league') categoryFilter = 'Europa League';
+  if (slug.toLowerCase() === 'conference-league') categoryFilter = 'Conference League';
+  if (slug.toLowerCase() === 'transfers') categoryFilter = 'Transfers';
+  if (slug.toLowerCase() === 'buitenland') categoryFilter = 'Buitenland';
+  if (slug.toLowerCase() === 'oranje') categoryFilter = 'Oranje';
+  if (slug.toLowerCase() === 'eerste-divisie') categoryFilter = 'Eerste Divisie';
+  if (slug.toLowerCase() === 'vrouwenvoetbal') categoryFilter = 'Vrouwenvoetbal';
+  if (slug.toLowerCase() === 'analyse') categoryFilter = 'Analyse';
 
   // Query: Zoek posts waar category (lowercase) matcht
   // Voor reviews: haal extra velden op (gameTitle, pros, cons, author)
@@ -174,13 +165,13 @@ export default async function CategoryPage({ params }: Props) {
       case 'special': case 'feature': return 'bg-amber-600';
       case 'opinie': return 'bg-orange-600';
       case 'podcast': return 'bg-violet-600';
-      case 'hardware': return 'bg-cyan-600';
+      case 'hardware': return 'bg-emerald-600';
       case 'tech': return 'bg-emerald-600';
       case 'video': return 'bg-red-600';
       case 'gerucht': return 'bg-pink-600';
       case 'indie': return 'bg-lime-600';
       case 'mods': return 'bg-fuchsia-600';
-      default: return 'bg-blue-600';
+      default: return 'bg-green-600';
     }
   };
 
@@ -196,7 +187,7 @@ export default async function CategoryPage({ params }: Props) {
       isHot: Boolean(p.isHot),
     }));
     return (
-      <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-blue-500 selection:text-white py-12">
+      <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-green-500 selection:text-white py-12">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -206,7 +197,7 @@ export default async function CategoryPage({ params }: Props) {
             <h1 className="text-4xl md:text-5xl font-display font-black text-white italic uppercase tracking-tighter">
               Specials
             </h1>
-            <span className="text-blue-500 font-bold text-xl self-end mb-2">{posts.length} artikelen</span>
+            <span className="text-green-500 font-bold text-xl self-end mb-2">{posts.length} artikelen</span>
           </div>
           <SpecialsLibrary specials={mappedSpecials} />
         </div>
@@ -231,7 +222,7 @@ export default async function CategoryPage({ params }: Props) {
       isHot: Boolean(p.isHot),
     }));
     return (
-      <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-blue-500 selection:text-white py-12">
+      <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-green-500 selection:text-white py-12">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -241,7 +232,7 @@ export default async function CategoryPage({ params }: Props) {
             <h1 className="text-4xl md:text-5xl font-display font-black text-white italic uppercase tracking-tighter">
               {title}
             </h1>
-            <span className="text-blue-500 font-bold text-xl self-end mb-2">{posts.length} artikelen</span>
+            <span className="text-green-500 font-bold text-xl self-end mb-2">{posts.length} artikelen</span>
           </div>
           <ReviewsLibrary reviews={mappedReviews} />
         </div>
@@ -250,7 +241,7 @@ export default async function CategoryPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-blue-500 selection:text-white py-12">
+    <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-green-500 selection:text-white py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -262,14 +253,14 @@ export default async function CategoryPage({ params }: Props) {
           <h1 className="text-4xl md:text-5xl font-display font-black text-white italic uppercase tracking-tighter">
             {title}
           </h1>
-          <span className="text-blue-500 font-bold text-xl self-end mb-2">{posts.length} artikelen</span>
+          <span className="text-green-500 font-bold text-xl self-end mb-2">{posts.length} artikelen</span>
         </div>
 
         {/* Grid */}
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post: any) => (
-              <Link key={post._id} href={`/artikel/${post.slug}`} className="group bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-blue-600 transition-all shadow-lg hover:shadow-blue-900/20 flex flex-col">
+              <Link key={post._id} href={`/artikel/${post.slug}`} className="group bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-green-600 transition-all shadow-lg hover:shadow-green-900/20 flex flex-col">
                 
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">
@@ -312,7 +303,7 @@ export default async function CategoryPage({ params }: Props) {
                         </div>
                    ) : null; })()}
 
-                  <h2 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-blue-400 transition-colors line-clamp-2">
+                  <h2 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-green-400 transition-colors line-clamp-2">
                     {post.title}
                   </h2>
                   <p className="text-sm text-gray-400 mb-4 line-clamp-3 flex-grow">
@@ -324,7 +315,7 @@ export default async function CategoryPage({ params }: Props) {
                       <Clock size={12} />
                       {formatDistanceToNow(new Date(post.publishedAt), { addSuffix: true, locale: nl })}
                     </span>
-                    <span className="flex items-center gap-1 group-hover:text-blue-400 transition-colors font-bold">
+                    <span className="flex items-center gap-1 group-hover:text-green-400 transition-colors font-bold">
                       Lees meer &rarr;
                     </span>
                   </div>
@@ -337,7 +328,7 @@ export default async function CategoryPage({ params }: Props) {
           <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-dashed border-gray-700">
             <h3 className="text-2xl font-bold text-gray-400 mb-2">Nog geen artikelen in deze categorie</h3>
             <p className="text-gray-500">Ga naar de studio om iets te schrijven over {title}!</p>
-            <Link href="/studio" className="inline-block mt-6 px-6 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-500 transition-colors">
+            <Link href="/studio" className="inline-block mt-6 px-6 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-500 transition-colors">
               Naar Studio
             </Link>
           </div>

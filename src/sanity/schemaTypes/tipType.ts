@@ -30,9 +30,9 @@ export const tipType = defineType({
         list: [
           { title: 'Nieuws', value: 'Nieuws' },
           { title: 'Review', value: 'Review' },
-          { title: 'Hardware', value: 'Hardware' },
-          { title: 'Tech', value: 'Tech' },
-          { title: 'Indie', value: 'Indie' },
+          { title: 'Transfers', value: 'Transfers' },
+          { title: 'Buitenland', value: 'Buitenland' },
+          { title: 'Eredivisie', value: 'Eredivisie' },
           { title: 'Gerucht', value: 'Gerucht' },
         ],
       },

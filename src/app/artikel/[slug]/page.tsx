@@ -92,7 +92,7 @@ const ptComponents = {
     link: ({value, children}: any) => {
       const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
       return (
-        <a href={value?.href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined} className="text-blue-400 hover:text-blue-300 underline decoration-blue-500/30 underline-offset-4 transition-colors">
+        <a href={value?.href} target={target} rel={target === '_blank' ? 'noopener noreferrer' : undefined} className="text-green-400 hover:text-green-300 underline decoration-green-500/30 underline-offset-4 transition-colors">
           {children}
         </a>
       )
@@ -100,8 +100,8 @@ const ptComponents = {
   },
   block: {
     normal: ({ children }: any) => <p className="mb-4 text-gray-300 leading-relaxed text-lg">{children}</p>,
-    h2: ({ children }: any) => <h2 className="text-2xl font-bold text-white mt-8 mb-4 border-l-4 border-blue-600 pl-4">{children}</h2>,
-    h3: ({ children }: any) => <h3 className="text-xl font-bold text-blue-400 mt-6 mb-3">{children}</h3>,
+    h2: ({ children }: any) => <h2 className="text-2xl font-bold text-white mt-8 mb-4 border-l-4 border-green-600 pl-4">{children}</h2>,
+    h3: ({ children }: any) => <h3 className="text-xl font-bold text-green-400 mt-6 mb-3">{children}</h3>,
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-purple-500 pl-4 py-2 my-6 bg-purple-500/10 rounded-r italic text-gray-300">
         {children}
@@ -116,13 +116,13 @@ const getCategoryColor = (category: string) => {
       case 'special': case 'feature': return 'bg-amber-600';
       case 'opinie': return 'bg-orange-600';
       case 'podcast': return 'bg-violet-600';
-      case 'hardware': return 'bg-cyan-600';
+      case 'hardware': return 'bg-emerald-600';
       case 'tech': return 'bg-emerald-600';
       case 'video': return 'bg-red-600';
       case 'gerucht': return 'bg-pink-600';
       case 'indie': return 'bg-lime-600';
       case 'mods': return 'bg-fuchsia-600';
-      default: return 'bg-blue-600';
+      default: return 'bg-green-600';
     }
   };
 
@@ -209,7 +209,7 @@ export default async function ArticlePage({ params }: Props) {
     mainImage,
     body,
     score,
-    gameTitle,
+    matchResult,
     pros,
     cons,
     boxImage,
@@ -240,12 +240,12 @@ export default async function ArticlePage({ params }: Props) {
     'Feature': { slug: 'specials', label: 'Specials' },
     'Opinie': { slug: 'opinie', label: 'Opinie' },
     'Podcast': { slug: 'podcasts', label: 'Podcasts' },
-    'Hardware': { slug: 'hardware', label: 'Hardware' },
-    'Tech': { slug: 'tech', label: 'Tech' },
+    'Transfers': { slug: 'transfers', label: 'Transfers' },
+    'Buitenland': { slug: 'buitenland', label: 'Buitenland' },
     'Video': { slug: 'videos', label: 'Videos' },
     'Gerucht': { slug: 'geruchten', label: 'Geruchten' },
-    'Indie': { slug: 'indie', label: 'Indie' },
-    'Mods': { slug: 'mods', label: 'Mods' },
+    'Eerste Divisie': { slug: 'eerste-divisie', label: 'Eerste Divisie' },
+    'Vrouwenvoetbal': { slug: 'vrouwenvoetbal', label: 'Vrouwenvoetbal' },
     'Nieuws': { slug: 'nieuws', label: 'Nieuws' },
   };
   const backInfo = categoryBackMap[post.category] || null;
@@ -344,7 +344,7 @@ export default async function ArticlePage({ params }: Props) {
     };
     baseSchema.itemReviewed = {
       '@type': 'VideoGame',
-      name: post.gameTitle || post.title
+      name: post.matchResult || post.title
     };
 
     // Voeg aggregateRating toe als er 10+ community stemmen zijn
@@ -396,7 +396,7 @@ export default async function ArticlePage({ params }: Props) {
     mainEntity: [
       {
         '@type': 'Question',
-        name: `Wat zijn de pluspunten van ${post.gameTitle || post.title}?`,
+        name: `Wat zijn de pluspunten van ${post.matchResult || post.title}?`,
         acceptedAnswer: {
           '@type': 'Answer',
           text: post.pros.join(', ')
@@ -404,7 +404,7 @@ export default async function ArticlePage({ params }: Props) {
       },
       {
         '@type': 'Question',
-        name: `Wat zijn de minpunten van ${post.gameTitle || post.title}?`,
+        name: `Wat zijn de minpunten van ${post.matchResult || post.title}?`,
         acceptedAnswer: {
           '@type': 'Answer',
           text: post.cons.join(', ')
@@ -412,10 +412,10 @@ export default async function ArticlePage({ params }: Props) {
       },
       ...(post.score ? [{
         '@type': 'Question',
-        name: `Wat is de score van ${post.gameTitle || post.title}?`,
+        name: `Wat is de score van ${post.matchResult || post.title}?`,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: `${post.gameTitle || post.title} krijgt een score van ${post.score}/100 van de DeZestien redactie.${(() => { const lbl = getHighScoreLabel(post.category, post.score, post.reviewType); return lbl ? ` Dit is een ${lbl.text}!` : post.score >= 70 ? ' Een aanrader.' : ''; })()}`
+          text: `${post.matchResult || post.title} krijgt een score van ${post.score}/100 van de DeZestien redactie.${(() => { const lbl = getHighScoreLabel(post.category, post.score, post.reviewType); return lbl ? ` Dit is een ${lbl.text}!` : post.score >= 70 ? ' Een aanrader.' : ''; })()}`
         }
       }] : [])
     ]
@@ -454,7 +454,7 @@ export default async function ArticlePage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 selection:bg-blue-500 selection:text-white pb-20">
+    <div className="min-h-screen bg-[#0b0f19] text-gray-200 selection:bg-green-500 selection:text-white pb-20">
       <ReadingProgress />
       <script
         type="application/ld+json"
@@ -538,15 +538,15 @@ export default async function ArticlePage({ params }: Props) {
           
           <div className="flex flex-wrap items-center gap-4 md:gap-6 text-xs md:text-sm text-gray-300 font-medium">
              <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">
-                <User size={16} className="text-blue-400" />
+                <User size={16} className="text-green-400" />
                 <span>{(post.author || 'DeZestien Redactie').replace(/\(GPT.*?\)/g, '').replace(/DeZestien AI/g, 'DeZestien Redactie').trim()}</span>
              </div>
              <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">
-                <Calendar size={16} className="text-blue-400" />
+                <Calendar size={16} className="text-green-400" />
                 <span>{new Date(post.publishedAt).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
              </div>
              <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">
-                <Clock size={16} className="text-blue-400" />
+                <Clock size={16} className="text-green-400" />
                 <span>{readingTime} min leestijd</span>
              </div>
              {post.category === 'Review' && post.score && (
@@ -567,9 +567,9 @@ export default async function ArticlePage({ params }: Props) {
                      <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-[0.18em]">
                        Reviewscore
                      </span>
-                     {(post.gameTitle || post.title) && (
+                     {(post.matchResult || post.title) && (
                        <span className="text-[11px] text-gray-200 font-semibold leading-tight max-w-[140px] truncate">
-                         {post.gameTitle || post.title.replace(/review/gi, '').trim()}
+                         {post.matchResult || post.title.replace(/review/gi, '').trim()}
                        </span>
                      )}
                      {post.platforms && post.platforms.length > 0 && (
@@ -598,7 +598,7 @@ export default async function ArticlePage({ params }: Props) {
         
         {/* Intro / Lead */}
         <div className="bg-[#111827] p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-800 mb-10">
-            <p className="text-lg md:text-2xl text-gray-300 font-medium leading-relaxed italic border-l-4 border-blue-500 pl-6">
+            <p className="text-lg md:text-2xl text-gray-300 font-medium leading-relaxed italic border-l-4 border-green-500 pl-6">
                 "{post.excerpt}"
             </p>
         </div>
@@ -618,7 +618,7 @@ export default async function ArticlePage({ params }: Props) {
         )}
 
         {/* ARTICLE BODY */}
-        <article className="prose prose-lg prose-invert max-w-none prose-headings:font-bold prose-a:text-blue-400 hover:prose-a:text-blue-300">
+        <article className="prose prose-lg prose-invert max-w-none prose-headings:font-bold prose-a:text-green-400 hover:prose-a:text-green-300">
           <PortableText value={post.body} components={ptComponents} />
         </article>
 
@@ -675,7 +675,7 @@ export default async function ArticlePage({ params }: Props) {
                 editorScore={post.score}
                 pros={post.pros}
                 cons={post.cons}
-                gameTitle={post.gameTitle || post.title}
+                matchResult={post.matchResult || post.title}
                 boxImageUrl={post.boxImage?.asset ? urlFor(post.boxImage).width(160).height(224).url() : null}
             />
         )}
@@ -694,7 +694,7 @@ export default async function ArticlePage({ params }: Props) {
         <div className="mt-12 text-center pb-8 border-t border-gray-800 pt-8">
             <Link
                 href={backUrl}
-                className="inline-flex items-center gap-2 bg-gray-800 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg border border-gray-700 hover:border-blue-500"
+                className="inline-flex items-center gap-2 bg-gray-800 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg border border-gray-700 hover:border-green-500"
             >
                 <ChevronLeft size={20} />
                 {backLabel}

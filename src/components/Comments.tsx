@@ -156,7 +156,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
   return (
     <div id={`comment-${comment.id}`} className={depth > 0 ? 'ml-8 mt-4 border-l-2 border-gray-800 pl-4' : ''}>
       <div className="flex items-start gap-3">
-        <div className="w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-blue-300 font-bold text-xs uppercase flex-shrink-0">
+        <div className="w-8 h-8 rounded-full bg-green-900 flex items-center justify-center text-green-300 font-bold text-xs uppercase flex-shrink-0">
           {comment.user.name?.substring(0, 2) || <User size={14} />}
         </div>
         <div className="flex-1 min-w-0">
@@ -172,7 +172,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
                     {isOwner && (
                       <button
                         onClick={() => setIsEditing(true)}
-                        className="text-xs text-gray-400 hover:text-blue-400 transition-colors flex items-center gap-1"
+                        className="text-xs text-gray-400 hover:text-green-400 transition-colors flex items-center gap-1"
                         title="Bewerken"
                       >
                         <Edit2 size={12} />
@@ -197,13 +197,13 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
                 rows={3}
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-blue-500 resize-none"
+                className="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none"
               />
               <div className="flex gap-2">
                 <button
                   onClick={handleEdit}
                   disabled={submitting || !editContent.trim()}
-                  className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
+                  className="bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
                 >
                   {submitting ? <Loader2 className="animate-spin" size={14} /> : <Check size={14} />}
                   Opslaan
@@ -227,7 +227,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
               {canReply && (
                 <button
                   onClick={() => setShowReplyForm(!showReplyForm)}
-                  className="text-xs text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1 transition-colors"
+                  className="text-xs text-green-400 hover:text-green-300 font-semibold flex items-center gap-1 transition-colors"
                 >
                   <Reply size={12} />
                   Reageren
@@ -243,13 +243,13 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
                 onChange={(e) => setReplyContent(e.target.value)}
                 placeholder="Schrijf je reactie..."
                 rows={3}
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-blue-500 resize-none"
+                className="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none"
               />
               <div className="flex gap-2 mt-2">
                 <button
                   type="submit"
                   disabled={submitting || !replyContent.trim()}
-                  className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
+                  className="bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-1.5 px-4 rounded text-sm transition-colors flex items-center gap-1"
                 >
                   {submitting ? <Loader2 className="animate-spin" size={14} /> : <Send size={14} />}
                   Reageren
@@ -351,7 +351,7 @@ export default function Comments({ slug }: { slug: string }) {
   return (
     <div className="bg-[#111827] border border-gray-800 rounded-xl p-6 md:p-8 mt-12">
       <h3 className="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
-        <MessageSquare className="text-blue-500" /> Reacties ({totalComments})
+        <MessageSquare className="text-green-500" /> Reacties ({totalComments})
       </h3>
 
       {/* Input Form */}
@@ -361,13 +361,13 @@ export default function Comments({ slug }: { slug: string }) {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Wat vind jij hiervan?"
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg p-4 text-white focus:outline-none focus:border-blue-500 min-h-[100px]"
+            className="w-full bg-gray-900 border border-gray-700 rounded-lg p-4 text-white focus:outline-none focus:border-green-500 min-h-[100px]"
           />
           <div className="flex justify-end mt-2">
             <button
               type="submit"
               disabled={loading || !newComment.trim()}
-              className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? <Loader2 className="animate-spin" size={18} /> : <Send size={18} />}
               Plaats Reactie
@@ -379,7 +379,7 @@ export default function Comments({ slug }: { slug: string }) {
           <p className="text-gray-400 mb-4">Log in om mee te praten met de community.</p>
           <button
             onClick={() => signIn()}
-            className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-2 px-6 rounded-lg transition-colors"
+            className="bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-6 rounded-lg transition-colors"
           >
             Inloggen / Registreren
           </button>

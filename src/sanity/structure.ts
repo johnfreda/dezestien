@@ -4,21 +4,21 @@ export const structure = (S: StructureBuilder) =>
   S.list()
     .title('Content')
     .items([
-      // 1. Alle Berichten (standaard view)
+      // 1. Alle Berichten
       S.documentTypeListItem('post').title('Alle Berichten'),
 
       S.divider(),
 
-      // 2. Filter: Reviews
+      // 2. Eredivisie
       S.listItem()
-        .title('Reviews')
+        .title('Eredivisie')
         .child(
           S.documentList()
-            .title('Reviews')
-            .filter('_type == "post" && category == "Review"')
+            .title('Eredivisie')
+            .filter('_type == "post" && category == "Eredivisie"')
         ),
 
-      // 3. Filter: Nieuws
+      // 3. Nieuws
       S.listItem()
         .title('Nieuws')
         .child(
@@ -27,52 +27,52 @@ export const structure = (S: StructureBuilder) =>
             .filter('_type == "post" && (category == "Nieuws" || !defined(category))')
         ),
 
-      // 4. Filter: Features
+      // 4. Champions League
       S.listItem()
-        .title('Features')
+        .title('Champions League')
         .child(
           S.documentList()
-            .title('Features')
-            .filter('_type == "post" && category == "Feature"')
+            .title('Champions League')
+            .filter('_type == "post" && category == "Champions League"')
         ),
 
-      // 5. Filter: Hardware
+      // 5. Transfers
       S.listItem()
-        .title('Hardware')
+        .title('Transfers')
         .child(
           S.documentList()
-            .title('Hardware')
-            .filter('_type == "post" && category == "Hardware"')
+            .title('Transfers')
+            .filter('_type == "post" && category == "Transfers"')
         ),
 
-      // 6. Filter: Tech
+      // 6. Oranje
       S.listItem()
-        .title('Tech')
+        .title('Oranje')
         .child(
           S.documentList()
-            .title('Tech')
-            .filter('_type == "post" && category == "Tech"')
+            .title('Oranje')
+            .filter('_type == "post" && category == "Oranje"')
         ),
 
-      // 7. Filter: Indie
+      // 7. Buitenland
       S.listItem()
-        .title('Indie')
+        .title('Buitenland')
         .child(
           S.documentList()
-            .title('Indie')
-            .filter('_type == "post" && category == "Indie"')
+            .title('Buitenland')
+            .filter('_type == "post" && category == "Buitenland"')
         ),
 
-      // 8. Filter: Mods
+      // 8. Analyse
       S.listItem()
-        .title('Mods')
+        .title('Analyse')
         .child(
           S.documentList()
-            .title('Mods')
-            .filter('_type == "post" && category == "Mods"')
+            .title('Analyse')
+            .filter('_type == "post" && category == "Analyse"')
         ),
 
-      // 9. Filter: Geruchten
+      // 9. Geruchten
       S.listItem()
         .title('Geruchten')
         .child(
@@ -81,7 +81,7 @@ export const structure = (S: StructureBuilder) =>
             .filter('_type == "post" && category == "Gerucht"')
         ),
 
-      // 10. Filter: Opinie
+      // 10. Opinie
       S.listItem()
         .title('Opinie')
         .child(
@@ -90,29 +90,13 @@ export const structure = (S: StructureBuilder) =>
             .filter('_type == "post" && category == "Opinie"')
         ),
 
-      // 11. Podcasts (genest: Shows + Afleveringen)
+      // 11. Vrouwenvoetbal
       S.listItem()
-        .title('Podcasts')
+        .title('Vrouwenvoetbal')
         .child(
-          S.list()
-            .title('Podcasts')
-            .items([
-              S.listItem()
-                .title('Podcast Shows')
-                .child(
-                  S.documentList()
-                    .title('Podcast Shows')
-                    .filter('_type == "podcastShow"')
-                ),
-              S.listItem()
-                .title('Alle Afleveringen')
-                .child(
-                  S.documentList()
-                    .title('Podcast Afleveringen')
-                    .filter('_type == "post" && category == "Podcast"')
-                    .defaultOrdering([{ field: 'publishedAt', direction: 'desc' }])
-                ),
-            ])
+          S.documentList()
+            .title('Vrouwenvoetbal')
+            .filter('_type == "post" && category == "Vrouwenvoetbal"')
         ),
 
       S.divider(),
@@ -129,7 +113,7 @@ export const structure = (S: StructureBuilder) =>
 
       S.divider(),
 
-      // Toon de overige document types (behalve 'post' en 'tip' die we hierboven al handmatig hebben gedaan)
+      // Overige document types
       ...S.documentTypeListItems().filter(
         (listItem) => listItem.getId() !== 'post' && listItem.getId() !== 'tip' && listItem.getId() !== 'podcastShow'
       ),

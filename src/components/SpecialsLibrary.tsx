@@ -7,7 +7,7 @@ import { Search, X, Clock, Flame, History, Newspaper, CalendarDays, TrendingUp, 
 import { formatDistanceToNow } from 'date-fns'
 import { nl } from 'date-fns/locale'
 
-type SpecialFilter = 'all' | 'week-in-voetbal' | 'voetbal-geschiedenis' | 'midweek-check' | 'weekend-tips' | 'maandoverzicht'
+type SpecialFilter = 'all' | 'week-in-voetbal' | 'voetbal-geschiedenis' | 'midweek-check' | 'weekend-voetbal' | 'maandoverzicht'
 
 interface Special {
   slug: string
@@ -20,10 +20,10 @@ interface Special {
 }
 
 const specialTypeLabels: Record<string, { label: string; icon: typeof History; color: string; activeColor: string }> = {
-  'voetbal-geschiedenis': { label: 'Gaming Geschiedenis', icon: History, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-amber-600 text-white' },
-  'week-in-voetbal': { label: 'Week in Gaming', icon: Newspaper, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-blue-600 text-white' },
+  'voetbal-geschiedenis': { label: 'Voetbalgeschiedenis', icon: History, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-amber-600 text-white' },
+  'week-in-voetbal': { label: 'Week in Voetbal', icon: Newspaper, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-green-600 text-white' },
   'midweek-check': { label: 'Midweek Check', icon: CalendarDays, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-emerald-600 text-white' },
-  'weekend-tips': { label: 'Weekend Tips', icon: TrendingUp, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-purple-600 text-white' },
+  'weekend-voetbal': { label: 'Weekend Voetbal', icon: TrendingUp, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-purple-600 text-white' },
   'maandoverzicht': { label: 'Maandoverzicht', icon: BarChart3, color: 'bg-gray-800 text-gray-400 hover:text-white', activeColor: 'bg-rose-600 text-white' },
 }
 

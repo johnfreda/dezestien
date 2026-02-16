@@ -37,7 +37,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0b0f19] px-4 relative overflow-hidden">
       {/* Background glow effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10">
@@ -50,7 +50,7 @@ export default function LoginPage() {
         </div>
 
         {/* Glass card */}
-        <div className="glass rounded-2xl p-8 shadow-2xl shadow-blue-900/10">
+        <div className="glass rounded-2xl p-8 shadow-2xl shadow-green-900/10">
           <h1 className="text-2xl font-bold text-white mb-1 text-center">Welkom terug</h1>
           <p className="text-gray-400 text-sm text-center mb-6">Log in om verder te gaan</p>
 
@@ -61,7 +61,7 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-gray-600"
+                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600"
                 placeholder="jouw@email.nl"
                 required
               />
@@ -73,7 +73,7 @@ export default function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-gray-600 pr-12"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600 pr-12"
                   placeholder="Wachtwoord"
                   required
                 />
@@ -96,7 +96,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold transition-all disabled:opacity-50 press-effect flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-bold transition-all disabled:opacity-50 press-effect flex items-center justify-center gap-2 shadow-lg shadow-green-600/20"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -112,7 +112,7 @@ export default function LoginPage() {
           <div className="mt-6 pt-6 border-t border-gray-700/50 text-center">
             <p className="text-gray-500 text-sm">
               Nog geen account?{' '}
-              <Link href="/register" className="text-blue-400 hover:text-blue-300 font-medium transition">
+              <Link href="/register" className="text-green-400 hover:text-green-300 font-medium transition">
                 Registreer hier
               </Link>
             </p>

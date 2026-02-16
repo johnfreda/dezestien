@@ -22,7 +22,7 @@ export default function ManaBar() {
   return (
     <Link
       href="/mana"
-      className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm hover:bg-blue-500/20 transition"
+      className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm hover:bg-green-500/20 transition"
     >
       <span>✨</span>
       <span className="font-semibold">{mana}</span>

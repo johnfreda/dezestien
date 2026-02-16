@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     }
 
     // Generate image with Pollinations.ai
-    const imagePrompt = `Gaming news article hero image: ${prompt}. Style: vibrant, cinematic, modern digital art, no text or watermarks`;
+    const imagePrompt = `Voetbal news article hero image: ${prompt}. Style: vibrant, cinematic, modern digital art, no text or watermarks`;
     const pollinationsUrl = `https://gen.pollinations.ai/image/${encodeURIComponent(imagePrompt)}?model=flux&width=1792&height=1024&nologo=true&seed=${Date.now() % 2147483647}`;
 
     // Download the image van Pollinations

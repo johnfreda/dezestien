@@ -11,13 +11,13 @@ function getManaLevel(mana: number) {
   if (mana >= 2500) return { name: 'Legende', color: 'emerald', min: 2500, max: 5000, icon: Star }
   if (mana >= 1000) return { name: 'Elite', color: 'amber', min: 1000, max: 2500, icon: Crown }
   if (mana >= 500) return { name: 'Pro', color: 'purple', min: 500, max: 1000, icon: Zap }
-  if (mana >= 100) return { name: 'Gamer', color: 'blue', min: 100, max: 500, icon: Gamepad2 }
+  if (mana >= 100) return { name: 'Voetbalfan', color: 'blue', min: 100, max: 500, icon: Gamepad2 }
   return { name: 'Rookie', color: 'gray', min: 0, max: 100, icon: Shield }
 }
 
 const colorMap: Record<string, { ring: string; text: string; bg: string; glow: string }> = {
   gray: { ring: 'ring-gray-500', text: 'text-gray-400', bg: 'bg-gray-500/10', glow: '' },
-  blue: { ring: 'ring-blue-500', text: 'text-blue-400', bg: 'bg-blue-500/10', glow: 'glow-blue' },
+  blue: { ring: 'ring-green-500', text: 'text-green-400', bg: 'bg-green-500/10', glow: 'glow-blue' },
   purple: { ring: 'ring-purple-500', text: 'text-purple-400', bg: 'bg-purple-500/10', glow: 'glow-purple' },
   amber: { ring: 'ring-amber-500', text: 'text-amber-400', bg: 'bg-amber-500/10', glow: 'glow-amber' },
   emerald: { ring: 'ring-emerald-500', text: 'text-emerald-400', bg: 'bg-emerald-500/10', glow: 'glow-emerald' },
@@ -27,7 +27,7 @@ function getManaLevelName(manaRequired: number) {
   if (manaRequired >= 2500) return 'Legende'
   if (manaRequired >= 1000) return 'Elite'
   if (manaRequired >= 500) return 'Pro'
-  if (manaRequired >= 100) return 'Gamer'
+  if (manaRequired >= 100) return 'Voetbalfan'
   return 'Gratis'
 }
 
@@ -54,7 +54,7 @@ export default function ProfilePage() {
   if (status === 'loading' || !profile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0b0f19]">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -131,14 +131,14 @@ export default function ProfilePage() {
                     value={nameInput}
                     onChange={(e) => setNameInput(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') handleSaveName(); if (e.key === 'Escape') setEditingName(false) }}
-                    className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-white font-bold text-lg focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 max-w-[200px]"
+                    className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-white font-bold text-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 max-w-[200px]"
                     autoFocus
                     maxLength={30}
                   />
                   <button
                     onClick={handleSaveName}
                     disabled={savingName}
-                    className="p-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors"
+                    className="p-1.5 bg-green-600 hover:bg-green-500 text-white rounded-lg transition-colors"
                   >
                     <Check size={16} />
                   </button>
@@ -148,7 +148,7 @@ export default function ProfilePage() {
                   <h1 className="text-2xl font-bold text-white truncate">{profile.name}</h1>
                   <button
                     onClick={() => setEditingName(true)}
-                    className="p-1 text-gray-500 hover:text-blue-400 transition-colors rounded-md hover:bg-blue-500/10 shrink-0"
+                    className="p-1 text-gray-500 hover:text-green-400 transition-colors rounded-md hover:bg-green-500/10 shrink-0"
                     title="Naam aanpassen"
                   >
                     <Pencil size={14} />
@@ -182,7 +182,7 @@ export default function ProfilePage() {
                       disabled={isLocked || savingAvatar}
                       className={`relative flex flex-col items-center gap-1.5 p-2 rounded-xl transition-all ${
                         isSelected
-                          ? 'bg-blue-500/15 ring-2 ring-blue-500'
+                          ? 'bg-green-500/15 ring-2 ring-green-500'
                           : isLocked
                             ? 'opacity-50 cursor-not-allowed'
                             : 'hover:bg-gray-800/60 cursor-pointer'
@@ -197,7 +197,7 @@ export default function ProfilePage() {
                           </div>
                         )}
                         {isSelected && (
-                          <div className="absolute -top-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center border-2 border-[#0b0f19]">
+                          <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center border-2 border-[#0b0f19]">
                             <Check size={10} className="text-white" />
                           </div>
                         )}
@@ -217,7 +217,7 @@ export default function ProfilePage() {
           <div className="mt-6">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <Sparkles size={16} className="text-blue-400" />
+                <Sparkles size={16} className="text-green-400" />
                 <span className="text-white font-bold text-lg">{mana}</span>
                 <span className="text-gray-400 text-sm">Mana</span>
               </div>
@@ -227,7 +227,7 @@ export default function ProfilePage() {
             </div>
             <div className="h-3 bg-gray-800 rounded-full overflow-hidden">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-400 transition-all duration-1000 xp-bar"
+                className="h-full rounded-full bg-gradient-to-r from-green-600 to-emerald-400 transition-all duration-1000 xp-bar"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -241,7 +241,7 @@ export default function ProfilePage() {
         {/* Stats Grid */}
         <div className="grid grid-cols-3 gap-3 md:gap-4">
           <div className="glass rounded-xl p-4 text-center card-lift">
-            <MessageSquare size={20} className="text-blue-400 mx-auto mb-2" />
+            <MessageSquare size={20} className="text-green-400 mx-auto mb-2" />
             <p className="text-2xl font-bold text-white">{profile._count?.comments || 0}</p>
             <p className="text-gray-400 text-xs mt-1">Reacties</p>
           </div>
@@ -251,7 +251,7 @@ export default function ProfilePage() {
             <p className="text-gray-400 text-xs mt-1">Forum Topics</p>
           </div>
           <div className="glass rounded-xl p-4 text-center card-lift">
-            <Reply size={20} className="text-cyan-400 mx-auto mb-2" />
+            <Reply size={20} className="text-emerald-400 mx-auto mb-2" />
             <p className="text-2xl font-bold text-white">{profile._count?.forumReplies || 0}</p>
             <p className="text-gray-400 text-xs mt-1">Forum Replies</p>
           </div>
@@ -261,18 +261,18 @@ export default function ProfilePage() {
         <div className="space-y-3">
           <Link
             href="/mana"
-            className="glass rounded-xl p-4 flex items-center justify-between hover:border-blue-500/30 transition-all group"
+            className="glass rounded-xl p-4 flex items-center justify-between hover:border-green-500/30 transition-all group"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                <Sparkles size={18} className="text-blue-400" />
+              <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                <Sparkles size={18} className="text-green-400" />
               </div>
               <div>
                 <p className="text-white font-medium text-sm">Mana Overzicht</p>
                 <p className="text-gray-500 text-xs">Bekijk je geschiedenis en hoe je mana verdient</p>
               </div>
             </div>
-            <ChevronRight size={18} className="text-gray-600 group-hover:text-blue-400 transition" />
+            <ChevronRight size={18} className="text-gray-600 group-hover:text-green-400 transition" />
           </Link>
 
           <button

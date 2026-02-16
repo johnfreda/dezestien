@@ -10,8 +10,8 @@ import { getYouTubeThumbnailUrl } from '@/lib/youtube-utils';
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'DeZestien.nl - Het Laatste Voetbalnieuws, Reviews & Tech',
-  description: 'Jouw dagelijkse bron voor voetbalnieuws, eerlijke reviews en diepgaande specials. Van nieuwe releases tot clubnieuws.',
+  title: 'DeZestien.nl - Nederlands Voetbalnieuws, Transfers & Analyse',
+  description: 'Jouw dagelijkse bron voor Nederlands voetbalnieuws. Eredivisie, transfers, Champions League, Oranje en meer. Scherpe analyse, geen ruis.',
   alternates: {
     canonical: 'https://www.dezestien.nl',
   },
@@ -28,7 +28,7 @@ export default async function Home() {
         name: 'DeZestien.nl',
         url: 'https://www.dezestien.nl',
         inLanguage: 'nl-NL',
-        description: 'De snelste voetbalnieuwssite van Nederland. Elke dag vers nieuws, reviews en tech updates.',
+        description: 'DeZestien.nl — Nederlands voetbalnieuws, transfers en analyse. Elke dag vers.',
         publisher: {
           '@id': 'https://www.dezestien.nl/#organization',
         },
@@ -44,7 +44,7 @@ export default async function Home() {
           width: 512,
           height: 512,
         },
-        description: 'Gaming nieuwssite met reviews, specials en community.',
+        description: 'Nederlands voetbalnieuws met transfers, analyse en community.',
       }
     ]
   };

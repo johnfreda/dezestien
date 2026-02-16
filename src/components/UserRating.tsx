@@ -15,7 +15,7 @@ interface UserRatingProps {
 
 function getScoreColor(score: number) {
   if (score >= 90) return { stroke: '#10b981', glow: 'shadow-emerald-500/20', text: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' }
-  if (score >= 70) return { stroke: '#3b82f6', glow: 'shadow-blue-500/20', text: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20' }
+  if (score >= 70) return { stroke: '#3b82f6', glow: 'shadow-green-500/20', text: 'text-green-400', bg: 'bg-green-500/10', border: 'border-green-500/20' }
   if (score >= 50) return { stroke: '#f59e0b', glow: 'shadow-amber-500/20', text: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20' }
   return { stroke: '#ef4444', glow: 'shadow-red-500/20', text: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/20' }
 }
@@ -163,8 +163,8 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                 {session?.user ? (
                   <div className="space-y-4">
                     <div className="flex items-center gap-3 justify-center sm:justify-start">
-                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl px-4 py-2">
-                        <span className="text-blue-400 font-bold text-2xl">{average > 0 ? average : '–'}</span>
+                      <div className="bg-green-500/10 border border-green-500/20 rounded-xl px-4 py-2">
+                        <span className="text-green-400 font-bold text-2xl">{average > 0 ? average : '–'}</span>
                         <span className="text-gray-500 text-xs ml-1">/100</span>
                       </div>
                       <div className="text-left">
@@ -180,7 +180,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                         <span className="text-white font-bold text-sm">{userRating}</span>
                         <button
                           onClick={() => setEditing(true)}
-                          className="p-1 text-gray-500 hover:text-blue-400 transition-colors rounded-md hover:bg-blue-500/10"
+                          className="p-1 text-gray-500 hover:text-green-400 transition-colors rounded-md hover:bg-green-500/10"
                           title="Score aanpassen"
                         >
                           <Pencil size={12} />
@@ -198,7 +198,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                             onChange={(e) => setInputValue(e.target.value)}
                             onKeyDown={(e) => { if (e.key === 'Enter' && validInput) handleSubmit() }}
                             placeholder="10-100"
-                            className="w-20 bg-gray-800/80 border border-gray-700 rounded-lg px-2.5 py-1.5 text-white text-center font-bold text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            className="w-20 bg-gray-800/80 border border-gray-700 rounded-lg px-2.5 py-1.5 text-white text-center font-bold text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                           />
                           <button
                             onClick={handleSubmit}
@@ -207,7 +207,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                               submitted
                                 ? 'bg-green-600 text-white'
                                 : validInput
-                                  ? 'bg-blue-600 hover:bg-blue-500 text-white'
+                                  ? 'bg-green-600 hover:bg-green-500 text-white'
                                   : 'bg-gray-800 text-gray-500 cursor-not-allowed'
                             }`}
                           >
@@ -233,7 +233,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                   <p className="text-gray-500 text-sm">
                     <button
                       onClick={() => signIn(undefined, { callbackUrl: window.location.href })}
-                      className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-2 transition-colors"
+                      className="text-green-400 hover:text-green-300 font-semibold underline underline-offset-2 transition-colors"
                     >
                       Log in
                     </button>

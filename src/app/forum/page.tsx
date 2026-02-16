@@ -34,7 +34,7 @@ const categories = [
   { value: 'Nieuws', label: 'Nieuws' },
   { value: 'Hardware', label: 'Hardware' },
   { value: 'Tech', label: 'Tech' },
-  { value: 'Gaming', label: 'Gaming' },
+  { value: 'Eredivisie', label: 'Eredivisie' },
 ];
 
 export default function ForumPage() {
@@ -109,10 +109,10 @@ export default function ForumPage() {
     const colors: Record<string, string> = {
       'Algemeen': 'bg-gray-600',
       'Reviews': 'bg-purple-600',
-      'Nieuws': 'bg-blue-600',
-      'Hardware': 'bg-cyan-600',
+      'Nieuws': 'bg-green-600',
+      'Hardware': 'bg-emerald-600',
       'Tech': 'bg-emerald-600',
-      'Gaming': 'bg-pink-600',
+      'Voetbal': 'bg-pink-600',
     };
     return colors[category] || 'bg-gray-600';
   };
@@ -139,7 +139,7 @@ export default function ForumPage() {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h1 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter mb-2">
-                <MessageSquare className="inline-block mr-3 text-blue-500" size={40} />
+                <MessageSquare className="inline-block mr-3 text-green-500" size={40} />
                 Forum
               </h1>
               <p className="text-gray-400">Discussieer over games, nieuws en meer</p>
@@ -147,7 +147,7 @@ export default function ForumPage() {
             {session && (
               <button
                 onClick={() => setShowNewTopicForm(!showNewTopicForm)}
-                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-full transition-colors shadow-lg"
+                className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3 px-6 rounded-full transition-colors shadow-lg"
               >
                 <Plus size={20} />
                 Nieuw Topic
@@ -165,7 +165,7 @@ export default function ForumPage() {
                   <select
                     value={newTopic.category}
                     onChange={(e) => setNewTopic({ ...newTopic, category: e.target.value })}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
                   >
                     {categories.filter(c => c.value !== 'all').map(cat => (
                       <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -179,7 +179,7 @@ export default function ForumPage() {
                     value={newTopic.title}
                     onChange={(e) => setNewTopic({ ...newTopic, title: e.target.value })}
                     placeholder="Bijv: Wat vinden jullie van de nieuwe Zelda?"
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
                     required
                     maxLength={200}
                   />
@@ -197,7 +197,7 @@ export default function ForumPage() {
                   <button
                     type="submit"
                     disabled={submitting || !newTopic.title || !newTopic.content}
-                    className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-2 px-6 rounded-lg transition-colors"
+                    className="bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-bold py-2 px-6 rounded-lg transition-colors"
                   >
                     {submitting ? 'Aanmaken...' : 'Topic Aanmaken'}
                   </button>
@@ -223,7 +223,7 @@ export default function ForumPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-blue-500"
+                className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-green-500"
               >
                 {categories.map(cat => (
                   <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -235,7 +235,7 @@ export default function ForumPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-blue-500"
+                className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-green-500"
               >
                 <option value="recent">Meest Recent</option>
                 <option value="popular">Meest Populair</option>
@@ -248,7 +248,7 @@ export default function ForumPage() {
         {/* Topics List */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
             <p className="text-gray-400 mt-4">Topics laden...</p>
           </div>
         ) : topics.length === 0 ? (
@@ -262,7 +262,7 @@ export default function ForumPage() {
               <Link
                 key={topic.id}
                 href={`/forum/${topic.id}`}
-                className="block bg-[#111827] border border-gray-800 rounded-xl p-6 hover:border-blue-500/50 transition-all group"
+                className="block bg-[#111827] border border-gray-800 rounded-xl p-6 hover:border-green-500/50 transition-all group"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
@@ -276,7 +276,7 @@ export default function ForumPage() {
                         <div className="flex items-center gap-2 mb-1">
                           {topic.isPinned && <Pin size={16} className="text-yellow-500 fill-yellow-500" />}
                           {topic.isLocked && <Lock size={16} className="text-red-500" />}
-                          <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2">
+                          <h3 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2">
                             {topic.title}
                           </h3>
                         </div>

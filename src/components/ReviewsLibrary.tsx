@@ -28,8 +28,8 @@ interface Review {
 const getCategoryColor = (category: string) => {
   switch (category?.toLowerCase()) {
     case 'review': return 'bg-purple-600'
-    case 'hardware': return 'bg-cyan-600'
-    default: return 'bg-blue-600'
+    case 'hardware': return 'bg-emerald-600'
+    default: return 'bg-green-600'
   }
 }
 
@@ -90,7 +90,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
           onClick={() => setTypeFilter('hardware')}
           className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition ${
             typeFilter === 'hardware'
-              ? 'bg-cyan-600 text-white'
+              ? 'bg-emerald-600 text-white'
               : 'bg-gray-800 text-gray-400 hover:text-white'
           }`}
         >
@@ -135,7 +135,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
             onClick={() => setSortBy('date')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               sortBy === 'date'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-green-600 text-white'
                 : 'bg-gray-800 text-gray-400 hover:text-white'
             }`}
           >
@@ -145,7 +145,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
             onClick={() => setSortBy('score')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               sortBy === 'score'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-green-600 text-white'
                 : 'bg-gray-800 text-gray-400 hover:text-white'
             }`}
           >
@@ -165,7 +165,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
       {sorted.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sorted.map((review) => (
-            <Link key={review.slug} href={`/artikel/${review.slug}`} className="group bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-blue-600 transition-all shadow-lg hover:shadow-blue-900/20 flex flex-col">
+            <Link key={review.slug} href={`/artikel/${review.slug}`} className="group bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-green-600 transition-all shadow-lg hover:shadow-green-900/20 flex flex-col">
 
               {/* Image */}
               <div className="relative h-48 w-full overflow-hidden">
@@ -201,7 +201,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
                   </div>
                 ) : null; })()}
 
-                <h2 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-blue-400 transition-colors line-clamp-2">
+                <h2 className="text-lg font-bold text-white mb-2 leading-tight group-hover:text-green-400 transition-colors line-clamp-2">
                   {review.title}
                 </h2>
                 <p className="text-sm text-gray-400 mb-4 line-clamp-3 flex-grow">
@@ -213,7 +213,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
                     <Clock size={12} />
                     {formatDistanceToNow(new Date(review.publishedAt), { addSuffix: true, locale: nl })}
                   </span>
-                  <span className="flex items-center gap-1 group-hover:text-blue-400 transition-colors font-bold">
+                  <span className="flex items-center gap-1 group-hover:text-green-400 transition-colors font-bold">
                     Lees meer &rarr;
                   </span>
                 </div>

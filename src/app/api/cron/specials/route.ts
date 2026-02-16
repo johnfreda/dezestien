@@ -24,10 +24,10 @@ const SPECIALS: SpecialConfig[] = [
   {
     type: 'voetbal-geschiedenis',
     shouldRun: () => true,
-    duplicateKeyword: 'Gaming Geschiedenis',
+    duplicateKeyword: 'Voetbal Geschiedenis',
     getPrompts: (date) => ({
       system: `Je bent een voetbal-historicus voor DeZestien.nl, een Nederlandse voetbalnieuwssite. Je schrijft korte, entertaining stukjes over wat er op deze datum in de voetbalgeschiedenis is gebeurd. Toon: vermakelijk maar informatief, alsof je een leuk weetje deelt met vrienden. Je volgt het opgegeven formaat EXACT.`,
-      user: `Schrijf een kort "Vandaag in Gaming Geschiedenis" artikel voor ${date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}.
+      user: `Schrijf een kort "Vandaag in Voetbal Geschiedenis" artikel voor ${date.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long' })}.
 
 REGELS:
 - Noem 1-2 belangrijke voetbal-gebeurtenissen die op of rond deze datum hebben plaatsgevonden (game releases, studio-oprichtingen, historische momenten, belangrijke aankondigingen)
@@ -35,11 +35,11 @@ REGELS:
 - Begin direct met het onderwerp, geen "Op deze dag..." cliché
 - Voeg context toe: waarom was dit belangrijk voor de voetbal-industrie?
 - Sluit af met een observatie die het verbindt aan het heden
-- Toon: luchtig maar informatief, voor volwassen gamers (25-50 jaar)
+- Toon: luchtig maar informatief, voor voetballiefhebbers (15-55 jaar)
 - Schrijf ALLES in het Nederlands
 
 FORMAAT (volg dit EXACT):
-TITEL: Vandaag in Gaming Geschiedenis: [onderwerp]
+TITEL: Vandaag in Voetbal Geschiedenis: [onderwerp]
 EXCERPT: [max 200 tekens, maakt nieuwsgierig]
 IMAGE_PROMPT: [retro voetbal themed, nostalgic, historical voetbal moment, cinematic, no text]
 ---
@@ -53,7 +53,7 @@ IMAGE_PROMPT: [retro voetbal themed, nostalgic, historical voetbal moment, cinem
     getPrompts: (date, recentArticles) => {
       const titles = recentArticles.slice(0, 15).map((a: any) => `- ${a.title} (${a.category})`).join('\n');
       return {
-        system: `Je bent de hoofdredacteur van DeZestien.nl, een Nederlandse voetbalnieuwssite voor volwassen gamers (25-50 jaar). Elke woensdag schrijf je een "Midweek Check" waarin je de belangrijkste voetbal-verhalen van de week tot nu toe samenvat en je eigen analyse geeft. Toon: als een ervaren journalist die even terugblikt — nuchter maar met mening, zoals Tweakers of NOS op 3. Je volgt het opgegeven formaat EXACT.`,
+        system: `Je bent de hoofdredacteur van DeZestien.nl, een Nederlandse voetbalnieuwssite (15-55 jaar). Elke woensdag schrijf je een "Midweek Check" waarin je de belangrijkste voetbal-verhalen van de week tot nu toe samenvat en je eigen analyse geeft. Toon: als een ervaren journalist die even terugblikt — nuchter maar met mening, zoals Tweakers of NOS op 3. Je volgt het opgegeven formaat EXACT.`,
         user: `Schrijf een "Midweek Check" samenvatting. Dit zijn de artikelen van deze week tot nu toe:
 
 ${titles}
@@ -79,10 +79,10 @@ IMAGE_PROMPT: [voetbal news collage, midweek editorial, modern digital newspaper
   {
     type: 'weekend-tips',
     shouldRun: (date) => date.getDay() === 5, // Vrijdag
-    duplicateKeyword: 'Weekend Gaming Tips',
+    duplicateKeyword: 'Weekend Voetbal Tips',
     getPrompts: () => ({
-      system: `Je bent een voetbal-redacteur voor DeZestien.nl, een Nederlandse voetbalnieuwssite voor volwassen gamers (25-50 jaar). Elke vrijdag schrijf je een gezellig stuk met game-aanbevelingen voor het weekend. Toon: enthousiast maar niet opdringerig, alsof je tips geeft aan een vriend die ook gamet. Je volgt het opgegeven formaat EXACT.`,
-      user: `Schrijf "Weekend Gaming Tips" voor dit weekend.
+      system: `Je bent een voetbal-redacteur voor DeZestien.nl, een Nederlandse voetbalnieuwssite (15-55 jaar). Elke vrijdag schrijf je een gezellig stuk met game-aanbevelingen voor het weekend. Toon: enthousiast maar niet opdringerig, alsof je tips geeft aan een vriend die ook gamet. Je volgt het opgegeven formaat EXACT.`,
+      user: `Schrijf "Weekend Voetbal Tips" voor dit weekend.
 
 REGELS:
 - Geef 3-5 concrete game-aanbevelingen
@@ -94,7 +94,7 @@ REGELS:
 - Sluit af met een vraag aan de lezer ("Wat ga jij spelen dit weekend?")
 
 FORMAAT (volg dit EXACT):
-TITEL: Weekend Gaming Tips: [pakkend thema]
+TITEL: Weekend Voetbal Tips: [pakkend thema]
 EXCERPT: [max 200 tekens]
 IMAGE_PROMPT: [cozy voetbal setup, weekend vibes, controller, warm lighting, cinematic, no text]
 ---
@@ -104,14 +104,14 @@ IMAGE_PROMPT: [cozy voetbal setup, weekend vibes, controller, warm lighting, cin
   {
     type: 'week-in-voetbal',
     shouldRun: (date) => date.getDay() === 6, // Zaterdag
-    duplicateKeyword: 'Week in Gaming',
+    duplicateKeyword: 'Week in Voetbal',
     getPrompts: (date, recentArticles) => {
       const summaries = recentArticles.slice(0, 25).map((a: any) =>
         `- ${a.title} (${a.category}): ${a.excerpt || ''}`
       ).join('\n');
       return {
-        system: `Je bent de hoofdredacteur van DeZestien.nl, een Nederlandse voetbalnieuwssite voor volwassen gamers (25-50 jaar). Elke zaterdag schrijf je het grote weekoverzicht: "Week in Gaming". Dit is het vlaggenschip redactionele stuk. Je vat alle belangrijke voetbal-nieuwtjes samen, geeft context, en sluit af met je eigen kijk op de week. Toon: professioneel, overzichtelijk, met genuanceerde mening — zoals een Tweakers-redactioneel. Je volgt het opgegeven formaat EXACT.`,
-        user: `Schrijf het "Week in Gaming" weekoverzicht. Dit zijn de artikelen van deze week:
+        system: `Je bent de hoofdredacteur van DeZestien.nl, een Nederlandse voetbalnieuwssite (15-55 jaar). Elke zaterdag schrijf je het grote weekoverzicht: "Week in Voetbal". Dit is het vlaggenschip redactionele stuk. Je vat alle belangrijke voetbalnieuwtjes samen, geeft context, en sluit af met je eigen kijk op de week. Toon: professioneel, overzichtelijk, met genuanceerde mening — zoals een Tweakers-redactioneel. Je volgt het opgegeven formaat EXACT.`,
+        user: `Schrijf het "Week in Voetbal" weekoverzicht. Dit zijn de artikelen van deze week:
 
 ${summaries}
 
@@ -125,7 +125,7 @@ REGELS:
 - Gebruik GEEN "Conclusie" als kopje
 
 FORMAAT (volg dit EXACT):
-TITEL: Week in Gaming: [headline van de week]
+TITEL: Week in Voetbal: [headline van de week]
 EXCERPT: [max 200 tekens]
 IMAGE_PROMPT: [epic voetbal montage, weekly roundup, editorial newspaper style, voetbal themed, cinematic, no text]
 ---
@@ -143,7 +143,7 @@ IMAGE_PROMPT: [epic voetbal montage, weekly roundup, editorial newspaper style, 
       const monthName = prevMonth.toLocaleDateString('nl-NL', { month: 'long', year: 'numeric' });
       const titles = recentArticles.slice(0, 30).map((a: any) => `- ${a.title} (${a.category})`).join('\n');
       return {
-        system: `Je bent de hoofdredacteur van DeZestien.nl, een Nederlandse voetbalnieuwssite voor volwassen gamers (25-50 jaar). Aan het begin van elke maand schrijf je het grote maandoverzicht. Dit is een diepgaand terugblik-artikel dat de belangrijkste trends, releases en momenten samenvat. Toon: professioneel, met observaties en trends — als een jaaroverzicht maar dan voor een maand. Je volgt het opgegeven formaat EXACT.`,
+        system: `Je bent de hoofdredacteur van DeZestien.nl, een Nederlandse voetbalnieuwssite (15-55 jaar). Aan het begin van elke maand schrijf je het grote maandoverzicht. Dit is een diepgaand terugblik-artikel dat de belangrijkste trends, releases en momenten samenvat. Toon: professioneel, met observaties en trends — als een jaaroverzicht maar dan voor een maand. Je volgt het opgegeven formaat EXACT.`,
         user: `Schrijf het "DeZestien Maandoverzicht" voor ${monthName}.
 
 Recente artikelen als context:

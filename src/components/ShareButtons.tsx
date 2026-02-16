@@ -87,7 +87,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
       {typeof navigator !== 'undefined' && 'share' in navigator && (
         <button
           onClick={share}
-          className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-colors text-gray-400 hover:text-white border border-gray-700 hover:border-blue-500 sm:hidden"
+          className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-green-600 flex items-center justify-center transition-colors text-gray-400 hover:text-white border border-gray-700 hover:border-green-500 sm:hidden"
           aria-label="Deel"
         >
           <Share2 size={16} />

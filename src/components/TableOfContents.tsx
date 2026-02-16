@@ -73,7 +73,7 @@ export default function TableOfContents() {
           className="w-full flex items-center justify-between p-4 text-sm font-bold text-gray-300"
         >
           <span className="flex items-center gap-2">
-            <List size={16} className="text-blue-400" />
+            <List size={16} className="text-green-400" />
             Inhoudsopgave ({headings.length})
           </span>
           {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -89,7 +89,7 @@ export default function TableOfContents() {
                       h.level === 3 ? 'pl-4' : ''
                     } ${
                       activeId === h.id
-                        ? 'text-blue-400 font-semibold'
+                        ? 'text-green-400 font-semibold'
                         : 'text-gray-500 hover:text-gray-300'
                     }`}
                   >
@@ -106,7 +106,7 @@ export default function TableOfContents() {
       <div className="hidden lg:block fixed top-32 right-8 xl:right-[calc((100vw-896px)/2-280px)] w-56 z-30">
         <div className="bg-[#111827]/90 backdrop-blur-sm rounded-xl border border-gray-800 p-4 max-h-[60vh] overflow-y-auto">
           <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-            <List size={14} className="text-blue-400" />
+            <List size={14} className="text-green-400" />
             Inhoudsopgave
           </h4>
           <nav>
@@ -119,7 +119,7 @@ export default function TableOfContents() {
                       h.level === 3 ? 'pl-3' : ''
                     } ${
                       activeId === h.id
-                        ? 'text-blue-400 font-semibold border-l-2 border-blue-400 pl-2'
+                        ? 'text-green-400 font-semibold border-l-2 border-green-400 pl-2'
                         : 'text-gray-500 hover:text-gray-300'
                     }`}
                   >

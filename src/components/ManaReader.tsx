@@ -34,7 +34,7 @@ export default function ManaReader({ slug: articleSlug }: { slug: string }) {
   if (!earned) return null
 
   return (
-    <div className="fixed bottom-20 right-4 z-50 animate-bounce bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm">
+    <div className="fixed bottom-20 right-4 z-50 animate-bounce bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg text-sm">
       +{mana} Mana verdiend! ✨
     </div>
   )

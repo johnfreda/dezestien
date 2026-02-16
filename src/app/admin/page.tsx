@@ -110,7 +110,7 @@ export default function AdminPage() {
   if (!isAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#0b0f19]">
-        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -125,7 +125,7 @@ export default function AdminPage() {
             <p className="text-gray-500 text-sm mt-1">DeZestien.nl Redactie Tools</p>
           </div>
           <div className="text-sm text-gray-500">
-            Ingelogd als <span className="text-blue-400">{session?.user?.name}</span>
+            Ingelogd als <span className="text-green-400">{session?.user?.name}</span>
           </div>
         </div>
 
@@ -135,7 +135,7 @@ export default function AdminPage() {
             onClick={() => setActiveTab('nieuws')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
               activeTab === 'nieuws'
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
+                ? 'bg-green-600 text-white shadow-lg shadow-green-900/30'
                 : 'text-gray-400 hover:text-white hover:bg-gray-800'
             }`}
           >
@@ -145,7 +145,7 @@ export default function AdminPage() {
             onClick={() => setActiveTab('scanner')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
               activeTab === 'scanner'
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
+                ? 'bg-green-600 text-white shadow-lg shadow-green-900/30'
                 : 'text-gray-400 hover:text-white hover:bg-gray-800'
             }`}
           >
@@ -155,7 +155,7 @@ export default function AdminPage() {
             onClick={() => setActiveTab('users')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
               activeTab === 'users'
-                ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
+                ? 'bg-green-600 text-white shadow-lg shadow-green-900/30'
                 : 'text-gray-400 hover:text-white hover:bg-gray-800'
             }`}
           >
@@ -168,7 +168,7 @@ export default function AdminPage() {
           <div className="space-y-6">
             <div className="bg-gray-900/80 rounded-2xl border border-gray-800 p-6">
               <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                <Newspaper size={20} className="text-blue-400" />
+                <Newspaper size={20} className="text-green-400" />
                 Artikel Genereren
               </h2>
               <p className="text-gray-400 text-sm mb-6">
@@ -183,7 +183,7 @@ export default function AdminPage() {
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder="Bijv: 'Nintendo Direct februari 2026 - nieuwe Mario game aangekondigd' of plak een nieuwsbron tekst..."
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none transition-colors"
+                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none transition-colors"
                     rows={4}
                     disabled={isGenerating}
                   />
@@ -200,7 +200,7 @@ export default function AdminPage() {
                         disabled={isGenerating}
                         className={`px-3 py-1.5 rounded-lg text-sm font-bold transition-all ${
                           category === cat
-                            ? 'bg-blue-600 text-white'
+                            ? 'bg-green-600 text-white'
                             : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 border border-gray-700'
                         }`}
                       >
@@ -232,7 +232,7 @@ export default function AdminPage() {
                 <button
                   onClick={handleGenerate}
                   disabled={isGenerating || !topic.trim()}
-                  className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:text-gray-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-blue-900/20 disabled:shadow-none"
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-gray-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-green-900/20 disabled:shadow-none"
                 >
                   {isGenerating ? (
                     <>
@@ -389,7 +389,7 @@ export default function AdminPage() {
                           <p className="text-xs text-gray-500 uppercase tracking-wide">Gevonden</p>
                         </div>
                         <div className="bg-gray-800 rounded-xl p-3 text-center">
-                          <p className="text-2xl font-black text-blue-400">{scanResult.processed}</p>
+                          <p className="text-2xl font-black text-green-400">{scanResult.processed}</p>
                           <p className="text-xs text-gray-500 uppercase tracking-wide">Verwerkt</p>
                         </div>
                         <div className="bg-gray-800 rounded-xl p-3 text-center">
@@ -414,7 +414,7 @@ export default function AdminPage() {
                               <div className="min-w-0 flex-1">
                                 <p className="text-sm text-white truncate">{r.title}</p>
                                 {r.slug && (
-                                  <a href={`/artikel/${r.slug}`} target="_blank" className="text-xs text-blue-400 hover:text-blue-300">
+                                  <a href={`/artikel/${r.slug}`} target="_blank" className="text-xs text-green-400 hover:text-green-300">
                                     Bekijk →
                                   </a>
                                 )}
@@ -457,7 +457,7 @@ export default function AdminPage() {
                     <td className="px-6 py-4 text-gray-400 text-sm">{user.email}</td>
                     <td className="px-6 py-4">
                       <span className={`text-xs font-bold px-2 py-1 rounded-md ${
-                        user.role === 'ADMIN' ? 'bg-blue-900/50 text-blue-400' : 'bg-gray-800 text-gray-400'
+                        user.role === 'ADMIN' ? 'bg-green-900/50 text-green-400' : 'bg-gray-800 text-gray-400'
                       }`}>
                         {user.role}
                       </span>

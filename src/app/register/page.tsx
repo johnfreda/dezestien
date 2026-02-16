@@ -15,7 +15,7 @@ function getPasswordStrength(pw: string): { label: string; color: string; width:
   if (/[^A-Za-z0-9]/.test(pw)) score++
   if (score <= 1) return { label: 'Zwak', color: 'bg-orange-500', width: '40%' }
   if (score === 2) return { label: 'Redelijk', color: 'bg-yellow-500', width: '60%' }
-  if (score === 3) return { label: 'Sterk', color: 'bg-blue-500', width: '80%' }
+  if (score === 3) return { label: 'Sterk', color: 'bg-green-500', width: '80%' }
   return { label: 'Zeer sterk', color: 'bg-emerald-500', width: '100%' }
 }
 
@@ -60,7 +60,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center bg-[#0b0f19] px-4 relative overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-green-600/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10">
         {/* Logo */}
@@ -83,8 +83,8 @@ export default function RegisterPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-gray-600"
-                placeholder="Jouw gamertag"
+                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600"
+                placeholder="Jouw gebruikersnaam"
                 required
               />
             </div>
@@ -94,7 +94,7 @@ export default function RegisterPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-gray-600"
+                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600"
                 placeholder="jouw@email.nl"
                 required
               />
@@ -106,7 +106,7 @@ export default function RegisterPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all placeholder:text-gray-600 pr-12"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600 pr-12"
                   placeholder="Minimaal 6 tekens"
                   required
                   minLength={6}
@@ -132,7 +132,7 @@ export default function RegisterPage() {
                     strength.color === 'bg-red-500' ? 'text-red-400' :
                     strength.color === 'bg-orange-500' ? 'text-orange-400' :
                     strength.color === 'bg-yellow-500' ? 'text-yellow-400' :
-                    strength.color === 'bg-blue-500' ? 'text-blue-400' :
+                    strength.color === 'bg-green-500' ? 'text-green-400' :
                     'text-emerald-400'
                   }`}>
                     {strength.label}
@@ -150,7 +150,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-500 hover:to-blue-400 text-white font-bold transition-all disabled:opacity-50 press-effect flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-green-500 hover:from-purple-500 hover:to-green-400 text-white font-bold transition-all disabled:opacity-50 press-effect flex items-center justify-center gap-2 shadow-lg shadow-purple-600/20"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -166,7 +166,7 @@ export default function RegisterPage() {
           <div className="mt-6 pt-6 border-t border-gray-700/50 text-center">
             <p className="text-gray-500 text-sm">
               Al een account?{' '}
-              <Link href="/login" className="text-blue-400 hover:text-blue-300 font-medium transition">
+              <Link href="/login" className="text-green-400 hover:text-green-300 font-medium transition">
                 Log hier in
               </Link>
             </p>

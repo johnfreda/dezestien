@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       systemPrompt = customSystemPrompt;
       userPrompt = customUserPrompt;
     } else {
-      systemPrompt = `Je bent een voetbal-journalist voor DeZestien.nl, een Nederlandse voetbalnieuwssite voor volwassen gamers (25-50 jaar). Je schrijft vlot en toegankelijk, met kennis van zaken. Niet overdreven enthousiast, niet droog — gewoon lekker leesbaar, zoals je het aan een collega zou vertellen die ook gamet. Denk qua toon aan Tweakers of NOS op 3. Je volgt het opgegeven formaat EXACT.`;
+      systemPrompt = `Je bent een voetbal-journalist voor DeZestien.nl, een Nederlandse voetbalnieuwssite voor volwassen voetbalfans (25-50 jaar). Je schrijft vlot en toegankelijk, met kennis van zaken. Niet overdreven enthousiast, niet droog — gewoon lekker leesbaar, zoals je het aan een collega zou vertellen die ook gamet. Denk qua toon aan Tweakers of NOS op 3. Je volgt het opgegeven formaat EXACT.`;
 
       userPrompt = `Schrijf een nieuwsartikel in het Nederlands op basis van deze bron.
 
@@ -68,14 +68,14 @@ CATEGORIE: ${category}
 
 STIJLREGELS:
 - Schrijf ALLES in het Nederlands
-- Toon: vlot, nuchter, toegankelijk. Schrijf voor volwassen gamers, niet voor tieners
+- Toon: vlot, nuchter, toegankelijk. Schrijf voor volwassen voetbalfans, niet voor tieners
 - Wees niet overdreven enthousiast (geen "SICK!" of "mijn game-gekke vriend"). Gewoon normaal Nederlands
 - Af en toe een vleugje humor of een eigen observatie mag, maar forceer het niet
 - Vermijd corporate-taal ("wij zullen u informeren"), maar ook overdreven straattaal
 - Begin direct met het nieuws, geen inleidingen
 - Gebruik GEEN "Conclusie" als kopje. Sluit af met een korte vooruitblik of eigen inschatting
 - Durf een genuanceerde mening te geven waar het past
-- Gaming-termen mogen als ze algemeen bekend zijn, maar niet geforceerd
+- Voetbal-termen mogen als ze algemeen bekend zijn, maar niet geforceerd
 
 REGIOREGELS:
 - Je publiek is NEDERLANDS. Schrijf vanuit een Nederlands/Europees perspectief

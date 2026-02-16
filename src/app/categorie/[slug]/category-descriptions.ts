@@ -1,0 +1,17 @@
+export const categoryDescriptions: Record<string, string> = {
+  'nieuws': 'Het laatste Nederlandse voetbalnieuws: transfers, uitslagen en breaking news. Dagelijks bijgewerkt.',
+  'eredivisie': 'Alle Eredivisie nieuws: uitslagen, standen, analyses en transfergeruchten van de Nederlandse competitie.',
+  'champions-league': 'Champions League nieuws en analyse: loting, uitslagen en Nederlandse clubs in Europa.',
+  'europa-league': 'Europa League nieuws: Nederlandse clubs in de Europa League, uitslagen en analyse.',
+  'conference-league': 'Conference League: nieuws, uitslagen en analyse van Nederlandse clubs in de Conference League.',
+  'transfers': 'Transfernieuws en geruchten: de laatste transfers, contractverlengingen en transfervrije spelers in Nederland en Europa.',
+  'oranje': 'Nederlands Elftal nieuws: selecties, wedstrijden, analyse en alles over Oranje.',
+  'buitenland': 'Internationaal voetbalnieuws: Premier League, La Liga, Bundesliga, Serie A en meer.',
+  'eerste-divisie': 'Eerste Divisie nieuws: uitslagen, standen en highlights uit de Keuken Kampioen Divisie.',
+  'vrouwenvoetbal': 'Vrouwenvoetbal nieuws: Eredivisie Vrouwen, Oranje Leeuwinnen en internationaal vrouwenvoetbal.',
+  'analyse': 'Diepgaande voetbalanalyses: tactiek, statistieken en achtergrondverhalen.',
+  'opinie': 'Scherpe meningen en opiniestukken over het Nederlandse en internationale voetbal.',
+  'podcasts': 'Voetbalpodcasts: luister naar de beste Nederlandse voetbalpodcasts.',
+  'geruchten': 'Voetbalgeruchten en leaks: de laatste transfergeruchten en clubnieuws.',
+  'video': 'Voetbalvideo\'s: highlights, interviews en analyses.',
+};

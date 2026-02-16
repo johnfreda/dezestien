@@ -58,7 +58,7 @@ export default function TipDeRedactiePage() {
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-green-500 focus:outline-none"
               required
             />
           </div>
@@ -68,7 +68,7 @@ export default function TipDeRedactiePage() {
               type="url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-green-500 focus:outline-none"
               placeholder="https://..."
             />
           </div>
@@ -77,7 +77,7 @@ export default function TipDeRedactiePage() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:outline-none"
+              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-green-500 focus:outline-none"
             >
               <option value="Nieuws">Nieuws</option>
               <option value="Review">Review</option>
@@ -93,7 +93,7 @@ export default function TipDeRedactiePage() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={4}
-              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-blue-500 focus:outline-none resize-none"
+              className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-green-500 focus:outline-none resize-none"
               required
             />
           </div>
@@ -101,7 +101,7 @@ export default function TipDeRedactiePage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold transition disabled:opacity-50"
+            className="w-full py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white font-semibold transition disabled:opacity-50"
           >
             {loading ? 'Verzenden...' : 'Tip insturen'}
           </button>

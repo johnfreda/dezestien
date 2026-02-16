@@ -218,7 +218,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
       {/* Floating pencil button */}
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-blue-600 hover:bg-blue-500 text-white rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-110 border-2 border-blue-400/30"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-600 hover:bg-green-500 text-white rounded-full shadow-xl flex items-center justify-center transition-all hover:scale-110 border-2 border-green-400/30"
         title="Artikel bewerken"
       >
         <Pencil size={22} />
@@ -266,7 +266,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
             />
           </div>
 
@@ -277,7 +277,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
               value={excerpt}
               onChange={e => setExcerpt(e.target.value)}
               rows={3}
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-none"
+              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none"
             />
           </div>
 
@@ -288,7 +288,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
               <select
                 value={category}
                 onChange={e => setCategory(e.target.value)}
-                className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -327,7 +327,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
                   onClick={() => setReviewType('hardware')}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                     reviewType === 'hardware'
-                      ? 'bg-cyan-600/20 border-cyan-500 text-cyan-400'
+                      ? 'bg-emerald-600/20 border-emerald-500 text-emerald-400'
                       : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
                   }`}
                 >
@@ -357,7 +357,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
                 max={100}
                 value={score}
                 onChange={e => setScore(Number(e.target.value))}
-                className="w-32 bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="w-32 bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
               />
             </div>
           )}
@@ -385,7 +385,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
             <button
               onClick={() => fileInputRef.current?.click()}
               disabled={uploading}
-              className="flex items-center gap-2 px-4 py-2 bg-[#111827] border border-gray-700 rounded-lg text-gray-300 hover:border-blue-500 transition-colors text-sm"
+              className="flex items-center gap-2 px-4 py-2 bg-[#111827] border border-gray-700 rounded-lg text-gray-300 hover:border-green-500 transition-colors text-sm"
             >
               {uploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
               {uploading ? 'Uploaden...' : 'Nieuwe afbeelding uploaden'}
@@ -416,7 +416,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
               <button
                 onClick={() => boxFileInputRef.current?.click()}
                 disabled={uploadingBox}
-                className="flex items-center gap-2 px-4 py-2 bg-[#111827] border border-gray-700 rounded-lg text-gray-300 hover:border-blue-500 transition-colors text-sm"
+                className="flex items-center gap-2 px-4 py-2 bg-[#111827] border border-gray-700 rounded-lg text-gray-300 hover:border-green-500 transition-colors text-sm"
               >
                 {uploadingBox ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
                 {uploadingBox ? 'Uploaden...' : 'Box art uploaden'}
@@ -435,7 +435,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
                     onClick={() => togglePlatform(p)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                       selectedPlatforms.includes(p)
-                        ? 'bg-blue-600/20 border-blue-500 text-blue-400'
+                        ? 'bg-green-600/20 border-green-500 text-green-400'
                         : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
                     }`}
                   >
@@ -506,7 +506,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
               value={bodyMarkdown}
               onChange={e => setBodyMarkdown(e.target.value)}
               rows={20}
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-3 text-white font-mono text-sm leading-relaxed focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 resize-y"
+              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-3 text-white font-mono text-sm leading-relaxed focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-y"
               placeholder="Markdown tekst..."
             />
             <p className="text-xs text-gray-500 mt-1">
@@ -519,7 +519,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
             <button
               onClick={handleSave}
               disabled={saving}
-              className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-lg"
+              className="w-full flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 disabled:bg-green-800 disabled:cursor-not-allowed text-white font-bold py-3 px-6 rounded-lg transition-colors shadow-lg"
             >
               {saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
               {saving ? 'Opslaan...' : 'Wijzigingen Opslaan'}

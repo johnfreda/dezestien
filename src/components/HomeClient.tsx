@@ -73,13 +73,13 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
       case 'special': case 'feature': return { bg: 'bg-amber-600', text: 'text-amber-400', groupText: 'group-hover:text-amber-400', border: 'border-amber-600', glow: 'glow-amber' };
       case 'opinie': return { bg: 'bg-orange-600', text: 'text-orange-400', groupText: 'group-hover:text-orange-400', border: 'border-orange-600', glow: 'glow-orange' };
       case 'podcast': return { bg: 'bg-violet-600', text: 'text-violet-400', groupText: 'group-hover:text-violet-400', border: 'border-violet-600', glow: 'glow-violet' };
-      case 'hardware': return { bg: 'bg-cyan-600', text: 'text-cyan-400', groupText: 'group-hover:text-cyan-400', border: 'border-cyan-600', glow: 'glow-cyan' };
-      case 'tech': return { bg: 'bg-emerald-600', text: 'text-emerald-400', groupText: 'group-hover:text-emerald-400', border: 'border-emerald-600', glow: 'glow-emerald' };
+      case 'transfers': return { bg: 'bg-emerald-600', text: 'text-emerald-400', groupText: 'group-hover:text-emerald-400', border: 'border-emerald-600', glow: 'glow-cyan' };
+      case 'buitenland': return { bg: 'bg-emerald-600', text: 'text-emerald-400', groupText: 'group-hover:text-emerald-400', border: 'border-emerald-600', glow: 'glow-emerald' };
       case 'video': return { bg: 'bg-red-600', text: 'text-red-400', groupText: 'group-hover:text-red-400', border: 'border-red-600', glow: 'glow-red' };
-      case 'indie': return { bg: 'bg-lime-600', text: 'text-lime-400', groupText: 'group-hover:text-lime-400', border: 'border-lime-600', glow: 'glow-lime' };
-      case 'mods': return { bg: 'bg-fuchsia-600', text: 'text-fuchsia-400', groupText: 'group-hover:text-fuchsia-400', border: 'border-fuchsia-600', glow: 'glow-fuchsia' };
+      case 'eerste-divisie': return { bg: 'bg-lime-600', text: 'text-lime-400', groupText: 'group-hover:text-lime-400', border: 'border-lime-600', glow: 'glow-lime' };
+      case 'vrouwenvoetbal': return { bg: 'bg-fuchsia-600', text: 'text-fuchsia-400', groupText: 'group-hover:text-fuchsia-400', border: 'border-fuchsia-600', glow: 'glow-fuchsia' };
       case 'gerucht': return { bg: 'bg-pink-600', text: 'text-pink-400', groupText: 'group-hover:text-pink-400', border: 'border-pink-600', glow: 'glow-pink' };
-      default: return { bg: 'bg-blue-600', text: 'text-blue-400', groupText: 'group-hover:text-blue-400', border: 'border-blue-600', glow: 'glow-blue' }; // Nieuws
+      default: return { bg: 'bg-green-600', text: 'text-green-400', groupText: 'group-hover:text-green-400', border: 'border-green-600', glow: 'glow-blue' }; // Nieuws
     }
   };
 
@@ -223,7 +223,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                 Hot
             </span>
             )}
-            <div className="flex items-center text-gray-500 text-xs group-hover:text-blue-300 transition-colors">
+            <div className="flex items-center text-gray-500 text-xs group-hover:text-green-300 transition-colors">
             <MessageSquare size={14} className="mr-1.5" />
             {commentCounts[item.slug] || 0}
             </div>
@@ -232,7 +232,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
   );
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-300 font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen bg-[#0b0f19] text-gray-300 font-sans selection:bg-green-500 selection:text-white">
       
       {/* --- MAIN CONTENT --- */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -349,13 +349,13 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                 <div className="flex bg-gray-900 rounded-lg p-1 text-[10px] md:text-xs font-bold">
                   <button 
                     onClick={() => setActiveTab('nieuws')}
-                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'nieuws' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'nieuws' ? 'bg-green-600 text-white' : 'text-gray-400 hover:text-white'}`}
                   >
                     NIEUWS
                   </button>
                   <button 
                     onClick={() => setActiveTab('reviews')}
-                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'reviews' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'reviews' ? 'bg-green-600 text-white' : 'text-gray-400 hover:text-white'}`}
                   >
                     REVIEWS
                   </button>
@@ -412,7 +412,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                   <div className="px-4 py-4 border-t border-gray-800">
                     <button
                       onClick={() => setItemsToShow(prev => prev + 10)}
-                      className="w-full py-3 text-center text-sm font-bold text-blue-400 hover:text-blue-300 hover:bg-gray-800/50 transition-colors uppercase tracking-widest rounded-lg border border-blue-500/30 hover:border-blue-500/50"
+                      className="w-full py-3 text-center text-sm font-bold text-green-400 hover:text-green-300 hover:bg-gray-800/50 transition-colors uppercase tracking-widest rounded-lg border border-green-500/30 hover:border-green-500/50"
                     >
                       Laad meer nieuws
                     </button>
@@ -444,9 +444,9 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                 {mostReadArticles.length > 0 ? (
                     mostReadArticles.map((article, idx) => (
                     <li key={article.id} className="flex gap-3 group">
-                        <span className="text-3xl font-black text-gray-800 group-hover:text-blue-600 transition-colors font-mono">0{idx + 1}</span>
+                        <span className="text-3xl font-black text-gray-800 group-hover:text-green-600 transition-colors font-mono">0{idx + 1}</span>
                         <Link href={`/artikel/${article.slug}`} className="flex flex-col">
-                        <span className="text-sm font-medium text-gray-300 group-hover:text-blue-400 leading-snug line-clamp-2">
+                        <span className="text-sm font-medium text-gray-300 group-hover:text-green-400 leading-snug line-clamp-2">
                             {article.title}
                         </span>
                         <span className="text-xs text-gray-600 mt-1 flex items-center gap-1">
@@ -464,9 +464,9 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
             {/* Featured Review (Dynamisch) - Verbeterd Design */}
             {featuredReview && (
               <Link href={`/artikel/${featuredReview.slug}`} className="block group">
-                <div className="bg-gradient-to-br from-slate-900 via-blue-900/30 to-slate-900 rounded-2xl border-2 border-blue-500/40 p-6 text-center shadow-2xl relative overflow-hidden cursor-pointer hover:border-blue-500/70 hover:shadow-blue-900/30 transition-all duration-300 animate-float">
+                <div className="bg-gradient-to-br from-slate-900 via-green-900/30 to-slate-900 rounded-2xl border-2 border-green-500/40 p-6 text-center shadow-2xl relative overflow-hidden cursor-pointer hover:border-green-500/70 hover:shadow-green-900/30 transition-all duration-300 animate-float">
                   {/* Animated Background Glow */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-blue-500/30 transition-colors"></div>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/20 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-green-500/30 transition-colors"></div>
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl -ml-12 -mb-12"></div>
                   
                   {/* HIGH SCORE LABEL */}
@@ -478,9 +478,9 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
 
                   <div className="relative z-10">
                     {/* Header Badge */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-500/40 rounded-full mb-4">
-                      <Star size={12} className="text-blue-400" fill="currentColor" />
-                      <span className="text-xs font-bold text-blue-300 uppercase tracking-widest">Review Uitgelicht</span>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-500/20 border border-green-500/40 rounded-full mb-4">
+                      <Star size={12} className="text-green-400" fill="currentColor" />
+                      <span className="text-xs font-bold text-green-300 uppercase tracking-widest">Review Uitgelicht</span>
                     </div>
                     
                     {/* Scores - Editor & Community */}
@@ -490,25 +490,25 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                         <div className="relative">
                           <div className={`w-20 h-20 rounded-2xl flex flex-col items-center justify-center border-4 shadow-[0_0_30px_rgba(59,130,246,0.4)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] transition-all duration-300 ${
                             featuredReview.score >= 90 ? 'bg-gradient-to-br from-green-600 to-emerald-500 border-green-400' :
-                            featuredReview.score >= 70 ? 'bg-gradient-to-br from-blue-600 to-cyan-500 border-blue-400' :
+                            featuredReview.score >= 70 ? 'bg-gradient-to-br from-green-600 to-emerald-500 border-green-400' :
                             featuredReview.score >= 50 ? 'bg-gradient-to-br from-yellow-600 to-orange-500 border-yellow-400' :
                             'bg-gradient-to-br from-red-600 to-orange-600 border-red-400'
                           }`}>
                             <span className="text-3xl font-black text-white leading-none drop-shadow-lg">{featuredReview.score}</span>
                             <span className="text-[8px] text-white/90 font-bold uppercase tracking-wider mt-1">Editor</span>
                           </div>
-                          <div className="absolute inset-0 rounded-2xl bg-blue-500/20 blur-xl -z-10 group-hover:bg-blue-500/30 transition-colors"></div>
+                          <div className="absolute inset-0 rounded-2xl bg-green-500/20 blur-xl -z-10 group-hover:bg-green-500/30 transition-colors"></div>
                         </div>
                         
                         {/* Community Score */}
                         {featuredReviewRating && featuredReviewRating.count >= 10 ? (
                           <div className="relative">
-                            <div className="w-20 h-20 rounded-2xl flex flex-col items-center justify-center border-4 border-blue-400/50 bg-gradient-to-br from-blue-600 to-cyan-500 shadow-[0_0_30px_rgba(59,130,246,0.4)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] transition-all duration-300">
-                              <User size={12} className="absolute -top-1 -right-1 text-blue-200 bg-slate-900 rounded-full p-0.5" />
+                            <div className="w-20 h-20 rounded-2xl flex flex-col items-center justify-center border-4 border-green-400/50 bg-gradient-to-br from-green-600 to-emerald-500 shadow-[0_0_30px_rgba(59,130,246,0.4)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] transition-all duration-300">
+                              <User size={12} className="absolute -top-1 -right-1 text-green-200 bg-slate-900 rounded-full p-0.5" />
                               <span className="text-3xl font-black text-white leading-none drop-shadow-lg">{Math.round(featuredReviewRating.average)}</span>
                               <span className="text-[8px] text-white/90 font-bold uppercase tracking-wider mt-1">Community</span>
                             </div>
-                            <div className="absolute inset-0 rounded-2xl bg-blue-500/20 blur-xl -z-10 group-hover:bg-blue-500/30 transition-colors"></div>
+                            <div className="absolute inset-0 rounded-2xl bg-green-500/20 blur-xl -z-10 group-hover:bg-green-500/30 transition-colors"></div>
                           </div>
                         ) : featuredReviewRating && featuredReviewRating.count > 0 ? (
                           <div className="relative">
@@ -523,7 +523,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                     )}
                     
                     {/* Title & Excerpt */}
-                    <h3 className="text-lg md:text-xl font-black text-white mb-2 leading-tight group-hover:text-blue-300 transition-colors line-clamp-2">
+                    <h3 className="text-lg md:text-xl font-black text-white mb-2 leading-tight group-hover:text-green-300 transition-colors line-clamp-2">
                       {featuredReview.title}
                     </h3>
                     <p className="text-sm text-gray-300 mb-5 line-clamp-2 italic opacity-90 leading-relaxed">
@@ -532,8 +532,8 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                     
                     {/* CTA Button */}
                     <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                      <button className="relative w-full text-sm font-black bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-5 py-3 rounded-lg hover:from-blue-500 hover:to-cyan-400 transition-all uppercase tracking-wider shadow-lg border border-white/20">
+                      <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-500 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
+                      <button className="relative w-full text-sm font-black bg-gradient-to-r from-green-600 to-emerald-500 text-white px-5 py-3 rounded-lg hover:from-green-500 hover:to-emerald-400 transition-all uppercase tracking-wider shadow-lg border border-white/20">
                         Lees Review &rarr;
                       </button>
                     </div>
@@ -556,7 +556,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {heroArticles.map((item) => (
-                        <Link key={item.id} href={`/artikel/${item.slug}`} className="group block bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-blue-500/50 transition-all shadow-lg hover:shadow-blue-900/10">
+                        <Link key={item.id} href={`/artikel/${item.slug}`} className="group block bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all shadow-lg hover:shadow-green-900/10">
                             <div className="h-48 overflow-hidden relative">
                                 {item.imageUrl && (
                                   <Image
@@ -568,7 +568,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                                   />
                                 )}
                                 {item.score && (
-                                    <div className="absolute top-2 right-2 bg-blue-600 text-white font-bold text-xs w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
+                                    <div className="absolute top-2 right-2 bg-green-600 text-white font-bold text-xs w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
                                         {item.score}
                                     </div>
                                 )}
@@ -577,7 +577,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                                 <span className={`text-[10px] uppercase font-bold tracking-widest ${getCategoryColor(item.category).text} mb-2 block`}>
                                     {item.category}
                                 </span>
-                                <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2 leading-tight">
+                                <h3 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2 leading-tight">
                                     {item.title}
                                 </h3>
                             </div>

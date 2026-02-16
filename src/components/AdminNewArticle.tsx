@@ -297,7 +297,7 @@ export default function AdminNewArticle() {
                   onClick={() => setReviewType('hardware')}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                     reviewType === 'hardware'
-                      ? 'bg-cyan-600/20 border-cyan-500 text-cyan-400'
+                      ? 'bg-emerald-600/20 border-emerald-500 text-emerald-400'
                       : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
                   }`}
                 >

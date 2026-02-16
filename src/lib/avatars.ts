@@ -16,19 +16,19 @@ export interface AvatarDef {
 export const avatars: AvatarDef[] = [
   // Gratis avatars
   { id: 'default',    label: 'Standaard',   icon: User,     bg: 'from-gray-600 to-gray-500',     ring: 'ring-gray-500',    manaRequired: 0 },
-  { id: 'controller', label: 'Gamer',       icon: Gamepad2, bg: 'from-blue-600 to-cyan-500',     ring: 'ring-blue-500',    manaRequired: 0 },
+  { id: 'controller', label: 'Voetbalfan',       icon: Gamepad2, bg: 'from-green-600 to-emerald-500',     ring: 'ring-green-500',    manaRequired: 0 },
   { id: 'swords',     label: 'Strijder',    icon: Swords,   bg: 'from-red-600 to-orange-500',    ring: 'ring-red-500',     manaRequired: 0 },
   { id: 'shield',     label: 'Verdediger',  icon: Shield,   bg: 'from-slate-600 to-slate-400',   ring: 'ring-slate-400',   manaRequired: 0 },
   { id: 'target',     label: 'Scherpschutter', icon: Target, bg: 'from-rose-600 to-pink-500',    ring: 'ring-rose-500',    manaRequired: 0 },
   { id: 'ghost',      label: 'Spook',       icon: Ghost,    bg: 'from-violet-600 to-purple-400', ring: 'ring-violet-500',  manaRequired: 0 },
 
-  // Gamer level (100+ mana)
+  // Voetbalfan level (100+ mana)
   { id: 'flame',      label: 'Vuurdemon',   icon: Flame,    bg: 'from-orange-500 to-red-600',    ring: 'ring-orange-500',  manaRequired: 100 },
   { id: 'lightning',  label: 'Bliksem',     icon: Zap,      bg: 'from-yellow-400 to-amber-600',  ring: 'ring-yellow-500',  manaRequired: 100 },
 
   // Pro level (500+ mana)
   { id: 'skull',      label: 'Schedelridder', icon: Skull,  bg: 'from-gray-400 to-gray-600',     ring: 'ring-gray-300',    manaRequired: 500 },
-  { id: 'robot',      label: 'Mech',        icon: Bot,      bg: 'from-cyan-500 to-blue-600',     ring: 'ring-cyan-400',    manaRequired: 500 },
+  { id: 'robot',      label: 'Mech',        icon: Bot,      bg: 'from-emerald-500 to-green-600',     ring: 'ring-emerald-400',    manaRequired: 500 },
 
   // Elite level (1000+ mana)
   { id: 'crown',      label: 'Koning',      icon: Crown,    bg: 'from-amber-400 to-yellow-600',  ring: 'ring-amber-400',   manaRequired: 1000 },

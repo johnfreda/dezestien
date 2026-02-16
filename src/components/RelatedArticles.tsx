@@ -13,13 +13,13 @@ const getCategoryColor = (category: string) => {
     case 'special': case 'feature': return 'bg-amber-600';
     case 'opinie': return 'bg-orange-600';
     case 'podcast': return 'bg-violet-600';
-    case 'hardware': return 'bg-cyan-600';
+    case 'hardware': return 'bg-emerald-600';
     case 'tech': return 'bg-emerald-600';
     case 'video': return 'bg-red-600';
     case 'gerucht': return 'bg-pink-600';
     case 'indie': return 'bg-lime-600';
     case 'mods': return 'bg-fuchsia-600';
-    default: return 'bg-blue-600';
+    default: return 'bg-green-600';
   }
 };
 
@@ -48,7 +48,7 @@ export default async function RelatedArticles({ currentSlug, category, additiona
   return (
     <section className="mt-16 border-t border-gray-800 pt-10">
       <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-        <span className="w-1 h-6 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full" />
+        <span className="w-1 h-6 bg-gradient-to-b from-green-500 to-emerald-500 rounded-full" />
         Meer over dit onderwerp
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -56,7 +56,7 @@ export default async function RelatedArticles({ currentSlug, category, additiona
           <Link
             key={article.slug}
             href={`/artikel/${article.slug}`}
-            className="group flex gap-4 bg-[#111827] rounded-xl border border-gray-800 hover:border-blue-500/50 p-4 transition-all hover:shadow-lg hover:shadow-blue-900/10"
+            className="group flex gap-4 bg-[#111827] rounded-xl border border-gray-800 hover:border-green-500/50 p-4 transition-all hover:shadow-lg hover:shadow-green-900/10"
           >
             {article.mainImage?.asset && (
               <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 relative">
@@ -76,10 +76,10 @@ export default async function RelatedArticles({ currentSlug, category, additiona
                     {article.category}
                   </span>
                   {article.score && (
-                    <span className="text-xs font-bold text-blue-400">{article.score}/100</span>
+                    <span className="text-xs font-bold text-green-400">{article.score}/100</span>
                   )}
                 </div>
-                <h3 className="text-sm font-bold text-gray-200 group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
+                <h3 className="text-sm font-bold text-gray-200 group-hover:text-green-400 transition-colors leading-snug line-clamp-2">
                   {article.title}
                 </h3>
               </div>

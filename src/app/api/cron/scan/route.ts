@@ -19,16 +19,16 @@ const parser = new Parser({
   },
 });
 
-// Gaming RSS feeds
+// Voetbal RSS feeds
 const RSS_FEEDS = [
   { url: 'https://www.ign.com/rss/articles/feed', source: 'IGN', lang: 'en' },
   { url: 'https://www.gamespot.com/feeds/mashup/', source: 'GameSpot', lang: 'en' },
   { url: 'https://kotaku.com/rss', source: 'Kotaku', lang: 'en' },
-  { url: 'https://www.eurogamer.net/feed', source: 'Eurogamer', lang: 'en' },
-  { url: 'https://www.pcgamer.com/rss/', source: 'PC Gamer', lang: 'en' },
+  { url: 'https://www.eurovoetbalfan.net/feed', source: 'Eurovoetbalfan', lang: 'en' },
+  { url: 'https://www.pcvoetbalfan.com/rss/', source: 'PC Voetbalfan', lang: 'en' },
   { url: 'https://www.theverge.com/games/rss/index.xml', source: 'The Verge', lang: 'en' },
   { url: 'https://tweakers.net/feeds/mixed.xml', source: 'Tweakers', lang: 'nl' },
-  { url: 'https://www.gamer.nl/feed/', source: 'Gamer.nl', lang: 'nl' },
+  { url: 'https://www.voetbalfan.nl/feed/', source: 'Voetbalfan.nl', lang: 'nl' },
 ];
 
 // Stopwords to ignore when comparing titles (EN + NL)
@@ -105,7 +105,7 @@ function detectCategory(title: string, content: string): string {
   const text = `${title} ${content}`.toLowerCase();
 
   if (/\breview\b|\bscore\b|\brating\b|\b\/10\b|\bverdic/i.test(text)) return 'Review';
-  if (/\bhardware\b|\bgpu\b|\bcpu\b|\bcontroller\b|\bheadset\b|\bmonitor\b|\bconsole\b/i.test(text)) return 'Hardware';
+    if (/\btransfer\b|\btransfers\b|\bcontract\b|\bhuurdeal\b/i.test(text)) return 'Transfers';
   if (/\btech\b|\bai\b|\bsoftware\b|\bupdate\b|\bpatch\b|\bdriver\b/i.test(text)) return 'Tech';
   if (/\bindie\b|\bindiega/i.test(text)) return 'Indie';
   if (/\bmod\b|\bmods\b|\bmodding\b/i.test(text)) return 'Mods';

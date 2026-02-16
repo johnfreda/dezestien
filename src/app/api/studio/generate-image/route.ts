@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     }
 
     // Generate image met Pollinations.ai (gratis, geen API key nodig)
-    const imagePrompt = `Gaming news article hero image: ${prompt}. Style: vibrant, cinematic, modern digital art, no text or watermarks`;
+    const imagePrompt = `Voetbal news article hero image: ${prompt}. Style: vibrant, cinematic, modern digital art, no text or watermarks`;
     const pollinationsUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(imagePrompt)}?width=1792&height=1024&nologo=true&seed=${Date.now()}`;
 
     // Download de afbeelding van Pollinations

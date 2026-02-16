@@ -10,13 +10,13 @@ function getManaLevel(mana: number) {
   if (mana >= 2500) return { name: 'Legende', color: 'emerald', min: 2500, max: 5000, icon: Star }
   if (mana >= 1000) return { name: 'Elite', color: 'amber', min: 1000, max: 2500, icon: Crown }
   if (mana >= 500) return { name: 'Pro', color: 'purple', min: 500, max: 1000, icon: Zap }
-  if (mana >= 100) return { name: 'Gamer', color: 'blue', min: 100, max: 500, icon: Gamepad2 }
+  if (mana >= 100) return { name: 'Voetbalfan', color: 'blue', min: 100, max: 500, icon: Gamepad2 }
   return { name: 'Rookie', color: 'gray', min: 0, max: 100, icon: Shield }
 }
 
 const colorMap: Record<string, { ring: string; badge: string; text: string; bar: string; glow: string }> = {
   gray:    { ring: '#6b7280', badge: 'bg-gray-600',    text: 'text-gray-400',    bar: 'from-gray-500 to-gray-400',       glow: '0 0 20px rgba(107,114,128,0.4)' },
-  blue:    { ring: '#3b82f6', badge: 'bg-blue-600',    text: 'text-blue-400',    bar: 'from-blue-600 to-cyan-400',       glow: '0 0 20px rgba(59,130,246,0.5)' },
+  blue:    { ring: '#3b82f6', badge: 'bg-green-600',    text: 'text-green-400',    bar: 'from-green-600 to-emerald-400',       glow: '0 0 20px rgba(59,130,246,0.5)' },
   purple:  { ring: '#a855f7', badge: 'bg-purple-600',  text: 'text-purple-400',  bar: 'from-purple-600 to-fuchsia-400',  glow: '0 0 20px rgba(168,85,247,0.5)' },
   amber:   { ring: '#f59e0b', badge: 'bg-amber-500',   text: 'text-amber-400',   bar: 'from-amber-500 to-yellow-400',   glow: '0 0 20px rgba(245,158,11,0.5)' },
   emerald: { ring: '#10b981', badge: 'bg-emerald-500', text: 'text-emerald-400', bar: 'from-emerald-500 to-teal-400',   glow: '0 0 20px rgba(16,185,129,0.5)' },
