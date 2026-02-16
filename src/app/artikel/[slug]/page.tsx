@@ -8,9 +8,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { TwitterEmbed, YouTubeEmbed, ApplePodcastEmbed, SpotifyEmbed } from '@/components/Embeds';
 import Comments from '@/components/Comments';
-import ManaReader from '@/components/ManaReader';
-import ViewTracker from '@/components/ViewTracker';
-import UserRating from '@/components/UserRating';
+// Auth/DB features disabled — pure news site for now
 import ReadingProgress from '@/components/ReadingProgress';
 import ShareButtons from '@/components/ShareButtons';
 import RelatedArticles from '@/components/RelatedArticles';
@@ -18,7 +16,7 @@ import TableOfContents from '@/components/TableOfContents';
 import AnimatedScore from '@/components/AnimatedScore';
 import AdminEditBar from '@/components/AdminEditBar';
 import { Metadata } from 'next';
-import { prisma } from '@/lib/prisma';
+// prisma disabled — no database yet
 import { getHighScoreLabel } from '@/lib/score-labels';
 import { getYouTubeThumbnailUrl } from '@/lib/youtube-utils';
 
@@ -257,19 +255,8 @@ export default async function ArticlePage({ params }: Props) {
   const wordCount = plainText.split(/\s+/).filter(Boolean).length;
   const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
-  // Haal community ratings op voor reviews (voor aggregateRating)
-  let communityRatingData = null;
-  if (post.category === 'Review') {
-    const ratings = await prisma.userRating.findMany({
-      where: { articleSlug: slug },
-      select: { rating: true },
-    });
-    const count = ratings.length;
-    if (count >= 10) {
-      const average = Math.round(ratings.reduce((acc, curr) => acc + curr.rating, 0) / count);
-      communityRatingData = { average, count };
-    }
-  }
+  // Community ratings disabled — no database yet
+  const communityRatingData = null;
 
   // JSON-LD voor Google (NewsArticle/Review + Breadcrumb)
   const baseSchema: any = {
@@ -347,16 +334,7 @@ export default async function ArticlePage({ params }: Props) {
       name: post.matchResult || post.title
     };
 
-    // Voeg aggregateRating toe als er 10+ community stemmen zijn
-    if (communityRatingData && communityRatingData.count >= 10) {
-      baseSchema.aggregateRating = {
-        '@type': 'AggregateRating',
-        ratingValue: communityRatingData.average,
-        bestRating: 100,
-        worstRating: 0,
-        ratingCount: communityRatingData.count
-      };
-    }
+    // aggregateRating disabled — no database yet
   }
 
   // VideoObject schema voor YouTube embeds
@@ -668,17 +646,7 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         )}
 
-        {/* COMBINED VERDICT & RATING SECTION */}
-        {post.category === 'Review' && (
-            <UserRating
-                slug={slug}
-                editorScore={post.score}
-                pros={post.pros}
-                cons={post.cons}
-                gameTitle={post.matchResult || post.title}
-                boxImageUrl={post.boxImage?.asset ? urlFor(post.boxImage).width(160).height(224).url() : null}
-            />
-        )}
+        {/* Review verdict (community ratings coming later) */}
 
         {/* COMMENTS SECTIE */}
         <Comments slug={slug} />
@@ -701,9 +669,7 @@ export default async function ArticlePage({ params }: Props) {
             </Link>
         </div>
 
-        {/* MANA TRACKER */}
-        <ManaReader slug={slug} />
-        <ViewTracker slug={slug} />
+        {/* Mana/View tracking disabled — no database yet */}
 
       </main>
 
