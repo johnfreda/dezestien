@@ -203,12 +203,12 @@ export default function AdminNewArticle() {
 
       {/* Drawer panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-full max-w-xl bg-[#0d1220] border-l border-gray-800 z-50 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-full max-w-xl bg-[#0d1220] border-l border-[var(--border-primary)] z-50 transform transition-transform duration-300 ${
           open ? 'translate-x-0' : 'translate-x-full'
         } overflow-y-auto`}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-[#0d1220] border-b border-gray-800 px-6 py-4 flex items-center justify-between z-10">
+        <div className="sticky top-0 bg-[#0d1220] border-b border-[var(--border-primary)] px-6 py-4 flex items-center justify-between z-10">
           <h2 className="text-xl font-bold text-white">Nieuw Artikel</h2>
           <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-white">
             <X size={24} />
@@ -229,36 +229,36 @@ export default function AdminNewArticle() {
 
           {/* Title */}
           <div>
-            <label className="block text-sm font-semibold text-gray-300 mb-1">Titel</label>
+            <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1">Titel</label>
             <input
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="Artikel titel..."
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+              className="w-full bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
             />
           </div>
 
           {/* Excerpt */}
           <div>
-            <label className="block text-sm font-semibold text-gray-300 mb-1">Excerpt</label>
+            <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1">Excerpt</label>
             <textarea
               value={excerpt}
               onChange={e => setExcerpt(e.target.value)}
               rows={3}
               placeholder="Korte samenvatting..."
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none"
+              className="w-full bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none"
             />
           </div>
 
           {/* Category + isHot row */}
           <div className="flex gap-4 items-end">
             <div className="flex-1">
-              <label className="block text-sm font-semibold text-gray-300 mb-1">Categorie</label>
+              <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1">Categorie</label>
               <select
                 value={category}
                 onChange={e => setCategory(e.target.value)}
-                className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                className="w-full bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -270,7 +270,7 @@ export default function AdminNewArticle() {
               className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border font-semibold text-sm transition-colors ${
                 isHot
                   ? 'bg-orange-600/20 border-orange-500 text-orange-400'
-                  : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
+                  : 'bg-[var(--bg-card)] border-[var(--border-primary)] text-gray-400 hover:border-gray-500'
               }`}
             >
               <Flame size={16} />
@@ -281,14 +281,14 @@ export default function AdminNewArticle() {
           {/* Review Type (only for Review) */}
           {category === 'Review' && (
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">Type Review</label>
+              <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">Type Review</label>
               <div className="flex gap-2">
                 <button
                   onClick={() => setReviewType('game')}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                     reviewType === 'game'
                       ? 'bg-purple-600/20 border-purple-500 text-purple-400'
-                      : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
+                      : 'bg-[var(--bg-card)] border-[var(--border-primary)] text-gray-400 hover:border-gray-500'
                   }`}
                 >
                   Game
@@ -298,7 +298,7 @@ export default function AdminNewArticle() {
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                     reviewType === 'hardware'
                       ? 'bg-emerald-600/20 border-emerald-500 text-emerald-400'
-                      : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
+                      : 'bg-[var(--bg-card)] border-[var(--border-primary)] text-gray-400 hover:border-gray-500'
                   }`}
                 >
                   Hardware
@@ -308,7 +308,7 @@ export default function AdminNewArticle() {
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${
                     reviewType === 'film_serie'
                       ? 'bg-rose-600/20 border-rose-500 text-rose-400'
-                      : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
+                      : 'bg-[var(--bg-card)] border-[var(--border-primary)] text-gray-400 hover:border-gray-500'
                   }`}
                 >
                   Film / Serie
@@ -320,23 +320,23 @@ export default function AdminNewArticle() {
           {/* Score (only for Review) */}
           {category === 'Review' && (
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-1">Score (1-100)</label>
+              <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1">Score (1-100)</label>
               <input
                 type="number"
                 min={1}
                 max={100}
                 value={score}
                 onChange={e => setScore(Number(e.target.value))}
-                className="w-32 bg-[#111827] border border-gray-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
+                className="w-32 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
               />
             </div>
           )}
 
           {/* Hero Image */}
           <div>
-            <label className="block text-sm font-semibold text-gray-300 mb-1">Hero Afbeelding</label>
+            <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1">Hero Afbeelding</label>
             {imagePreview && (
-              <div className="mb-2 rounded-lg overflow-hidden border border-gray-700">
+              <div className="mb-2 rounded-lg overflow-hidden border border-[var(--border-primary)]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={imagePreview}
@@ -355,7 +355,7 @@ export default function AdminNewArticle() {
             <button
               onClick={() => fileInputRef.current?.click()}
               disabled={uploading}
-              className="flex items-center gap-2 px-4 py-2 bg-[#111827] border border-gray-700 rounded-lg text-gray-300 hover:border-green-500 transition-colors text-sm"
+              className="flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] hover:border-green-500 transition-colors text-sm"
             >
               {uploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
               {uploading ? 'Uploaden...' : 'Afbeelding uploaden'}
@@ -365,9 +365,9 @@ export default function AdminNewArticle() {
           {/* Box Art (only for Review) */}
           {category === 'Review' && (
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-1">Box Art / Cover</label>
+              <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1">Box Art / Cover</label>
               {boxImagePreview && (
-                <div className="mb-2 rounded-lg overflow-hidden border border-gray-700 w-32">
+                <div className="mb-2 rounded-lg overflow-hidden border border-[var(--border-primary)] w-32">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={boxImagePreview}
@@ -386,7 +386,7 @@ export default function AdminNewArticle() {
               <button
                 onClick={() => boxFileInputRef.current?.click()}
                 disabled={uploadingBox}
-                className="flex items-center gap-2 px-4 py-2 bg-[#111827] border border-gray-700 rounded-lg text-gray-300 hover:border-green-500 transition-colors text-sm"
+                className="flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] hover:border-green-500 transition-colors text-sm"
               >
                 {uploadingBox ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
                 {uploadingBox ? 'Uploaden...' : 'Box art uploaden'}
@@ -397,7 +397,7 @@ export default function AdminNewArticle() {
           {/* Platforms (only for Review) */}
           {category === 'Review' && (
             <div>
-              <label className="block text-sm font-semibold text-gray-300 mb-2">Getest op platforms</label>
+              <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">Getest op platforms</label>
               <div className="flex flex-wrap gap-2">
                 {PLATFORM_OPTIONS.map(p => (
                   <button
@@ -406,7 +406,7 @@ export default function AdminNewArticle() {
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                       selectedPlatforms.includes(p)
                         ? 'bg-green-600/20 border-green-500 text-green-400'
-                        : 'bg-[#111827] border-gray-700 text-gray-400 hover:border-gray-500'
+                        : 'bg-[var(--bg-card)] border-[var(--border-primary)] text-gray-400 hover:border-gray-500'
                     }`}
                   >
                     {p}
@@ -420,7 +420,7 @@ export default function AdminNewArticle() {
           {category === 'Review' && (
             <>
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-2">Pluspunten</label>
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">Pluspunten</label>
                 <div className="space-y-2">
                   {pros.map((pro, i) => (
                     <div key={i} className="flex gap-2">
@@ -429,7 +429,7 @@ export default function AdminNewArticle() {
                         value={pro}
                         onChange={e => updatePro(i, e.target.value)}
                         placeholder="Pluspunt..."
-                        className="flex-1 bg-[#111827] border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-green-500"
+                        className="flex-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-green-500"
                       />
                       <button onClick={() => removePro(i)} className="text-red-400 hover:text-red-300 px-1">
                         <Trash2 size={16} />
@@ -443,7 +443,7 @@ export default function AdminNewArticle() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-300 mb-2">Minpunten</label>
+                <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">Minpunten</label>
                 <div className="space-y-2">
                   {cons.map((con, i) => (
                     <div key={i} className="flex gap-2">
@@ -452,7 +452,7 @@ export default function AdminNewArticle() {
                         value={con}
                         onChange={e => updateCon(i, e.target.value)}
                         placeholder="Minpunt..."
-                        className="flex-1 bg-[#111827] border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-red-500"
+                        className="flex-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-red-500"
                       />
                       <button onClick={() => removeCon(i)} className="text-red-400 hover:text-red-300 px-1">
                         <Trash2 size={16} />
@@ -469,23 +469,23 @@ export default function AdminNewArticle() {
 
           {/* Body (markdown) */}
           <div>
-            <label className="block text-sm font-semibold text-gray-300 mb-1">
-              Artikel tekst <span className="font-normal text-gray-500">(markdown)</span>
+            <label className="block text-sm font-semibold text-[var(--text-primary)] mb-1">
+              Artikel tekst <span className="font-normal text-[var(--text-muted)]">(markdown)</span>
             </label>
             <textarea
               value={bodyMarkdown}
               onChange={e => setBodyMarkdown(e.target.value)}
               rows={20}
               placeholder="Schrijf je artikel in markdown..."
-              className="w-full bg-[#111827] border border-gray-700 rounded-lg px-4 py-3 text-white font-mono text-sm leading-relaxed focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-y"
+              className="w-full bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg px-4 py-3 text-white font-mono text-sm leading-relaxed focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-y"
             />
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-[var(--text-muted)] mt-1">
               Gebruik ## voor koppen, **vet**, *cursief*, [link](url), - voor lijsten
             </p>
           </div>
 
           {/* Save button */}
-          <div className="sticky bottom-0 bg-[#0d1220] border-t border-gray-800 -mx-6 px-6 py-4 mt-8">
+          <div className="sticky bottom-0 bg-[#0d1220] border-t border-[var(--border-primary)] -mx-6 px-6 py-4 mt-8">
             <button
               onClick={handleSave}
               disabled={saving}

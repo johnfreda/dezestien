@@ -53,7 +53,7 @@ export default function ProfilePage() {
 
   if (status === 'loading' || !profile) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0b0f19]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
         <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
       </div>
     )
@@ -102,7 +102,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] px-4 py-8 md:py-12">
+    <div className="min-h-screen bg-[var(--bg-primary)] px-4 py-8 md:py-12">
       <div className="max-w-2xl mx-auto space-y-6">
 
         {/* Hero Card: Avatar + Info */}
@@ -131,7 +131,7 @@ export default function ProfilePage() {
                     value={nameInput}
                     onChange={(e) => setNameInput(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') handleSaveName(); if (e.key === 'Escape') setEditingName(false) }}
-                    className="bg-gray-800 border border-gray-700 rounded-lg px-3 py-1.5 text-white font-bold text-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 max-w-[200px]"
+                    className="bg-gray-800 border border-[var(--border-primary)] rounded-lg px-3 py-1.5 text-white font-bold text-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 max-w-[200px]"
                     autoFocus
                     maxLength={30}
                   />
@@ -148,7 +148,7 @@ export default function ProfilePage() {
                   <h1 className="text-2xl font-bold text-white truncate">{profile.name}</h1>
                   <button
                     onClick={() => setEditingName(true)}
-                    className="p-1 text-gray-500 hover:text-green-400 transition-colors rounded-md hover:bg-green-500/10 shrink-0"
+                    className="p-1 text-[var(--text-muted)] hover:text-green-400 transition-colors rounded-md hover:bg-green-500/10 shrink-0"
                     title="Naam aanpassen"
                   >
                     <Pencil size={14} />
@@ -156,11 +156,11 @@ export default function ProfilePage() {
                 </div>
               )}
               <p className="text-gray-400 text-sm mt-1">{profile.email}</p>
-              <p className="text-gray-500 text-xs mt-1">Lid sinds {memberSince}</p>
+              <p className="text-[var(--text-muted)] text-xs mt-1">Lid sinds {memberSince}</p>
             </div>
 
             {/* Level Badge */}
-            <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${colors.bg} border border-gray-700/50`}>
+            <div className={`flex items-center gap-2 px-4 py-2 rounded-full ${colors.bg} border border-[var(--border-primary)]/50`}>
               <LevelIcon size={16} className={colors.text} />
               <span className={`text-sm font-bold ${colors.text}`}>{level.name}</span>
             </div>
@@ -168,7 +168,7 @@ export default function ProfilePage() {
 
           {/* Avatar Picker */}
           {showAvatarPicker && (
-            <div className="mt-6 pt-6 border-t border-gray-700/50">
+            <div className="mt-6 pt-6 border-t border-[var(--border-primary)]/50">
               <h3 className="text-white font-bold text-sm mb-4">Kies je avatar</h3>
               <div className="grid grid-cols-4 sm:grid-cols-7 gap-3">
                 {avatars.map((av) => {
@@ -193,7 +193,7 @@ export default function ProfilePage() {
                         <AvatarIcon size={22} className="text-white" />
                         {isLocked && (
                           <div className="absolute inset-0 rounded-full bg-black/60 flex items-center justify-center">
-                            <Lock size={14} className="text-gray-300" />
+                            <Lock size={14} className="text-[var(--text-primary)]" />
                           </div>
                         )}
                         {isSelected && (
@@ -204,7 +204,7 @@ export default function ProfilePage() {
                       </div>
                       <span className="text-[10px] text-gray-400 leading-tight text-center">{av.label}</span>
                       {isLocked && (
-                        <span className="text-[9px] text-gray-600">{av.manaRequired}+</span>
+                        <span className="text-[9px] text-[var(--text-muted)]">{av.manaRequired}+</span>
                       )}
                     </button>
                   )
@@ -221,7 +221,7 @@ export default function ProfilePage() {
                 <span className="text-white font-bold text-lg">{mana}</span>
                 <span className="text-gray-400 text-sm">Mana</span>
               </div>
-              <span className="text-gray-500 text-xs">
+              <span className="text-[var(--text-muted)] text-xs">
                 {level.max > mana ? `${level.max - mana} tot ${level.name === 'Legende' ? 'max' : 'volgend level'}` : 'Max level!'}
               </span>
             </div>
@@ -232,8 +232,8 @@ export default function ProfilePage() {
               />
             </div>
             <div className="flex justify-between mt-1.5">
-              <span className="text-gray-600 text-xs">{level.min}</span>
-              <span className="text-gray-600 text-xs">{level.max}</span>
+              <span className="text-[var(--text-muted)] text-xs">{level.min}</span>
+              <span className="text-[var(--text-muted)] text-xs">{level.max}</span>
             </div>
           </div>
         </div>
@@ -269,10 +269,10 @@ export default function ProfilePage() {
               </div>
               <div>
                 <p className="text-white font-medium text-sm">Mana Overzicht</p>
-                <p className="text-gray-500 text-xs">Bekijk je geschiedenis en hoe je mana verdient</p>
+                <p className="text-[var(--text-muted)] text-xs">Bekijk je geschiedenis en hoe je mana verdient</p>
               </div>
             </div>
-            <ChevronRight size={18} className="text-gray-600 group-hover:text-green-400 transition" />
+            <ChevronRight size={18} className="text-[var(--text-muted)] group-hover:text-green-400 transition" />
           </Link>
 
           <button
@@ -284,7 +284,7 @@ export default function ProfilePage() {
             </div>
             <div>
               <p className="text-white font-medium text-sm">Uitloggen</p>
-              <p className="text-gray-500 text-xs">Log uit bij DeZestien</p>
+              <p className="text-[var(--text-muted)] text-xs">Log uit bij DeZestien</p>
             </div>
           </button>
         </div>

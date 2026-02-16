@@ -88,13 +88,14 @@ export default async function RootLayout({
   const navItems = await client.fetch(query).catch(() => null);
 
   return (
-    <html lang="nl">
+    <html lang="nl" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
       <body
-        className={`${inter.variable} ${oswald.variable} antialiased font-sans bg-[#0a1628] text-gray-200`}
+        className={`${inter.variable} ${oswald.variable} antialiased font-sans`}
+        style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
       >
         <Providers>
           <Navbar items={navItems} />

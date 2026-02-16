@@ -106,7 +106,7 @@ export default function MarkdownEditor({ value, onChange, placeholder, rows = 6,
   return (
     <div className="space-y-2">
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-2 p-2 bg-gray-900/50 border border-gray-700 rounded-lg">
+      <div className="flex flex-wrap items-center gap-2 p-2 bg-gray-900/50 border border-[var(--border-primary)] rounded-lg">
         {toolbarButtons.map((button, idx) => {
           const Icon = button.icon;
           return (
@@ -121,7 +121,7 @@ export default function MarkdownEditor({ value, onChange, placeholder, rows = 6,
             </button>
           );
         })}
-        <div className="ml-auto text-xs text-gray-500">
+        <div className="ml-auto text-xs text-[var(--text-muted)]">
           Markdown ondersteund
         </div>
       </div>
@@ -133,7 +133,7 @@ export default function MarkdownEditor({ value, onChange, placeholder, rows = 6,
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         rows={rows}
-        className={`w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none font-mono ${className}`}
+        className={`w-full bg-gray-900 border border-[var(--border-primary)] rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none font-mono ${className}`}
       />
     </div>
   );

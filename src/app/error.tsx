@@ -10,7 +10,7 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div className="min-h-screen bg-[#0b0f19] flex flex-col items-center justify-center text-center px-4">
+    <div className="min-h-screen bg-[var(--bg-primary)] flex flex-col items-center justify-center text-center px-4">
       <div className="bg-red-500/10 border border-red-500/20 rounded-full p-6 mb-8">
         <AlertTriangle size={48} className="text-red-400" />
       </div>
@@ -31,7 +31,7 @@ export default function Error({
 
         <Link
           href="/"
-          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 text-gray-200 font-bold rounded-xl hover:bg-gray-700 transition-all border border-gray-700"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 text-[var(--text-primary)] font-bold rounded-xl hover:bg-gray-700 transition-all border border-[var(--border-primary)]"
         >
           <Home size={18} />
           Naar homepage

@@ -102,7 +102,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
   const offset = circumference - (animated ? progress : 0) * circumference
 
   return (
-    <div ref={gaugeRef} className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-700/50 mt-10 overflow-hidden">
+    <div ref={gaugeRef} className="bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-[var(--border-primary)]/50 mt-10 overflow-hidden">
       {/* Top section: Score gauge + box art */}
       <div className="p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
@@ -137,7 +137,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                 {/* Score number in center */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <span className={`font-black text-3xl ${scoreColors.text}`}>{editorScore}</span>
-                  <span className="text-gray-500 text-[10px] font-medium -mt-1">/100</span>
+                  <span className="text-[var(--text-muted)] text-[10px] font-medium -mt-1">/100</span>
                 </div>
               </div>
               <span className="text-gray-400 text-xs font-semibold mt-2 uppercase tracking-wider">Redactie</span>
@@ -149,7 +149,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
             {/* Box art — shown on desktop next to info */}
             <div className="flex items-start gap-4">
               {boxImageUrl && (
-                <div className="w-16 h-22 rounded-lg overflow-hidden shadow-lg border border-gray-700/50 shrink-0 hidden sm:block">
+                <div className="w-16 h-22 rounded-lg overflow-hidden shadow-lg border border-[var(--border-primary)]/50 shrink-0 hidden sm:block">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={boxImageUrl} alt="Box art" className="w-full h-full object-cover" />
                 </div>
@@ -165,22 +165,22 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                     <div className="flex items-center gap-3 justify-center sm:justify-start">
                       <div className="bg-green-500/10 border border-green-500/20 rounded-xl px-4 py-2">
                         <span className="text-green-400 font-bold text-2xl">{average > 0 ? average : '–'}</span>
-                        <span className="text-gray-500 text-xs ml-1">/100</span>
+                        <span className="text-[var(--text-muted)] text-xs ml-1">/100</span>
                       </div>
                       <div className="text-left">
-                        <p className="text-sm text-gray-300 font-medium">Community</p>
-                        <p className="text-xs text-gray-500">{count} {count === 1 ? 'stem' : 'stemmen'}</p>
+                        <p className="text-sm text-[var(--text-primary)] font-medium">Community</p>
+                        <p className="text-xs text-[var(--text-muted)]">{count} {count === 1 ? 'stem' : 'stemmen'}</p>
                       </div>
                     </div>
 
                     {/* Jouw score: compact display als al beoordeeld, invoerveld als nieuw/editing */}
                     {userRating && !editing ? (
                       <div className="flex items-center gap-2 justify-center sm:justify-start">
-                        <span className="text-xs text-gray-500 font-medium shrink-0">Jouw score:</span>
+                        <span className="text-xs text-[var(--text-muted)] font-medium shrink-0">Jouw score:</span>
                         <span className="text-white font-bold text-sm">{userRating}</span>
                         <button
                           onClick={() => setEditing(true)}
-                          className="p-1 text-gray-500 hover:text-green-400 transition-colors rounded-md hover:bg-green-500/10"
+                          className="p-1 text-[var(--text-muted)] hover:text-green-400 transition-colors rounded-md hover:bg-green-500/10"
                           title="Score aanpassen"
                         >
                           <Pencil size={12} />
@@ -189,7 +189,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                     ) : (
                       <>
                         <div className="flex items-center gap-2 justify-center sm:justify-start">
-                          <span className="text-xs text-gray-500 font-medium shrink-0">Jouw score:</span>
+                          <span className="text-xs text-[var(--text-muted)] font-medium shrink-0">Jouw score:</span>
                           <input
                             type="number"
                             min={10}
@@ -198,7 +198,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                             onChange={(e) => setInputValue(e.target.value)}
                             onKeyDown={(e) => { if (e.key === 'Enter' && validInput) handleSubmit() }}
                             placeholder="10-100"
-                            className="w-20 bg-gray-800/80 border border-gray-700 rounded-lg px-2.5 py-1.5 text-white text-center font-bold text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            className="w-20 bg-gray-800/80 border border-[var(--border-primary)] rounded-lg px-2.5 py-1.5 text-white text-center font-bold text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                           />
                           <button
                             onClick={handleSubmit}
@@ -208,7 +208,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                                 ? 'bg-green-600 text-white'
                                 : validInput
                                   ? 'bg-green-600 hover:bg-green-500 text-white'
-                                  : 'bg-gray-800 text-gray-500 cursor-not-allowed'
+                                  : 'bg-gray-800 text-[var(--text-muted)] cursor-not-allowed'
                             }`}
                           >
                             {submitting ? '...' : submitted ? 'Opgeslagen!' : 'Beoordeel'}
@@ -216,7 +216,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                           {userRating && editing && (
                             <button
                               onClick={() => { setEditing(false); setInputValue(String(userRating)) }}
-                              className="p-1 text-gray-500 hover:text-red-400 transition-colors rounded-md hover:bg-red-500/10"
+                              className="p-1 text-[var(--text-muted)] hover:text-red-400 transition-colors rounded-md hover:bg-red-500/10"
                               title="Annuleren"
                             >
                               <XIcon size={14} />
@@ -230,7 +230,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                     )}
                   </div>
                 ) : (
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-[var(--text-muted)] text-sm">
                     <button
                       onClick={() => signIn(undefined, { callbackUrl: window.location.href })}
                       className="text-green-400 hover:text-green-300 font-semibold underline underline-offset-2 transition-colors"
@@ -248,7 +248,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
 
       {/* Pros/Cons — bottom section */}
       {(pros?.length || cons?.length) ? (
-        <div className="border-t border-gray-700/50 bg-gray-900/40 px-6 sm:px-8 py-5">
+        <div className="border-t border-[var(--border-primary)]/50 bg-gray-900/40 px-6 sm:px-8 py-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {pros && pros.length > 0 && (
               <div>
@@ -257,7 +257,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                   {pros.map((p, i) => (
                     <div key={i} className="flex items-start gap-2 bg-emerald-500/5 border border-emerald-500/10 rounded-lg px-3 py-2">
                       <Check size={14} className="text-emerald-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-300 text-sm leading-snug">{p}</span>
+                      <span className="text-[var(--text-primary)] text-sm leading-snug">{p}</span>
                     </div>
                   ))}
                 </div>
@@ -270,7 +270,7 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
                   {cons.map((c, i) => (
                     <div key={i} className="flex items-start gap-2 bg-red-500/5 border border-red-500/10 rounded-lg px-3 py-2">
                       <XIcon size={14} className="text-red-400 mt-0.5 shrink-0" />
-                      <span className="text-gray-300 text-sm leading-snug">{c}</span>
+                      <span className="text-[var(--text-primary)] text-sm leading-snug">{c}</span>
                     </div>
                   ))}
                 </div>
@@ -281,8 +281,8 @@ export default function UserRating({ slug, editorScore, pros, cons, gameTitle, b
       ) : null}
 
       {/* Share buttons */}
-      <div className="border-t border-gray-700/50 px-6 sm:px-8 py-4 flex items-center gap-3">
-        <span className="text-gray-500 text-xs font-bold uppercase tracking-wider">Deel</span>
+      <div className="border-t border-[var(--border-primary)]/50 px-6 sm:px-8 py-4 flex items-center gap-3">
+        <span className="text-[var(--text-muted)] text-xs font-bold uppercase tracking-wider">Deel</span>
         <div className="flex items-center gap-2">
           {/* X (Twitter) */}
           <button

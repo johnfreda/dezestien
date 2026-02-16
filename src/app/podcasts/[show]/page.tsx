@@ -87,7 +87,7 @@ export default async function ShowPage({ params }: ShowPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 pb-20">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -112,8 +112,8 @@ export default async function ShowPage({ params }: ShowPageProps) {
               className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl object-cover shadow-xl flex-shrink-0"
             />
           ) : (
-            <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl bg-[#111827] border border-gray-800 flex items-center justify-center flex-shrink-0">
-              <Headphones size={48} className="text-gray-600" />
+            <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-primary)] flex items-center justify-center flex-shrink-0">
+              <Headphones size={48} className="text-[var(--text-muted)]" />
             </div>
           )}
           <div className="flex-1">
@@ -121,7 +121,7 @@ export default async function ShowPage({ params }: ShowPageProps) {
             {show.description && (
               <p className="text-gray-400 text-lg leading-relaxed mb-4">{show.description}</p>
             )}
-            <p className="text-gray-500 text-sm">
+            <p className="text-[var(--text-muted)] text-sm">
               {totalEpisodes} aflevering{totalEpisodes !== 1 ? 'en' : ''}
             </p>
           </div>
@@ -131,8 +131,8 @@ export default async function ShowPage({ params }: ShowPageProps) {
         <h2 className="text-xl font-bold text-white mb-4">Laatste afleveringen</h2>
 
         {episodes.length === 0 ? (
-          <div className="text-center py-12 bg-[#111827] rounded-xl border border-gray-800">
-            <Headphones size={40} className="mx-auto text-gray-600 mb-3" />
+          <div className="text-center py-12 bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)]">
+            <Headphones size={40} className="mx-auto text-[var(--text-muted)] mb-3" />
             <p className="text-gray-400">Nog geen afleveringen gevonden.</p>
           </div>
         ) : (
@@ -143,11 +143,11 @@ export default async function ShowPage({ params }: ShowPageProps) {
               return (
                 <article
                   key={ep._id}
-                  className="bg-[#111827] border border-gray-800 rounded-xl overflow-hidden hover:border-purple-500/30 transition-all"
+                  className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden hover:border-purple-500/30 transition-all"
                 >
                   <div className="p-4 md:p-5">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-gray-500 text-xs flex items-center gap-1">
+                      <span className="text-[var(--text-muted)] text-xs flex items-center gap-1">
                         <Clock size={12} />
                         {formatDistanceToNow(new Date(ep.publishedAt), { addSuffix: true, locale: nl })}
                       </span>

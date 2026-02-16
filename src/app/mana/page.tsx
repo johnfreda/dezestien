@@ -82,7 +82,7 @@ export default function ManaPage() {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0b0f19]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
         <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
       </div>
     )
@@ -90,7 +90,7 @@ export default function ManaPage() {
 
   if (error || !profile) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0b0f19] px-4">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)] px-4">
         <div className="glass rounded-2xl p-8 max-w-md w-full text-center space-y-4">
           <AlertTriangle size={40} className="text-amber-400 mx-auto" />
           <h2 className="text-white text-lg font-bold">Kon gegevens niet laden</h2>
@@ -119,7 +119,7 @@ export default function ManaPage() {
   const progress = Math.min(((mana - level.min) / (level.max - level.min)) * 100, 100)
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] px-4 py-8 md:py-12">
+    <div className="min-h-screen bg-[var(--bg-primary)] px-4 py-8 md:py-12">
       <div className="max-w-2xl mx-auto space-y-6">
 
         {/* Back link */}
@@ -151,7 +151,7 @@ export default function ManaPage() {
           <div className="mt-6">
             <div className="flex justify-between mb-2">
               <span className={`text-sm font-medium ${colors.text}`}>{level.name}</span>
-              <span className="text-gray-500 text-xs">
+              <span className="text-[var(--text-muted)] text-xs">
                 {level.max > mana ? `${level.max - mana} mana tot volgend level` : 'Max level bereikt!'}
               </span>
             </div>
@@ -162,8 +162,8 @@ export default function ManaPage() {
               />
             </div>
             <div className="flex justify-between mt-1.5">
-              <span className="text-[11px] text-gray-500">{level.min}</span>
-              <span className="text-[11px] text-gray-500">{level.max}</span>
+              <span className="text-[11px] text-[var(--text-muted)]">{level.min}</span>
+              <span className="text-[11px] text-[var(--text-muted)]">{level.max}</span>
             </div>
 
             {/* Level milestones */}
@@ -180,7 +180,7 @@ export default function ManaPage() {
                         ? `${lColors.bg} ${lColors.text} ${lColors.border}`
                         : isActive
                           ? `${lColors.bg} ${lColors.text} border-transparent opacity-70`
-                          : 'bg-gray-800/30 text-gray-600 border-transparent'
+                          : 'bg-gray-800/30 text-[var(--text-muted)] border-transparent'
                     }`}
                   >
                     <span>{l.name}</span>
@@ -202,7 +202,7 @@ export default function ManaPage() {
               </div>
               <p className="text-white font-medium text-sm">Artikelen lezen</p>
               <p className="text-green-400 font-bold text-lg mt-1">+5 mana</p>
-              <p className="text-gray-500 text-xs mt-1">Per gelezen artikel (na 15 sec)</p>
+              <p className="text-[var(--text-muted)] text-xs mt-1">Per gelezen artikel (na 15 sec)</p>
             </div>
             <div className="glass rounded-xl p-4 card-lift">
               <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-3">
@@ -210,7 +210,7 @@ export default function ManaPage() {
               </div>
               <p className="text-white font-medium text-sm">Reacties plaatsen</p>
               <p className="text-purple-400 font-bold text-lg mt-1">+10 mana</p>
-              <p className="text-gray-500 text-xs mt-1">Per reactie op een artikel</p>
+              <p className="text-[var(--text-muted)] text-xs mt-1">Per reactie op een artikel</p>
             </div>
             <div className="glass rounded-xl p-4 card-lift">
               <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-3">
@@ -218,7 +218,7 @@ export default function ManaPage() {
               </div>
               <p className="text-white font-medium text-sm">Forum bijdragen</p>
               <p className="text-emerald-400 font-bold text-lg mt-1">+10 mana</p>
-              <p className="text-gray-500 text-xs mt-1">Per topic of reply</p>
+              <p className="text-[var(--text-muted)] text-xs mt-1">Per topic of reply</p>
             </div>
             <div className="glass rounded-xl p-4 card-lift">
               <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center mb-3">
@@ -226,7 +226,7 @@ export default function ManaPage() {
               </div>
               <p className="text-white font-medium text-sm">Reviews beoordelen</p>
               <p className="text-amber-400 font-bold text-lg mt-1">+10 mana</p>
-              <p className="text-gray-500 text-xs mt-1">Geef je community score bij een review</p>
+              <p className="text-[var(--text-muted)] text-xs mt-1">Geef je community score bij een review</p>
             </div>
           </div>
         </div>
@@ -236,9 +236,9 @@ export default function ManaPage() {
           <h2 className="text-lg font-bold text-white mb-3">Geschiedenis</h2>
           {history.length === 0 ? (
             <div className="glass rounded-xl p-8 text-center">
-              <Sparkles size={32} className="text-gray-600 mx-auto mb-3" />
+              <Sparkles size={32} className="text-[var(--text-muted)] mx-auto mb-3" />
               <p className="text-gray-400">Nog geen mana verdiend</p>
-              <p className="text-gray-500 text-sm mt-1">Lees artikelen om je eerste mana te verdienen!</p>
+              <p className="text-[var(--text-muted)] text-sm mt-1">Lees artikelen om je eerste mana te verdienen!</p>
             </div>
           ) : (
             <div className="glass rounded-xl overflow-hidden divide-y divide-gray-800/50">
@@ -246,7 +246,7 @@ export default function ManaPage() {
                 <div key={log.id} className="flex items-center justify-between px-4 py-3 hover:bg-gray-800/30 transition">
                   <div>
                     <p className="text-white text-sm">{log.reason}</p>
-                    <p className="text-gray-500 text-xs mt-0.5">
+                    <p className="text-[var(--text-muted)] text-xs mt-0.5">
                       {new Date(log.createdAt).toLocaleDateString('nl-NL', {
                         day: 'numeric',
                         month: 'short',

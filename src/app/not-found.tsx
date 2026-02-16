@@ -30,7 +30,7 @@ export default async function NotFound() {
   ).catch(() => []);
 
   return (
-    <div className="min-h-screen bg-[#0a1628] flex flex-col items-center justify-center text-center px-4 py-16">
+    <div className="min-h-screen bg-[var(--bg-primary)] flex flex-col items-center justify-center text-center px-4 py-16">
 
       <h1 className="text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-400 font-display mb-4 drop-shadow-2xl">
         404
@@ -68,7 +68,7 @@ export default async function NotFound() {
               <Link
                 key={article.slug}
                 href={`/artikel/${article.slug}`}
-                className="group flex items-center gap-4 bg-[#111827] rounded-xl border border-gray-800 hover:border-green-500/50 p-4 transition-all text-left"
+                className="group flex items-center gap-4 bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)] hover:border-green-500/50 p-4 transition-all text-left"
               >
                 {article.mainImage?.asset && (
                   <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
@@ -84,11 +84,11 @@ export default async function NotFound() {
                   <span className="text-[10px] uppercase font-bold tracking-wider text-green-400 block mb-1">
                     {article.category}
                   </span>
-                  <h4 className="text-sm font-bold text-gray-200 group-hover:text-green-400 transition-colors line-clamp-2 leading-snug">
+                  <h4 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-green-400 transition-colors line-clamp-2 leading-snug">
                     {article.title}
                   </h4>
                 </div>
-                <ArrowRight size={16} className="text-gray-600 group-hover:text-green-400 transition-colors flex-shrink-0" />
+                <ArrowRight size={16} className="text-[var(--text-muted)] group-hover:text-green-400 transition-colors flex-shrink-0" />
               </Link>
             ))}
           </div>
@@ -104,7 +104,7 @@ export default async function NotFound() {
             <Link
               key={cat.slug}
               href={`/categorie/${cat.slug}`}
-              className="px-4 py-2 bg-gray-800 hover:bg-green-600 text-gray-400 hover:text-white text-sm font-semibold rounded-lg transition-colors border border-gray-700 hover:border-green-500"
+              className="px-4 py-2 bg-gray-800 hover:bg-green-600 text-gray-400 hover:text-white text-sm font-semibold rounded-lg transition-colors border border-[var(--border-primary)] hover:border-green-500"
             >
               {cat.name}
             </Link>

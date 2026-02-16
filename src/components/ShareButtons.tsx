@@ -29,14 +29,14 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
 
   return (
     <div className="flex items-center gap-2 mt-6 mb-2">
-      <span className="text-xs text-gray-500 font-semibold uppercase tracking-wider mr-1">Deel</span>
+      <span className="text-xs text-[var(--text-muted)] font-semibold uppercase tracking-wider mr-1">Deel</span>
 
       {/* Twitter/X */}
       <a
         href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-[#1DA1F2] flex items-center justify-center transition-colors group border border-gray-700 hover:border-[#1DA1F2]"
+        className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-[#1DA1F2] flex items-center justify-center transition-colors group border border-[var(--border-primary)] hover:border-[#1DA1F2]"
         aria-label="Deel op X"
       >
         <svg className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -49,7 +49,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
         href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-[#25D366] flex items-center justify-center transition-colors group border border-gray-700 hover:border-[#25D366]"
+        className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-[#25D366] flex items-center justify-center transition-colors group border border-[var(--border-primary)] hover:border-[#25D366]"
         aria-label="Deel via WhatsApp"
       >
         <svg className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -62,7 +62,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
         href={`https://reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-[#FF4500] flex items-center justify-center transition-colors group border border-gray-700 hover:border-[#FF4500]"
+        className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-[#FF4500] flex items-center justify-center transition-colors group border border-[var(--border-primary)] hover:border-[#FF4500]"
         aria-label="Deel op Reddit"
       >
         <svg className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -76,7 +76,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
         className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors border ${
           copied
             ? 'bg-green-600 border-green-500 text-white'
-            : 'bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white'
+            : 'bg-gray-800 border-[var(--border-primary)] text-gray-400 hover:bg-gray-700 hover:text-white'
         }`}
         aria-label="Kopieer link"
       >
@@ -87,7 +87,7 @@ export default function ShareButtons({ url, title }: ShareButtonsProps) {
       {typeof navigator !== 'undefined' && 'share' in navigator && (
         <button
           onClick={share}
-          className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-green-600 flex items-center justify-center transition-colors text-gray-400 hover:text-white border border-gray-700 hover:border-green-500 sm:hidden"
+          className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-green-600 flex items-center justify-center transition-colors text-gray-400 hover:text-white border border-[var(--border-primary)] hover:border-green-500 sm:hidden"
           aria-label="Deel"
         >
           <Share2 size={16} />

@@ -113,18 +113,18 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
       {/* Search + Sort controls */}
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         <div className="relative flex-1">
-          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+          <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Zoek reviews op titel of game..."
-            className="w-full bg-[#111827] border border-gray-700 rounded-lg pl-10 pr-10 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition"
+            className="w-full bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg pl-10 pr-10 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition"
           />
           {search && (
             <button
               onClick={() => setSearch('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-white transition"
             >
               <X size={16} />
             </button>
@@ -156,7 +156,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
 
       {/* Result count when searching or filtering */}
       {(search.trim() || typeFilter !== 'all') && (
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-[var(--text-muted)] mb-4">
           {sorted.length} {sorted.length === 1 ? 'review' : 'reviews'} gevonden
         </p>
       )}
@@ -165,7 +165,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
       {sorted.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sorted.map((review) => (
-            <Link key={review.slug} href={`/artikel/${review.slug}`} className="group bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-green-600 transition-all shadow-lg hover:shadow-green-900/20 flex flex-col">
+            <Link key={review.slug} href={`/artikel/${review.slug}`} className="group bg-[var(--bg-card)] rounded-xl overflow-hidden border border-[var(--border-primary)] hover:border-green-600 transition-all shadow-lg hover:shadow-green-900/20 flex flex-col">
 
               {/* Image */}
               <div className="relative h-48 w-full overflow-hidden">
@@ -208,7 +208,7 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
                   {review.excerpt}
                 </p>
 
-                <div className="flex items-center justify-between text-xs text-gray-500 border-t border-gray-800 pt-3 mt-auto">
+                <div className="flex items-center justify-between text-xs text-[var(--text-muted)] border-t border-[var(--border-primary)] pt-3 mt-auto">
                   <span className="flex items-center gap-1">
                     <Clock size={12} />
                     {formatDistanceToNow(new Date(review.publishedAt), { addSuffix: true, locale: nl })}
@@ -223,11 +223,11 @@ export default function ReviewsLibrary({ reviews }: { reviews: Review[] }) {
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-dashed border-gray-700">
+        <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-dashed border-[var(--border-primary)]">
           <h3 className="text-2xl font-bold text-gray-400 mb-2">
             Geen reviews gevonden{typeFilter !== 'all' ? ` voor ${typeFilter}` : ''}{search ? ` met "${search}"` : ''}
           </h3>
-          <p className="text-gray-500">Probeer een andere zoekterm of filter.</p>
+          <p className="text-[var(--text-muted)]">Probeer een andere zoekterm of filter.</p>
         </div>
       )}
     </div>

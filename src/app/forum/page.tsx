@@ -118,7 +118,7 @@ export default function ForumPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 pb-20">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         {/* Beta Warning Banner */}
         <div className="mb-6 bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-yellow-500/20 border-2 border-yellow-500/50 rounded-xl p-4 flex items-start gap-3">
@@ -157,15 +157,15 @@ export default function ForumPage() {
 
           {/* New Topic Form */}
           {showNewTopicForm && session && (
-            <div className="bg-[#111827] border border-gray-800 rounded-xl p-6 mb-6">
+            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6 mb-6">
               <h2 className="text-xl font-bold text-white mb-4">Nieuw Topic Aanmaken</h2>
               <form onSubmit={handleCreateTopic} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">Categorie</label>
+                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">Categorie</label>
                   <select
                     value={newTopic.category}
                     onChange={(e) => setNewTopic({ ...newTopic, category: e.target.value })}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-gray-900 border border-[var(--border-primary)] rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
                   >
                     {categories.filter(c => c.value !== 'all').map(cat => (
                       <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -173,19 +173,19 @@ export default function ForumPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">Titel *</label>
+                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">Titel *</label>
                   <input
                     type="text"
                     value={newTopic.title}
                     onChange={(e) => setNewTopic({ ...newTopic, title: e.target.value })}
                     placeholder="Bijv: Wat vinden jullie van de nieuwe Zelda?"
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="w-full bg-gray-900 border border-[var(--border-primary)] rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
                     required
                     maxLength={200}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-300 mb-2">Inhoud *</label>
+                  <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">Inhoud *</label>
                   <MarkdownEditor
                     value={newTopic.content}
                     onChange={(content) => setNewTopic({ ...newTopic, content })}
@@ -223,7 +223,7 @@ export default function ForumPage() {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-green-500"
+                className="bg-gray-900 border border-[var(--border-primary)] rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-green-500"
               >
                 {categories.map(cat => (
                   <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -235,7 +235,7 @@ export default function ForumPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-green-500"
+                className="bg-gray-900 border border-[var(--border-primary)] rounded-lg px-3 py-1.5 text-white text-sm focus:outline-none focus:border-green-500"
               >
                 <option value="recent">Meest Recent</option>
                 <option value="popular">Meest Populair</option>
@@ -252,8 +252,8 @@ export default function ForumPage() {
             <p className="text-gray-400 mt-4">Topics laden...</p>
           </div>
         ) : topics.length === 0 ? (
-          <div className="text-center py-12 bg-[#111827] rounded-xl border border-gray-800">
-            <MessageSquare size={48} className="mx-auto text-gray-600 mb-4" />
+          <div className="text-center py-12 bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)]">
+            <MessageSquare size={48} className="mx-auto text-[var(--text-muted)] mb-4" />
             <p className="text-gray-400 text-lg">Nog geen topics. {session ? 'Maak de eerste aan!' : 'Log in om een topic te maken.'}</p>
           </div>
         ) : (
@@ -262,7 +262,7 @@ export default function ForumPage() {
               <Link
                 key={topic.id}
                 href={`/forum/${topic.id}`}
-                className="block bg-[#111827] border border-gray-800 rounded-xl p-6 hover:border-green-500/50 transition-all group"
+                className="block bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6 hover:border-green-500/50 transition-all group"
               >
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
@@ -281,7 +281,7 @@ export default function ForumPage() {
                           </h3>
                         </div>
                         <p className="text-gray-400 text-sm line-clamp-2 mb-3">{topic.content}</p>
-                        <div className="flex flex-wrap items-center gap-4 text-xs text-gray-500">
+                        <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--text-muted)]">
                           <div className="flex items-center gap-1">
                             <User size={14} />
                             <span>{topic.user.name || 'Anoniem'}</span>

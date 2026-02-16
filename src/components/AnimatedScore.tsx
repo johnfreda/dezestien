@@ -132,7 +132,7 @@ export default function AnimatedScore({ score, size = 80, label }: AnimatedScore
 
       {/* Label */}
       {label && (
-        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-500">
+        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[var(--text-muted)]">
           {label}
         </span>
       )}

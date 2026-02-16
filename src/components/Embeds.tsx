@@ -41,7 +41,7 @@ export function YouTubeEmbed({ url }: { url: string }) {
   }
 
   return (
-    <div className="my-8 rounded-xl overflow-hidden shadow-lg border border-gray-800 bg-black aspect-video relative">
+    <div className="my-8 rounded-xl overflow-hidden shadow-lg border border-[var(--border-primary)] bg-black aspect-video relative">
       <iframe
         width="100%"
         height="100%"
@@ -92,14 +92,14 @@ export function ApplePodcastEmbed({ url }: { url: string }) {
 
   if (!podcastId) {
     return (
-      <div className="my-8 p-4 bg-gray-800 rounded-lg border border-gray-700">
+      <div className="my-8 p-4 bg-gray-800 rounded-lg border border-[var(--border-primary)]">
         <p className="text-gray-400 text-sm">Ongeldige Apple Podcast URL</p>
       </div>
     );
   }
 
   return (
-    <div className="my-8 rounded-xl overflow-hidden shadow-lg border border-gray-800 bg-black">
+    <div className="my-8 rounded-xl overflow-hidden shadow-lg border border-[var(--border-primary)] bg-black">
       <iframe
         allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
         frameBorder="0"
@@ -129,7 +129,7 @@ export function YouTubePlaylistEmbed({ url }: { url: string }) {
   if (!listId) return null;
 
   return (
-    <div className="rounded-xl overflow-hidden shadow-lg border border-gray-800 bg-black aspect-video relative">
+    <div className="rounded-xl overflow-hidden shadow-lg border border-[var(--border-primary)] bg-black aspect-video relative">
       <iframe
         width="100%"
         height="100%"
@@ -167,14 +167,14 @@ export function SpotifyEmbed({ url }: { url: string }) {
 
   if (!embedId) {
     return (
-      <div className="my-8 p-4 bg-gray-800 rounded-lg border border-gray-700">
+      <div className="my-8 p-4 bg-gray-800 rounded-lg border border-[var(--border-primary)]">
         <p className="text-gray-400 text-sm">Ongeldige Spotify URL</p>
       </div>
     );
   }
 
   return (
-    <div className="my-8 rounded-xl overflow-hidden shadow-lg border border-gray-800 bg-black">
+    <div className="my-8 rounded-xl overflow-hidden shadow-lg border border-[var(--border-primary)] bg-black">
       <iframe
         style={{ borderRadius: '12px' }}
         src={`https://open.spotify.com/embed/${embedType}/${embedId}?utm_source=generator&theme=0`}

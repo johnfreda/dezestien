@@ -154,7 +154,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
   }
 
   return (
-    <div id={`comment-${comment.id}`} className={depth > 0 ? 'ml-8 mt-4 border-l-2 border-gray-800 pl-4' : ''}>
+    <div id={`comment-${comment.id}`} className={depth > 0 ? 'ml-8 mt-4 border-l-2 border-[var(--border-primary)] pl-4' : ''}>
       <div className="flex items-start gap-3">
         <div className="w-8 h-8 rounded-full bg-green-900 flex items-center justify-center text-green-300 font-bold text-xs uppercase flex-shrink-0">
           {comment.user.name?.substring(0, 2) || <User size={14} />}
@@ -162,7 +162,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1">
             <span className="font-bold text-white">{comment.user.name || 'Anoniem'}</span>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-[var(--text-muted)]">
               {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true, locale: nl })}
             </span>
             {canDelete && (
@@ -197,7 +197,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
                 rows={3}
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none"
+                className="w-full bg-gray-900 border border-[var(--border-primary)] rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none"
               />
               <div className="flex gap-2">
                 <button
@@ -222,7 +222,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
             </div>
           ) : (
             <>
-              <p className="text-gray-300 leading-relaxed mb-2 whitespace-pre-wrap">{comment.content}</p>
+              <p className="text-[var(--text-primary)] leading-relaxed mb-2 whitespace-pre-wrap">{comment.content}</p>
               
               {canReply && (
                 <button
@@ -243,7 +243,7 @@ function CommentItem({ comment, slug, depth = 0, onReplyAdded, onCommentUpdated 
                 onChange={(e) => setReplyContent(e.target.value)}
                 placeholder="Schrijf je reactie..."
                 rows={3}
-                className="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none"
+                className="w-full bg-gray-900 border border-[var(--border-primary)] rounded-lg p-3 text-white text-sm focus:outline-none focus:border-green-500 resize-none"
               />
               <div className="flex gap-2 mt-2">
                 <button
@@ -349,7 +349,7 @@ export default function Comments({ slug }: { slug: string }) {
   const totalComments = countTotalComments(comments);
 
   return (
-    <div className="bg-[#111827] border border-gray-800 rounded-xl p-6 md:p-8 mt-12">
+    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6 md:p-8 mt-12">
       <h3 className="text-xl font-display font-bold text-white mb-6 flex items-center gap-2">
         <MessageSquare className="text-green-500" /> Reacties ({totalComments})
       </h3>
@@ -361,7 +361,7 @@ export default function Comments({ slug }: { slug: string }) {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Wat vind jij hiervan?"
-            className="w-full bg-gray-900 border border-gray-700 rounded-lg p-4 text-white focus:outline-none focus:border-green-500 min-h-[100px]"
+            className="w-full bg-gray-900 border border-[var(--border-primary)] rounded-lg p-4 text-white focus:outline-none focus:border-green-500 min-h-[100px]"
           />
           <div className="flex justify-end mt-2">
             <button
@@ -375,7 +375,7 @@ export default function Comments({ slug }: { slug: string }) {
           </div>
         </form>
       ) : (
-        <div className="bg-gray-900/50 rounded-lg p-6 text-center mb-8 border border-gray-800 border-dashed">
+        <div className="bg-gray-900/50 rounded-lg p-6 text-center mb-8 border border-[var(--border-primary)] border-dashed">
           <p className="text-gray-400 mb-4">Log in om mee te praten met de community.</p>
           <button
             onClick={() => signIn()}
@@ -389,12 +389,12 @@ export default function Comments({ slug }: { slug: string }) {
       {/* Comments List */}
       <div className="space-y-6">
         {fetching ? (
-          <div className="text-center py-8 text-gray-500 animate-pulse">Laden...</div>
+          <div className="text-center py-8 text-[var(--text-muted)] animate-pulse">Laden...</div>
         ) : comments.length === 0 ? (
-          <div className="text-center py-8 text-gray-500 italic font-medium">Nog geen reacties. Plaats de eerste reactie en verdien extra mana.</div>
+          <div className="text-center py-8 text-[var(--text-muted)] italic font-medium">Nog geen reacties. Plaats de eerste reactie en verdien extra mana.</div>
         ) : (
           comments.map((comment) => (
-            <div key={comment.id} className="border-b border-gray-800 pb-6 last:border-0 last:pb-0">
+            <div key={comment.id} className="border-b border-[var(--border-primary)] pb-6 last:border-0 last:pb-0">
               <CommentItem
                 comment={comment}
                 slug={slug}

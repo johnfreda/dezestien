@@ -172,9 +172,9 @@ export default function NotificationCenter() {
           />
 
           {/* Panel */}
-          <div className="fixed inset-x-0 bottom-0 md:absolute md:inset-auto md:right-0 md:top-12 md:w-[360px] md:max-h-[480px] z-[101] flex flex-col md:rounded-xl rounded-t-2xl bg-[#0f1522]/98 backdrop-blur-xl border border-gray-700/50 shadow-2xl overflow-hidden animate-in md:fade-in md:slide-in-from-top-2 slide-in-from-bottom-4 duration-200 max-h-[70vh]">
+          <div className="fixed inset-x-0 bottom-0 md:absolute md:inset-auto md:right-0 md:top-12 md:w-[360px] md:max-h-[480px] z-[101] flex flex-col md:rounded-xl rounded-t-2xl bg-[#0f1522]/98 backdrop-blur-xl border border-[var(--border-primary)]/50 shadow-2xl overflow-hidden animate-in md:fade-in md:slide-in-from-top-2 slide-in-from-bottom-4 duration-200 max-h-[70vh]">
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-700/50 shrink-0">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--border-primary)]/50 shrink-0">
               <div className="flex items-center gap-2">
                 <h3 className="text-white font-bold text-sm">Notificaties</h3>
                 {unreadCount > 0 && (
@@ -196,7 +196,7 @@ export default function NotificationCenter() {
                 )}
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-1 text-gray-500 hover:text-white transition-colors rounded-lg hover:bg-gray-800/60"
+                  className="p-1 text-[var(--text-muted)] hover:text-white transition-colors rounded-lg hover:bg-gray-800/60"
                   aria-label="Sluiten"
                 >
                   <X size={16} />
@@ -209,10 +209,10 @@ export default function NotificationCenter() {
               {notifications.length === 0 ? (
                 <div className="py-12 px-6 text-center">
                   <div className="w-12 h-12 rounded-xl bg-gray-800/60 flex items-center justify-center mx-auto mb-3">
-                    <Bell size={20} className="text-gray-600" />
+                    <Bell size={20} className="text-[var(--text-muted)]" />
                   </div>
-                  <p className="text-gray-500 text-sm font-medium">Geen notificaties</p>
-                  <p className="text-gray-600 text-xs mt-1">We laten het je weten als er iets gebeurt</p>
+                  <p className="text-[var(--text-muted)] text-sm font-medium">Geen notificaties</p>
+                  <p className="text-[var(--text-muted)] text-xs mt-1">We laten het je weten als er iets gebeurt</p>
                 </div>
               ) : (
                 <div>
@@ -234,11 +234,11 @@ export default function NotificationCenter() {
 
                         {/* Content */}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm text-gray-200 leading-snug">
+                          <p className="text-sm text-[var(--text-primary)] leading-snug">
                             <span className="font-semibold text-white">{actor}</span>
                             {' '}{action}
                           </p>
-                          <p className="text-[11px] text-gray-500 mt-1">
+                          <p className="text-[11px] text-[var(--text-muted)] mt-1">
                             {formatDistanceToNow(new Date(notification.createdAt), { addSuffix: true, locale: nl })}
                           </p>
                         </div>
@@ -248,7 +248,7 @@ export default function NotificationCenter() {
                           {!notification.read && (
                             <div className="w-2 h-2 bg-green-500 rounded-full" />
                           )}
-                          <ChevronRight size={14} className="text-gray-600 group-hover:text-gray-400 transition-colors" />
+                          <ChevronRight size={14} className="text-[var(--text-muted)] group-hover:text-gray-400 transition-colors" />
                         </div>
                       </button>
                     );

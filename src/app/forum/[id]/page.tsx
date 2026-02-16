@@ -172,7 +172,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
   }
 
   return (
-    <div id={`reply-${reply.id}`} className={depth > 0 ? 'ml-8 mt-4 border-l-2 border-gray-800 pl-4' : ''}>
+    <div id={`reply-${reply.id}`} className={depth > 0 ? 'ml-8 mt-4 border-l-2 border-[var(--border-primary)] pl-4' : ''}>
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0">
           <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold">
@@ -182,7 +182,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <span className="font-bold text-white">{reply.user.name || 'Anoniem'}</span>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-[var(--text-muted)]">
               {formatDistanceToNow(new Date(reply.createdAt), { addSuffix: true, locale: nl })}
             </span>
             {canDelete && (
@@ -241,7 +241,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
             </div>
           ) : (
             <>
-              <div className="text-gray-300 leading-relaxed mb-2 prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-green-500 prose-blockquote:text-gray-400 prose-ul:text-gray-300 prose-ol:text-gray-300">
+              <div className="text-[var(--text-primary)] leading-relaxed mb-2 prose prose-invert prose-sm max-w-none prose-headings:text-white prose-p:text-[var(--text-primary)] prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-green-500 prose-blockquote:text-gray-400 prose-ul:text-[var(--text-primary)] prose-ol:text-[var(--text-primary)]">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   components={{
@@ -252,7 +252,7 @@ function ReplyItem({ reply, topicId, topicLocked, depth = 0, onReplyAdded, onRep
                       if (inline) {
                         return <code {...props} className="bg-gray-800 text-yellow-400 px-1 py-0.5 rounded text-sm" />;
                       }
-                      return <code {...props} className="block bg-gray-900 text-gray-300 p-3 rounded-lg overflow-x-auto" />;
+                      return <code {...props} className="block bg-gray-900 text-[var(--text-primary)] p-3 rounded-lg overflow-x-auto" />;
                     },
                   }}
                 >
@@ -501,7 +501,7 @@ export default function TopicPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0b0f19] text-gray-200 flex items-center justify-center">
+      <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-500 mx-auto"></div>
           <p className="text-gray-400 mt-4">Topic laden...</p>
@@ -518,7 +518,7 @@ export default function TopicPage() {
   const isTopicOwner = session?.user?.id === topic.user.id;
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 pb-20">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
         {/* Beta Warning Banner */}
         <div className="mb-6 bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-yellow-500/20 border-2 border-yellow-500/50 rounded-xl p-4 flex items-start gap-3">
@@ -544,7 +544,7 @@ export default function TopicPage() {
         </Link>
 
         {/* Topic Header */}
-        <div className="bg-[#111827] border border-gray-800 rounded-xl p-6 mb-6">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6 mb-6">
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-3">
@@ -580,13 +580,13 @@ export default function TopicPage() {
                     type="text"
                     value={editTitle}
                     onChange={(e) => setEditTitle(e.target.value)}
-                    className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white font-bold text-xl focus:outline-none focus:border-green-500"
+                    className="w-full bg-gray-900 border border-[var(--border-primary)] rounded-lg px-4 py-2 text-white font-bold text-xl focus:outline-none focus:border-green-500"
                     placeholder="Topic titel"
                   />
                   <select
                     value={editCategory}
                     onChange={(e) => setEditCategory(e.target.value)}
-                    className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
+                    className="bg-gray-900 border border-[var(--border-primary)] rounded-lg px-4 py-2 text-white focus:outline-none focus:border-green-500"
                   >
                     <option value="Algemeen">Algemeen</option>
                     <option value="Reviews">Reviews</option>
@@ -643,7 +643,7 @@ export default function TopicPage() {
                       <span>{topic.views} views</span>
                     </div>
                   </div>
-                  <div className="prose prose-invert max-w-none prose-headings:text-white prose-p:text-gray-300 prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-green-500 prose-blockquote:text-gray-400 prose-ul:text-gray-300 prose-ol:text-gray-300">
+                  <div className="prose prose-invert max-w-none prose-headings:text-white prose-p:text-[var(--text-primary)] prose-a:text-green-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-yellow-400 prose-code:bg-gray-800 prose-code:px-1 prose-code:rounded prose-pre:bg-gray-900 prose-blockquote:border-l-green-500 prose-blockquote:text-gray-400 prose-ul:text-[var(--text-primary)] prose-ol:text-[var(--text-primary)]">
                     <ReactMarkdown 
                       remarkPlugins={[remarkGfm]}
                       components={{
@@ -654,7 +654,7 @@ export default function TopicPage() {
                           if (inline) {
                             return <code {...props} className="bg-gray-800 text-yellow-400 px-1 py-0.5 rounded text-sm" />;
                           }
-                          return <code {...props} className="block bg-gray-900 text-gray-300 p-3 rounded-lg overflow-x-auto" />;
+                          return <code {...props} className="block bg-gray-900 text-[var(--text-primary)] p-3 rounded-lg overflow-x-auto" />;
                         },
                       }}
                     >
@@ -675,14 +675,14 @@ export default function TopicPage() {
           </h2>
 
           {replies.length === 0 ? (
-            <div className="bg-[#111827] border border-gray-800 rounded-xl p-8 text-center">
-              <MessageSquare size={48} className="mx-auto text-gray-600 mb-4" />
+            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-8 text-center">
+              <MessageSquare size={48} className="mx-auto text-[var(--text-muted)] mb-4" />
               <p className="text-gray-400">Nog geen reacties. {session ? 'Wees de eerste!' : 'Log in om te reageren.'}</p>
             </div>
           ) : (
             <div className="space-y-6">
               {replies.map((reply) => (
-                <div key={reply.id} className="bg-[#111827] border border-gray-800 rounded-xl p-6">
+                <div key={reply.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
                   <ReplyItem
                     reply={reply}
                     topicId={topicId}
@@ -704,7 +704,7 @@ export default function TopicPage() {
             <p className="text-red-400 font-bold">Dit topic is gesloten. Nieuwe reacties zijn niet meer mogelijk.</p>
           </div>
         ) : session ? (
-          <div className="bg-[#111827] border border-gray-800 rounded-xl p-6">
+          <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
             <h3 className="text-xl font-bold text-white mb-4">Reageer op dit topic</h3>
             <form onSubmit={handleSubmitReply} className="space-y-4">
               <MarkdownEditor
@@ -714,7 +714,7 @@ export default function TopicPage() {
                 rows={6}
               />
               <div className="flex items-center justify-between">
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-[var(--text-muted)]">
                   Je verdient <span className="text-green-400 font-bold">50 Mana</span> per reactie!
                 </p>
                 <button

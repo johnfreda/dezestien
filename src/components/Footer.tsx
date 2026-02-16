@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Send } from 'lucide-react';
+import Logo from './Logo';
 
 const categories = [
   { name: 'Eredivisie', slug: 'eredivisie' },
@@ -17,7 +18,7 @@ const categories = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#071020] border-t border-gray-800 mt-12">
+    <footer className="bg-[var(--bg-secondary)] border-t border-[var(--border-primary)] mt-12">
       <div className="h-1 bg-gradient-to-r from-green-600 via-emerald-500 to-green-600" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -26,7 +27,7 @@ export default function Footer() {
           {/* Over DeZestien */}
           <div>
             <div className="text-2xl font-black tracking-tighter italic mb-4">
-              <span className="mr-1.5">⚽</span><span className="text-white">DE</span><span className="text-green-500">ZESTIEN</span><span className="text-gray-500">.NL</span>
+              <Logo className="w-7 h-7 inline-block mr-1.5 align-middle" /><span className="text-[var(--text-primary)]">DE</span><span className="text-green-500">ZESTIEN</span><span className="text-[var(--text-muted)]">.NL</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
               DeZestien.nl is jouw dagelijkse bron voor Nederlands voetbalnieuws.
@@ -44,13 +45,13 @@ export default function Footer() {
 
           {/* Categorieën */}
           <div>
-            <h4 className="text-sm font-bold text-gray-300 uppercase tracking-widest mb-4">Categorieën</h4>
+            <h4 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-widest mb-4">Categorieën</h4>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
               {categories.map((cat) => (
                 <li key={cat.slug}>
                   <Link
                     href={`/categorie/${cat.slug}`}
-                    className="text-gray-500 hover:text-green-400 text-sm transition-colors"
+                    className="text-[var(--text-muted)] hover:text-green-400 text-sm transition-colors"
                   >
                     {cat.name}
                   </Link>
@@ -61,21 +62,21 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-bold text-gray-300 uppercase tracking-widest mb-4">Navigatie</h4>
+            <h4 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-widest mb-4">Navigatie</h4>
             <ul className="space-y-2">
-              <li><Link href="/" className="text-gray-500 hover:text-green-400 text-sm transition-colors">Home</Link></li>
-              <li><Link href="/forum" className="text-gray-500 hover:text-green-400 text-sm transition-colors">Forum</Link></li>
-              <li><Link href="/categorie/eredivisie" className="text-gray-500 hover:text-green-400 text-sm transition-colors">Eredivisie</Link></li>
-              <li><Link href="/categorie/transfers" className="text-gray-500 hover:text-green-400 text-sm transition-colors">Transfers</Link></li>
-              <li><Link href="/tip-de-redactie" className="text-gray-500 hover:text-green-400 text-sm transition-colors">Tip de Redactie</Link></li>
+              <li><Link href="/" className="text-[var(--text-muted)] hover:text-green-400 text-sm transition-colors">Home</Link></li>
+              <li><Link href="/forum" className="text-[var(--text-muted)] hover:text-green-400 text-sm transition-colors">Forum</Link></li>
+              <li><Link href="/categorie/eredivisie" className="text-[var(--text-muted)] hover:text-green-400 text-sm transition-colors">Eredivisie</Link></li>
+              <li><Link href="/categorie/transfers" className="text-[var(--text-muted)] hover:text-green-400 text-sm transition-colors">Transfers</Link></li>
+              <li><Link href="/tip-de-redactie" className="text-[var(--text-muted)] hover:text-green-400 text-sm transition-colors">Tip de Redactie</Link></li>
             </ul>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs">
+        <div className="border-t border-[var(--border-primary)] mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-[var(--text-muted)] text-xs">
             &copy; {new Date().getFullYear()} DeZestien.nl — Alle rechten voorbehouden.
           </p>
           <p className="text-gray-700 text-xs">

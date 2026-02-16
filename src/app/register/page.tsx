@@ -57,7 +57,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0b0f19] px-4 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)] px-4 relative overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-green-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -67,7 +67,7 @@ export default function RegisterPage() {
         <div className="text-center mb-8">
           <Link href="/" className="text-3xl font-black tracking-tighter text-white italic inline-block">
             DE<span className="text-green-500 logo-glow">ZESTIEN</span>
-            <span className="not-italic text-xs text-gray-500 font-normal ml-1">.NL</span>
+            <span className="not-italic text-xs text-[var(--text-muted)] font-normal ml-1">.NL</span>
           </Link>
         </div>
 
@@ -83,7 +83,7 @@ export default function RegisterPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600"
+                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-[var(--border-primary)]/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-[var(--text-muted)]"
                 placeholder="Jouw gebruikersnaam"
                 required
               />
@@ -94,7 +94,7 @@ export default function RegisterPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600"
+                className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-[var(--border-primary)]/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-[var(--text-muted)]"
                 placeholder="jouw@email.nl"
                 required
               />
@@ -106,7 +106,7 @@ export default function RegisterPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-gray-700/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-gray-600 pr-12"
+                  className="w-full px-4 py-3 rounded-xl bg-gray-800/80 text-white border border-[var(--border-primary)]/50 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all placeholder:text-[var(--text-muted)] pr-12"
                   placeholder="Minimaal 6 tekens"
                   required
                   minLength={6}
@@ -114,7 +114,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -163,8 +163,8 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-gray-700/50 text-center">
-            <p className="text-gray-500 text-sm">
+          <div className="mt-6 pt-6 border-t border-[var(--border-primary)]/50 text-center">
+            <p className="text-[var(--text-muted)] text-sm">
               Al een account?{' '}
               <Link href="/login" className="text-green-400 hover:text-green-300 font-medium transition">
                 Log hier in

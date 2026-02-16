@@ -46,7 +46,7 @@ export default async function RelatedArticles({ currentSlug, category, additiona
   if (!articles || articles.length === 0) return null;
 
   return (
-    <section className="mt-16 border-t border-gray-800 pt-10">
+    <section className="mt-16 border-t border-[var(--border-primary)] pt-10">
       <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
         <span className="w-1 h-6 bg-gradient-to-b from-green-500 to-emerald-500 rounded-full" />
         Meer over dit onderwerp
@@ -56,7 +56,7 @@ export default async function RelatedArticles({ currentSlug, category, additiona
           <Link
             key={article.slug}
             href={`/artikel/${article.slug}`}
-            className="group flex gap-4 bg-[#111827] rounded-xl border border-gray-800 hover:border-green-500/50 p-4 transition-all hover:shadow-lg hover:shadow-green-900/10"
+            className="group flex gap-4 bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)] hover:border-green-500/50 p-4 transition-all hover:shadow-lg hover:shadow-green-900/10"
           >
             {article.mainImage?.asset && (
               <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 relative">
@@ -79,7 +79,7 @@ export default async function RelatedArticles({ currentSlug, category, additiona
                     <span className="text-xs font-bold text-green-400">{article.score}/100</span>
                   )}
                 </div>
-                <h3 className="text-sm font-bold text-gray-200 group-hover:text-green-400 transition-colors leading-snug line-clamp-2">
+                <h3 className="text-sm font-bold text-[var(--text-primary)] group-hover:text-green-400 transition-colors leading-snug line-clamp-2">
                   {article.title}
                 </h3>
               </div>

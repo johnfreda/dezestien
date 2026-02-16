@@ -67,10 +67,10 @@ export default function TableOfContents() {
   return (
     <>
       {/* Mobile: collapsible */}
-      <div className="lg:hidden mb-8 bg-[#111827] rounded-xl border border-gray-800 overflow-hidden">
+      <div className="lg:hidden mb-8 bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)] overflow-hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center justify-between p-4 text-sm font-bold text-gray-300"
+          className="w-full flex items-center justify-between p-4 text-sm font-bold text-[var(--text-primary)]"
         >
           <span className="flex items-center gap-2">
             <List size={16} className="text-green-400" />
@@ -90,7 +90,7 @@ export default function TableOfContents() {
                     } ${
                       activeId === h.id
                         ? 'text-green-400 font-semibold'
-                        : 'text-gray-500 hover:text-gray-300'
+                        : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {h.text}
@@ -104,7 +104,7 @@ export default function TableOfContents() {
 
       {/* Desktop: sticky sidebar - rendered via portal or absolute positioning */}
       <div className="hidden lg:block fixed top-32 right-8 xl:right-[calc((100vw-896px)/2-280px)] w-56 z-30">
-        <div className="bg-[#111827]/90 backdrop-blur-sm rounded-xl border border-gray-800 p-4 max-h-[60vh] overflow-y-auto">
+        <div className="bg-[var(--bg-card)]/90 backdrop-blur-sm rounded-xl border border-[var(--border-primary)] p-4 max-h-[60vh] overflow-y-auto">
           <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 flex items-center gap-2">
             <List size={14} className="text-green-400" />
             Inhoudsopgave
@@ -120,7 +120,7 @@ export default function TableOfContents() {
                     } ${
                       activeId === h.id
                         ? 'text-green-400 font-semibold border-l-2 border-green-400 pl-2'
-                        : 'text-gray-500 hover:text-gray-300'
+                        : 'text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                     }`}
                   >
                     {h.text}

@@ -60,7 +60,7 @@ export default function NavMana() {
     return (
       <Link
         href="/login"
-        className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center font-bold cursor-pointer transition-all border bg-gray-800 text-gray-400 hover:text-white border-gray-700 hover:border-gray-500 md:hidden"
+        className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center font-bold cursor-pointer transition-all border bg-gray-800 text-gray-400 hover:text-white border-[var(--border-primary)] hover:border-gray-500 md:hidden"
         title="Inloggen"
       >
         <User size={16} />
@@ -159,9 +159,9 @@ export default function NavMana() {
 
       {/* Hover popup */}
       {showPopup && mana !== null && (
-        <div className="absolute top-full right-0 mt-5 w-52 bg-[#111827] border border-gray-700 rounded-xl shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+        <div className="absolute top-full right-0 mt-5 w-52 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
           {/* Arrow */}
-          <div className="absolute -top-1.5 right-4 w-3 h-3 bg-[#111827] border-l border-t border-gray-700 rotate-45" />
+          <div className="absolute -top-1.5 right-4 w-3 h-3 bg-[var(--bg-card)] border-l border-t border-[var(--border-primary)] rotate-45" />
 
           {/* Level header */}
           <div className="flex items-center gap-2 mb-3">
@@ -170,13 +170,13 @@ export default function NavMana() {
             </div>
             <div>
               <p className={`text-sm font-bold ${colors.text}`}>{level.name}</p>
-              <p className="text-[10px] text-gray-500">Level</p>
+              <p className="text-[10px] text-[var(--text-muted)]">Level</p>
             </div>
           </div>
 
           {/* Progress bar */}
           <div className="mb-2">
-            <div className="flex justify-between text-[10px] text-gray-500 mb-1">
+            <div className="flex justify-between text-[10px] text-[var(--text-muted)] mb-1">
               <span>{mana} Mana</span>
               <span>{level.max}</span>
             </div>
@@ -189,7 +189,7 @@ export default function NavMana() {
           </div>
 
           {/* Links */}
-          <div className="mt-3 pt-3 border-t border-gray-800 space-y-1">
+          <div className="mt-3 pt-3 border-t border-[var(--border-primary)] space-y-1">
             <Link
               href="/profile"
               className="flex items-center justify-between text-xs text-gray-400 hover:text-white transition-colors group py-1"

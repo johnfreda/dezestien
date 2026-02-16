@@ -95,18 +95,18 @@ export default function SpecialsLibrary({ specials }: { specials: Special[] }) {
 
       {/* Search */}
       <div className="relative mb-6">
-        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+        <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
         <input
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Zoek specials..."
-          className="w-full bg-[#111827] border border-gray-700 rounded-lg pl-10 pr-10 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition"
+          className="w-full bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg pl-10 pr-10 py-2 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition"
         />
         {search && (
           <button
             onClick={() => setSearch('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-white transition"
           >
             <X size={16} />
           </button>
@@ -115,7 +115,7 @@ export default function SpecialsLibrary({ specials }: { specials: Special[] }) {
 
       {/* Result count when searching or filtering */}
       {(search.trim() || typeFilter !== 'all') && (
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-[var(--text-muted)] mb-4">
           {filtered.length} {filtered.length === 1 ? 'special' : 'specials'} gevonden
         </p>
       )}
@@ -126,7 +126,7 @@ export default function SpecialsLibrary({ specials }: { specials: Special[] }) {
           {filtered.map((special) => {
             const badge = getSpecialTypeBadge(special.specialType)
             return (
-              <Link key={special.slug} href={`/artikel/${special.slug}`} className="group bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-amber-600 transition-all shadow-lg hover:shadow-amber-900/20 flex flex-col">
+              <Link key={special.slug} href={`/artikel/${special.slug}`} className="group bg-[var(--bg-card)] rounded-xl overflow-hidden border border-[var(--border-primary)] hover:border-amber-600 transition-all shadow-lg hover:shadow-amber-900/20 flex flex-col">
 
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">
@@ -169,7 +169,7 @@ export default function SpecialsLibrary({ specials }: { specials: Special[] }) {
                     {special.excerpt}
                   </p>
 
-                  <div className="flex items-center justify-between text-xs text-gray-500 border-t border-gray-800 pt-3 mt-auto">
+                  <div className="flex items-center justify-between text-xs text-[var(--text-muted)] border-t border-[var(--border-primary)] pt-3 mt-auto">
                     <span className="flex items-center gap-1">
                       <Clock size={12} />
                       {formatDistanceToNow(new Date(special.publishedAt), { addSuffix: true, locale: nl })}
@@ -185,11 +185,11 @@ export default function SpecialsLibrary({ specials }: { specials: Special[] }) {
           })}
         </div>
       ) : (
-        <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-dashed border-gray-700">
+        <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-dashed border-[var(--border-primary)]">
           <h3 className="text-2xl font-bold text-gray-400 mb-2">
             Geen specials gevonden{typeFilter !== 'all' ? ` voor ${specialTypeLabels[typeFilter]?.label || typeFilter}` : ''}{search ? ` met "${search}"` : ''}
           </h3>
-          <p className="text-gray-500">Probeer een andere zoekterm of filter.</p>
+          <p className="text-[var(--text-muted)]">Probeer een andere zoekterm of filter.</p>
         </div>
       )}
     </div>

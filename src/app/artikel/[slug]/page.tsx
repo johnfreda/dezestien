@@ -50,7 +50,7 @@ const ptComponents = {
             decoding="async"
           />
           {value.caption && (
-            <figcaption className="text-center text-sm text-gray-500 mt-2 italic">
+            <figcaption className="text-center text-sm text-[var(--text-muted)] mt-2 italic">
               {value.caption}
             </figcaption>
           )}
@@ -80,7 +80,7 @@ const ptComponents = {
                     decoding="async"
                 />
                 {value.alt && (
-                    <figcaption className="text-center text-sm text-gray-500 mt-2 italic">
+                    <figcaption className="text-center text-sm text-[var(--text-muted)] mt-2 italic">
                         {value.alt}
                     </figcaption>
                 )}
@@ -99,11 +99,11 @@ const ptComponents = {
     },
   },
   block: {
-    normal: ({ children }: any) => <p className="mb-4 text-gray-300 leading-relaxed text-lg">{children}</p>,
+    normal: ({ children }: any) => <p className="mb-4 text-[var(--text-primary)] leading-relaxed text-lg">{children}</p>,
     h2: ({ children }: any) => <h2 className="text-2xl font-bold text-white mt-8 mb-4 border-l-4 border-green-600 pl-4">{children}</h2>,
     h3: ({ children }: any) => <h3 className="text-xl font-bold text-green-400 mt-6 mb-3">{children}</h3>,
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-purple-500 pl-4 py-2 my-6 bg-purple-500/10 rounded-r italic text-gray-300">
+      <blockquote className="border-l-4 border-purple-500 pl-4 py-2 my-6 bg-purple-500/10 rounded-r italic text-[var(--text-primary)]">
         {children}
       </blockquote>
     ),
@@ -454,7 +454,7 @@ export default async function ArticlePage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 selection:bg-green-500 selection:text-white pb-20">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] selection:bg-green-500 selection:text-white pb-20">
       <ReadingProgress />
       <script
         type="application/ld+json"
@@ -536,7 +536,7 @@ export default async function ArticlePage({ params }: Props) {
             {post.title}
           </h1>
           
-          <div className="flex flex-wrap items-center gap-4 md:gap-6 text-xs md:text-sm text-gray-300 font-medium">
+          <div className="flex flex-wrap items-center gap-4 md:gap-6 text-xs md:text-sm text-[var(--text-primary)] font-medium">
              <div className="flex items-center gap-2 bg-black/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">
                 <User size={16} className="text-green-400" />
                 <span>{(post.author || 'DeZestien Redactie').replace(/\(GPT.*?\)/g, '').replace(/DeZestien AI/g, 'DeZestien Redactie').trim()}</span>
@@ -551,7 +551,7 @@ export default async function ArticlePage({ params }: Props) {
              </div>
              {post.category === 'Review' && post.score && (
                <div className="flex items-center gap-3">
-                 <div className="flex items-center gap-3 bg-black/40 px-3 py-2 rounded-xl backdrop-blur-sm border border-gray-700/50">
+                 <div className="flex items-center gap-3 bg-black/40 px-3 py-2 rounded-xl backdrop-blur-sm border border-[var(--border-primary)]/50">
                    {post.boxImage?.asset && (
                      <div className="w-10 h-14 rounded overflow-hidden shadow border border-gray-600/50 shrink-0">
                        {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -568,7 +568,7 @@ export default async function ArticlePage({ params }: Props) {
                        Reviewscore
                      </span>
                      {(post.matchResult || post.title) && (
-                       <span className="text-[11px] text-gray-200 font-semibold leading-tight max-w-[140px] truncate">
+                       <span className="text-[11px] text-[var(--text-primary)] font-semibold leading-tight max-w-[140px] truncate">
                          {post.matchResult || post.title.replace(/review/gi, '').trim()}
                        </span>
                      )}
@@ -597,8 +597,8 @@ export default async function ArticlePage({ params }: Props) {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 -mt-10 relative z-10">
         
         {/* Intro / Lead */}
-        <div className="bg-[#111827] p-6 md:p-8 rounded-2xl shadow-2xl border border-gray-800 mb-10">
-            <p className="text-lg md:text-2xl text-gray-300 font-medium leading-relaxed italic border-l-4 border-green-500 pl-6">
+        <div className="bg-[var(--bg-card)] p-6 md:p-8 rounded-2xl shadow-2xl border border-[var(--border-primary)] mb-10">
+            <p className="text-lg md:text-2xl text-[var(--text-primary)] font-medium leading-relaxed italic border-l-4 border-green-500 pl-6">
                 "{post.excerpt}"
             </p>
         </div>
@@ -651,7 +651,7 @@ export default async function ArticlePage({ params }: Props) {
             )}
 
             {post.podcastExternalLink && (
-              <div className="bg-[#111827] p-6 rounded-xl border border-gray-800">
+              <div className="bg-[var(--bg-card)] p-6 rounded-xl border border-[var(--border-primary)]">
                 <a
                   href={post.podcastExternalLink}
                   target="_blank"
@@ -691,10 +691,10 @@ export default async function ArticlePage({ params }: Props) {
         />
 
         {/* BACK TO HOME BUTTON */}
-        <div className="mt-12 text-center pb-8 border-t border-gray-800 pt-8">
+        <div className="mt-12 text-center pb-8 border-t border-[var(--border-primary)] pt-8">
             <Link
                 href={backUrl}
-                className="inline-flex items-center gap-2 bg-gray-800 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg border border-gray-700 hover:border-green-500"
+                className="inline-flex items-center gap-2 bg-gray-800 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg border border-[var(--border-primary)] hover:border-green-500"
             >
                 <ChevronLeft size={20} />
                 {backLabel}
@@ -717,7 +717,7 @@ export default async function ArticlePage({ params }: Props) {
                 href={post.originalUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="text-gray-600 hover:text-gray-500 transition-colors"
+                className="text-[var(--text-muted)] hover:text-[var(--text-muted)] transition-colors"
               >
                 {new URL(post.originalUrl).hostname.replace('www.', '')}
               </a>

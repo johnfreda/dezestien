@@ -122,7 +122,7 @@ export default async function PodcastsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 pb-20">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -151,7 +151,7 @@ export default async function PodcastsPage() {
                 <Link
                   key={show._id}
                   href={`/podcasts/${show.slug}`}
-                  className="group bg-[#111827] border border-gray-800 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all"
+                  className="group bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden hover:border-purple-500/50 transition-all"
                 >
                   <div className="aspect-square bg-gray-800 relative">
                     {show.coverImage?.asset ? (
@@ -164,7 +164,7 @@ export default async function PodcastsPage() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
-                        <Music size={40} className="text-gray-600" />
+                        <Music size={40} className="text-[var(--text-muted)]" />
                       </div>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
@@ -177,7 +177,7 @@ export default async function PodcastsPage() {
                     <h3 className="text-white font-semibold text-sm truncate group-hover:text-purple-400 transition-colors">
                       {show.name}
                     </h3>
-                    <p className="text-gray-500 text-xs mt-1">
+                    <p className="text-[var(--text-muted)] text-xs mt-1">
                       {show.episodeCount} aflevering{show.episodeCount !== 1 ? 'en' : ''}
                     </p>
                   </div>
@@ -191,10 +191,10 @@ export default async function PodcastsPage() {
         <div className="mb-12">
           <h2 className="text-xl font-bold text-white mb-4">Nieuwste Afleveringen</h2>
           {episodes.length === 0 ? (
-            <div className="text-center py-16 bg-[#111827] rounded-xl border border-gray-800">
-              <Headphones size={48} className="mx-auto text-gray-600 mb-4" />
+            <div className="text-center py-16 bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)]">
+              <Headphones size={48} className="mx-auto text-[var(--text-muted)] mb-4" />
               <p className="text-gray-400">Nog geen podcast afleveringen.</p>
-              <p className="text-gray-500 text-sm mt-1">Voeg podcast shows toe in het CMS om te beginnen.</p>
+              <p className="text-[var(--text-muted)] text-sm mt-1">Voeg podcast shows toe in het CMS om te beginnen.</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -204,7 +204,7 @@ export default async function PodcastsPage() {
                 return (
                   <article
                     key={ep._id}
-                    className="bg-[#111827] border border-gray-800 rounded-xl p-4 md:p-5 hover:border-purple-500/30 transition-all"
+                    className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4 md:p-5 hover:border-purple-500/30 transition-all"
                   >
                     <div className="flex flex-col gap-3">
                       <div className="flex-1 min-w-0">
@@ -217,7 +217,7 @@ export default async function PodcastsPage() {
                               {ep.showName}
                             </Link>
                           )}
-                          <span className="text-gray-500 text-xs flex items-center gap-1">
+                          <span className="text-[var(--text-muted)] text-xs flex items-center gap-1">
                             <Clock size={12} />
                             {formatDistanceToNow(new Date(ep.publishedAt), { addSuffix: true, locale: nl })}
                           </span>
@@ -301,13 +301,13 @@ export default async function PodcastsPage() {
                   <Link
                     key={ep._id}
                     href={`/artikel/${ep.slug}`}
-                    className="flex items-center gap-3 p-3 bg-[#111827] border border-gray-800/50 rounded-lg hover:border-purple-500/30 transition group"
+                    className="flex items-center gap-3 p-3 bg-[var(--bg-card)] border border-[var(--border-primary)]/50 rounded-lg hover:border-purple-500/30 transition group"
                   >
-                    <Play size={16} className="text-gray-500 group-hover:text-purple-400 flex-shrink-0 transition" />
+                    <Play size={16} className="text-[var(--text-muted)] group-hover:text-purple-400 flex-shrink-0 transition" />
                     <span className="text-white text-sm font-medium truncate group-hover:text-purple-400 transition">
                       {ep.title}
                     </span>
-                    <span className="text-gray-600 text-xs ml-auto flex-shrink-0">
+                    <span className="text-[var(--text-muted)] text-xs ml-auto flex-shrink-0">
                       {formatDistanceToNow(new Date(ep.publishedAt), { addSuffix: true, locale: nl })}
                     </span>
                   </Link>

@@ -192,24 +192,24 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
     >
         {/* Time & Cat (Mobile Hidden) */}
         <div className="hidden sm:flex flex-col items-center w-24 text-center shrink-0 mr-4 gap-1.5">
-            <span className={`inline-block px-2 py-0.5 ${getCategoryColor(item.category).bg} text-white text-[9px] font-black uppercase tracking-wider rounded-sm shadow-sm w-full truncate`}>
+            <span className={`inline-block px-2 py-0.5 ${getCategoryColor(item.category).bg} text-[var(--text-primary)] text-[9px] font-black uppercase tracking-wider rounded-sm shadow-sm w-full truncate`}>
                 {item.category}
             </span>
-            <span className="text-gray-500 text-[10px] font-bold">{timeShort(item.publishedAt)}</span>
+            <span className="text-[var(--text-muted)] text-[10px] font-bold">{timeShort(item.publishedAt)}</span>
         </div>
 
         {/* Content */}
         <div className="flex-grow min-w-0 pr-4">
-            <h4 className={`text-sm md:text-base font-semibold truncate ${getCategoryColor(item.category).groupText} transition-colors ${item.isHot ? 'text-white' : 'text-gray-300'}`}>
+            <h4 className={`text-sm md:text-base font-semibold truncate ${getCategoryColor(item.category).groupText} transition-colors ${item.isHot ? 'text-[var(--text-primary)]' : 'text-[var(--text-primary)]'}`}>
             {item.title}
             {item.score && (() => { const lbl = getHighScoreLabel(item.category, item.score); return lbl ? (
-                <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[8px] md:text-[9px] font-black uppercase bg-gradient-to-r from-red-600 to-yellow-500 text-white align-middle animate-pulse">
+                <span className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[8px] md:text-[9px] font-black uppercase bg-gradient-to-r from-red-600 to-yellow-500 text-[var(--text-primary)] align-middle animate-pulse">
                     {lbl.text}
                 </span>
             ) : null; })()}
             </h4>
-            <div className="flex sm:hidden items-center gap-2 text-xs text-gray-500 mt-1">
-                <span className={`inline-block px-1.5 py-0.5 ${getCategoryColor(item.category).bg} text-white text-[8px] font-bold uppercase rounded-sm`}>
+            <div className="flex sm:hidden items-center gap-2 text-xs text-[var(--text-muted)] mt-1">
+                <span className={`inline-block px-1.5 py-0.5 ${getCategoryColor(item.category).bg} text-[var(--text-primary)] text-[8px] font-bold uppercase rounded-sm`}>
                     {item.category}
                 </span>
                 <span className="text-gray-400">{dateShort(item.publishedAt)}</span>
@@ -223,7 +223,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                 Hot
             </span>
             )}
-            <div className="flex items-center text-gray-500 text-xs group-hover:text-green-300 transition-colors">
+            <div className="flex items-center text-[var(--text-muted)] text-xs group-hover:text-green-300 transition-colors">
             <MessageSquare size={14} className="mr-1.5" />
             {commentCounts[item.slug] || 0}
             </div>
@@ -232,7 +232,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
   );
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-300 font-sans selection:bg-green-500 selection:text-white">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans selection:bg-green-500 selection:text-[var(--text-primary)]">
       
       {/* --- MAIN CONTENT --- */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -243,7 +243,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-[500px]">
               
               {/* Main Feature */}
-              <Link href={`/artikel/${heroArticles[0].slug}`} className={`md:col-span-2 relative group cursor-pointer rounded-2xl overflow-hidden border border-gray-800 shadow-2xl block h-[300px] md:h-full card-lift hover:border-gray-700 hover:${getCategoryColor(heroArticles[0].category).glow}`}>
+              <Link href={`/artikel/${heroArticles[0].slug}`} className={`md:col-span-2 relative group cursor-pointer rounded-2xl overflow-hidden border border-[var(--border-primary)] shadow-2xl block h-[300px] md:h-full card-lift hover:border-[var(--border-primary)] hover:${getCategoryColor(heroArticles[0].category).glow}`}>
                 {heroArticles[0].imageUrl && (
                   <Image
                     src={heroArticles[0].imageUrl}
@@ -259,26 +259,26 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                 
                 {/* HIGH SCORE LABEL (90+) */}
                 {heroArticles[0].score && (() => { const lbl = getHighScoreLabel(heroArticles[0].category, heroArticles[0].score); return lbl ? (
-                  <div className="absolute top-0 left-0 bg-purple-600 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-br-xl shadow-lg z-20 border-b border-r border-purple-400/30">
+                  <div className="absolute top-0 left-0 bg-purple-600 text-[var(--text-primary)] text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-br-xl shadow-lg z-20 border-b border-r border-purple-400/30">
                     {lbl.text}
                   </div>
                 ) : null; })()}
 
                 {/* Score Badge (if review) */}
                 {heroArticles[0].score && (
-                  <div className={`absolute top-6 right-6 ${getCategoryColor(heroArticles[0].category).bg}/90 text-white font-black text-xl w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20 z-10`}>
+                  <div className={`absolute top-6 right-6 ${getCategoryColor(heroArticles[0].category).bg}/90 text-[var(--text-primary)] font-black text-xl w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20 z-10`}>
                     {heroArticles[0].score}
                   </div>
                 )}
 
                 <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
-                  <span className={`inline-block px-3 py-1 ${getCategoryColor(heroArticles[0].category).bg} text-white text-xs font-bold uppercase tracking-wider rounded-sm mb-3 badge-shine`}>
+                  <span className={`inline-block px-3 py-1 ${getCategoryColor(heroArticles[0].category).bg} text-[var(--text-primary)] text-xs font-bold uppercase tracking-wider rounded-sm mb-3 badge-shine`}>
                     {heroArticles[0].category}
                   </span>
-                  <h1 className={`text-2xl md:text-5xl font-black text-white leading-tight mb-2 md:mb-3 ${getCategoryColor(heroArticles[0].category).groupText} transition-colors drop-shadow-lg line-clamp-2 md:line-clamp-3`}>
+                  <h1 className={`text-2xl md:text-5xl font-black text-[var(--text-primary)] leading-tight mb-2 md:mb-3 ${getCategoryColor(heroArticles[0].category).groupText} transition-colors drop-shadow-lg line-clamp-2 md:line-clamp-3`}>
                     {heroArticles[0].title}
                   </h1>
-                  <p className="text-gray-300 text-sm md:text-lg md:w-3/4 mb-2 md:mb-4 line-clamp-2 hidden sm:block">
+                  <p className="text-[var(--text-primary)] text-sm md:text-lg md:w-3/4 mb-2 md:mb-4 line-clamp-2 hidden sm:block">
                     {heroArticles[0].excerpt}
                   </p>
                   <div className="flex items-center text-xs md:text-sm text-gray-400 gap-4">
@@ -291,7 +291,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
               {/* Side Features (DESKTOP ONLY) */}
               <div className="hidden md:flex flex-col gap-4 h-full">
                 {heroArticles.slice(1, 3).map((item) => (
-                  <Link key={item.id} href={`/artikel/${item.slug}`} className="relative flex-1 group cursor-pointer rounded-2xl overflow-hidden border border-gray-800 shadow-lg block h-auto card-lift hover:border-gray-700">
+                  <Link key={item.id} href={`/artikel/${item.slug}`} className="relative flex-1 group cursor-pointer rounded-2xl overflow-hidden border border-[var(--border-primary)] shadow-lg block h-auto card-lift hover:border-[var(--border-primary)]">
                     {item.imageUrl && (
                       <Image
                         src={item.imageUrl}
@@ -307,22 +307,22 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                     
                     {/* HIGH SCORE LABEL (90+) - Small */}
                     {item.score && (() => { const lbl = getHighScoreLabel(item.category, item.score); return lbl ? (
-                        <div className="absolute top-0 left-0 bg-purple-600 text-white text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded-br-lg shadow-lg z-20 border-b border-r border-purple-400/30">
+                        <div className="absolute top-0 left-0 bg-purple-600 text-[var(--text-primary)] text-[8px] font-black uppercase tracking-widest px-2 py-1 rounded-br-lg shadow-lg z-20 border-b border-r border-purple-400/30">
                           {lbl.text}
                         </div>
                     ) : null; })()}
 
                     {item.score && (
-                      <div className={`absolute top-4 right-4 ${getCategoryColor(item.category).bg}/90 text-white font-bold text-sm w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2 border-white/10 z-10`}>
+                      <div className={`absolute top-4 right-4 ${getCategoryColor(item.category).bg}/90 text-[var(--text-primary)] font-bold text-sm w-10 h-10 rounded-full flex items-center justify-center shadow-lg border-2 border-white/10 z-10`}>
                         {item.score}
                       </div>
                     )}
 
                     <div className="absolute bottom-0 left-0 p-4 md:p-5">
-                      <span className={`inline-block px-2 py-0.5 ${getCategoryColor(item.category).bg} text-white text-[10px] font-bold uppercase tracking-wider rounded-sm mb-1 md:mb-2 badge-shine`}>
+                      <span className={`inline-block px-2 py-0.5 ${getCategoryColor(item.category).bg} text-[var(--text-primary)] text-[10px] font-bold uppercase tracking-wider rounded-sm mb-1 md:mb-2 badge-shine`}>
                         {item.category}
                       </span>
-                      <h2 className={`text-lg md:text-xl font-bold text-white leading-tight ${getCategoryColor(item.category).groupText} transition-colors line-clamp-2`}>
+                      <h2 className={`text-lg md:text-xl font-bold text-[var(--text-primary)] leading-tight ${getCategoryColor(item.category).groupText} transition-colors line-clamp-2`}>
                         {item.title}
                       </h2>
                     </div>
@@ -338,24 +338,24 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
           
           {/* LEFT COLUMN: News Feed (Tweakers Stijl) */}
           <div className="lg:col-span-8">
-            <div className="bg-[#111827] rounded-xl border border-gray-800 overflow-hidden shadow-xl">
+            <div className="bg-[var(--bg-card)] rounded-xl border border-[var(--border-primary)] overflow-hidden shadow-xl">
               
               {/* Feed Header */}
-              <div className="px-4 md:px-6 py-4 border-b border-gray-700 flex justify-between items-center bg-[#161e2e]">
-                <h3 className="text-lg md:text-xl font-bold text-white flex items-center gap-2">
+              <div className="px-4 md:px-6 py-4 border-b border-[var(--border-primary)] flex justify-between items-center bg-[#161e2e]">
+                <h3 className="text-lg md:text-xl font-bold text-[var(--text-primary)] flex items-center gap-2">
                   <Flame className="text-orange-500" size={20} />
                   {activeTab === 'reviews' ? 'Alle Reviews' : 'Laatste Updates'}
                 </h3>
                 <div className="flex bg-gray-900 rounded-lg p-1 text-[10px] md:text-xs font-bold">
                   <button 
                     onClick={() => setActiveTab('nieuws')}
-                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'nieuws' ? 'bg-green-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'nieuws' ? 'bg-green-600 text-[var(--text-primary)]' : 'text-gray-400 hover:text-[var(--text-primary)]'}`}
                   >
                     NIEUWS
                   </button>
                   <button 
                     onClick={() => setActiveTab('reviews')}
-                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'reviews' ? 'bg-green-600 text-white' : 'text-gray-400 hover:text-white'}`}
+                    className={`px-3 py-1.5 rounded transition-colors ${activeTab === 'reviews' ? 'bg-green-600 text-[var(--text-primary)]' : 'text-gray-400 hover:text-[var(--text-primary)]'}`}
                   >
                     REVIEWS
                   </button>
@@ -371,7 +371,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                     {/* Gebruik vooraf berekende flag om te bepalen of 'Vandaag'-header nodig is */}
                     {hasMobileTodayItems ? (
                       <>
-                        <div className="bg-[#161e2e]/50 px-4 py-2 border-y border-gray-800 text-xs font-bold text-gray-400 uppercase tracking-widest sticky top-0 z-10 backdrop-blur-sm">
+                        <div className="bg-[#161e2e]/50 px-4 py-2 border-y border-[var(--border-primary)] text-xs font-bold text-gray-400 uppercase tracking-widest sticky top-0 z-10 backdrop-blur-sm">
                           Vandaag
                         </div>
                         {heroArticles.slice(1, 3).map((item) => renderFeedItem(item, true))}
@@ -384,7 +384,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
 
                 {/* 2. De reguliere feed - gegroepeerd */}
                 {Object.keys(displayedGroupedItems).length === 0 ? (
-                    <div className="p-8 text-center text-gray-500">
+                    <div className="p-8 text-center text-[var(--text-muted)]">
                         Nog geen items in deze categorie.
                     </div>
                 ) : (
@@ -397,7 +397,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                         return (
                             <React.Fragment key={label}>
                                 {showHeader && (
-                                  <div className="bg-[#161e2e]/50 px-4 py-2 border-y border-gray-800 text-xs font-bold text-gray-400 uppercase tracking-widest sticky top-0 z-10 backdrop-blur-sm">
+                                  <div className="bg-[#161e2e]/50 px-4 py-2 border-y border-[var(--border-primary)] text-xs font-bold text-gray-400 uppercase tracking-widest sticky top-0 z-10 backdrop-blur-sm">
                                       {label}
                                   </div>
                                 )}
@@ -409,7 +409,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                 
                 {/* Load More Button - Only show if there are older items (3+ dagen) */}
                 {hasMoreItems && (
-                  <div className="px-4 py-4 border-t border-gray-800">
+                  <div className="px-4 py-4 border-t border-[var(--border-primary)]">
                     <button
                       onClick={() => setItemsToShow(prev => prev + 10)}
                       className="w-full py-3 text-center text-sm font-bold text-green-400 hover:text-green-300 hover:bg-gray-800/50 transition-colors uppercase tracking-widest rounded-lg border border-green-500/30 hover:border-green-500/50"
@@ -424,7 +424,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
               {!hasMoreItems && (
                 <Link 
                   href={activeTab === 'reviews' ? "/categorie/reviews" : "/categorie/nieuws"}
-                  className="block w-full py-4 text-center text-sm font-bold text-gray-400 hover:text-white hover:bg-gray-800 transition-colors uppercase tracking-widest"
+                  className="block w-full py-4 text-center text-sm font-bold text-gray-400 hover:text-[var(--text-primary)] hover:bg-gray-800 transition-colors uppercase tracking-widest"
                 >
                   MEER {activeTab === 'reviews' ? 'REVIEWS' : 'NIEUWS'} BEKIJKEN
                 </Link>
@@ -437,7 +437,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
             
             {/* Trending Block (DYNAMIC) */}
             <div className="glass rounded-xl p-6 shadow-lg">
-              <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-700 pb-2 flex items-center gap-2">
+              <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 border-b border-[var(--border-primary)] pb-2 flex items-center gap-2">
                 <TrendingUp size={16} /> Meest Gelezen
               </h4>
               <ul className="space-y-4">
@@ -446,17 +446,17 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                     <li key={article.id} className="flex gap-3 group">
                         <span className="text-3xl font-black text-gray-800 group-hover:text-green-600 transition-colors font-mono">0{idx + 1}</span>
                         <Link href={`/artikel/${article.slug}`} className="flex flex-col">
-                        <span className="text-sm font-medium text-gray-300 group-hover:text-green-400 leading-snug line-clamp-2">
+                        <span className="text-sm font-medium text-[var(--text-primary)] group-hover:text-green-400 leading-snug line-clamp-2">
                             {article.title}
                         </span>
-                        <span className="text-xs text-gray-600 mt-1 flex items-center gap-1">
+                        <span className="text-xs text-[var(--text-muted)] mt-1 flex items-center gap-1">
                             <Eye size={12} /> {(viewCounts[article.slug] || 0) + (article.score ? 120 : 45)} views
                         </span>
                         </Link>
                     </li>
                     ))
                 ) : (
-                    <li className="text-gray-500 italic text-sm">Nog geen populaire artikelen.</li>
+                    <li className="text-[var(--text-muted)] italic text-sm">Nog geen populaire artikelen.</li>
                 )}
               </ul>
             </div>
@@ -471,7 +471,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                   
                   {/* HIGH SCORE LABEL */}
                   {featuredReview.score && (() => { const lbl = getHighScoreLabel(featuredReview.category, featuredReview.score); return lbl ? (
-                    <div className="absolute top-0 left-0 bg-purple-600 text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-br-2xl shadow-lg z-20 border-r border-b border-purple-400/30">
+                    <div className="absolute top-0 left-0 bg-purple-600 text-[var(--text-primary)] text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-br-2xl shadow-lg z-20 border-r border-b border-purple-400/30">
                       {lbl.text}
                     </div>
                   ) : null; })()}
@@ -494,8 +494,8 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                             featuredReview.score >= 50 ? 'bg-gradient-to-br from-yellow-600 to-orange-500 border-yellow-400' :
                             'bg-gradient-to-br from-red-600 to-orange-600 border-red-400'
                           }`}>
-                            <span className="text-3xl font-black text-white leading-none drop-shadow-lg">{featuredReview.score}</span>
-                            <span className="text-[8px] text-white/90 font-bold uppercase tracking-wider mt-1">Editor</span>
+                            <span className="text-3xl font-black text-[var(--text-primary)] leading-none drop-shadow-lg">{featuredReview.score}</span>
+                            <span className="text-[8px] text-[var(--text-primary)]/90 font-bold uppercase tracking-wider mt-1">Editor</span>
                           </div>
                           <div className="absolute inset-0 rounded-2xl bg-green-500/20 blur-xl -z-10 group-hover:bg-green-500/30 transition-colors"></div>
                         </div>
@@ -505,8 +505,8 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                           <div className="relative">
                             <div className="w-20 h-20 rounded-2xl flex flex-col items-center justify-center border-4 border-green-400/50 bg-gradient-to-br from-green-600 to-emerald-500 shadow-[0_0_30px_rgba(59,130,246,0.4)] group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] transition-all duration-300">
                               <User size={12} className="absolute -top-1 -right-1 text-green-200 bg-slate-900 rounded-full p-0.5" />
-                              <span className="text-3xl font-black text-white leading-none drop-shadow-lg">{Math.round(featuredReviewRating.average)}</span>
-                              <span className="text-[8px] text-white/90 font-bold uppercase tracking-wider mt-1">Community</span>
+                              <span className="text-3xl font-black text-[var(--text-primary)] leading-none drop-shadow-lg">{Math.round(featuredReviewRating.average)}</span>
+                              <span className="text-[8px] text-[var(--text-primary)]/90 font-bold uppercase tracking-wider mt-1">Community</span>
                             </div>
                             <div className="absolute inset-0 rounded-2xl bg-green-500/20 blur-xl -z-10 group-hover:bg-green-500/30 transition-colors"></div>
                           </div>
@@ -523,17 +523,17 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                     )}
                     
                     {/* Title & Excerpt */}
-                    <h3 className="text-lg md:text-xl font-black text-white mb-2 leading-tight group-hover:text-green-300 transition-colors line-clamp-2">
+                    <h3 className="text-lg md:text-xl font-black text-[var(--text-primary)] mb-2 leading-tight group-hover:text-green-300 transition-colors line-clamp-2">
                       {featuredReview.title}
                     </h3>
-                    <p className="text-sm text-gray-300 mb-5 line-clamp-2 italic opacity-90 leading-relaxed">
+                    <p className="text-sm text-[var(--text-primary)] mb-5 line-clamp-2 italic opacity-90 leading-relaxed">
                       "{featuredReview.excerpt}"
                     </p>
                     
                     {/* CTA Button */}
                     <div className="relative">
                       <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-500 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                      <button className="relative w-full text-sm font-black bg-gradient-to-r from-green-600 to-emerald-500 text-white px-5 py-3 rounded-lg hover:from-green-500 hover:to-emerald-400 transition-all uppercase tracking-wider shadow-lg border border-white/20">
+                      <button className="relative w-full text-sm font-black bg-gradient-to-r from-green-600 to-emerald-500 text-[var(--text-primary)] px-5 py-3 rounded-lg hover:from-green-500 hover:to-emerald-400 transition-all uppercase tracking-wider shadow-lg border border-white/20">
                         Lees Review &rarr;
                       </button>
                     </div>
@@ -548,15 +548,15 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
 
         {/* --- HIGHLIGHTED REPEAT SECTION --- */}
         {heroArticles.length > 0 && (
-            <section className="mt-20 border-t border-gray-800 pt-12">
-                <h2 className="text-xl md:text-2xl font-black text-white mb-8 uppercase italic tracking-tighter flex items-center gap-3">
+            <section className="mt-20 border-t border-[var(--border-primary)] pt-12">
+                <h2 className="text-xl md:text-2xl font-black text-[var(--text-primary)] mb-8 uppercase italic tracking-tighter flex items-center gap-3">
                     <Flame className="text-red-500" />
                     GEMIST? UITGELICHTE TOPPERS
                 </h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {heroArticles.map((item) => (
-                        <Link key={item.id} href={`/artikel/${item.slug}`} className="group block bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all shadow-lg hover:shadow-green-900/10">
+                        <Link key={item.id} href={`/artikel/${item.slug}`} className="group block bg-[var(--bg-card)] rounded-xl overflow-hidden border border-[var(--border-primary)] hover:border-green-500/50 transition-all shadow-lg hover:shadow-green-900/10">
                             <div className="h-48 overflow-hidden relative">
                                 {item.imageUrl && (
                                   <Image
@@ -568,7 +568,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                                   />
                                 )}
                                 {item.score && (
-                                    <div className="absolute top-2 right-2 bg-green-600 text-white font-bold text-xs w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
+                                    <div className="absolute top-2 right-2 bg-green-600 text-[var(--text-primary)] font-bold text-xs w-8 h-8 rounded-full flex items-center justify-center shadow-lg">
                                         {item.score}
                                     </div>
                                 )}
@@ -577,7 +577,7 @@ export default function HomeClient({ heroArticles, newsItems, allArticles, comme
                                 <span className={`text-[10px] uppercase font-bold tracking-widest ${getCategoryColor(item.category).text} mb-2 block`}>
                                     {item.category}
                                 </span>
-                                <h3 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2 leading-tight">
+                                <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-green-400 transition-colors line-clamp-2 leading-tight">
                                     {item.title}
                                 </h3>
                             </div>

@@ -187,13 +187,13 @@ export default async function CategoryPage({ params }: Props) {
       isHot: Boolean(p.isHot),
     }));
     return (
-      <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-green-500 selection:text-white py-12">
+      <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans selection:bg-green-500 selection:text-white py-12">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex items-center gap-4 mb-8 border-b border-gray-800 pb-4">
+          <div className="flex items-center gap-4 mb-8 border-b border-[var(--border-primary)] pb-4">
             <h1 className="text-4xl md:text-5xl font-display font-black text-white italic uppercase tracking-tighter">
               Specials
             </h1>
@@ -222,13 +222,13 @@ export default async function CategoryPage({ params }: Props) {
       isHot: Boolean(p.isHot),
     }));
     return (
-      <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-green-500 selection:text-white py-12">
+      <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans selection:bg-green-500 selection:text-white py-12">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="flex items-center gap-4 mb-8 border-b border-gray-800 pb-4">
+          <div className="flex items-center gap-4 mb-8 border-b border-[var(--border-primary)] pb-4">
             <h1 className="text-4xl md:text-5xl font-display font-black text-white italic uppercase tracking-tighter">
               {title}
             </h1>
@@ -241,7 +241,7 @@ export default async function CategoryPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-gray-200 font-sans selection:bg-green-500 selection:text-white py-12">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans selection:bg-green-500 selection:text-white py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -249,7 +249,7 @@ export default async function CategoryPage({ params }: Props) {
       <div className="container mx-auto px-4 max-w-7xl">
         
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8 border-b border-gray-800 pb-4">
+        <div className="flex items-center gap-4 mb-8 border-b border-[var(--border-primary)] pb-4">
           <h1 className="text-4xl md:text-5xl font-display font-black text-white italic uppercase tracking-tighter">
             {title}
           </h1>
@@ -260,7 +260,7 @@ export default async function CategoryPage({ params }: Props) {
         {posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post: any) => (
-              <Link key={post._id} href={`/artikel/${post.slug}`} className="group bg-[#111827] rounded-xl overflow-hidden border border-gray-800 hover:border-green-600 transition-all shadow-lg hover:shadow-green-900/20 flex flex-col">
+              <Link key={post._id} href={`/artikel/${post.slug}`} className="group bg-[var(--bg-card)] rounded-xl overflow-hidden border border-[var(--border-primary)] hover:border-green-600 transition-all shadow-lg hover:shadow-green-900/20 flex flex-col">
                 
                 {/* Image */}
                 <div className="relative h-48 w-full overflow-hidden">
@@ -310,7 +310,7 @@ export default async function CategoryPage({ params }: Props) {
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between text-xs text-gray-500 border-t border-gray-800 pt-3 mt-auto">
+                  <div className="flex items-center justify-between text-xs text-[var(--text-muted)] border-t border-[var(--border-primary)] pt-3 mt-auto">
                     <span className="flex items-center gap-1">
                       <Clock size={12} />
                       {formatDistanceToNow(new Date(post.publishedAt), { addSuffix: true, locale: nl })}
@@ -325,9 +325,9 @@ export default async function CategoryPage({ params }: Props) {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-dashed border-gray-700">
+          <div className="text-center py-20 bg-gray-900/50 rounded-2xl border border-dashed border-[var(--border-primary)]">
             <h3 className="text-2xl font-bold text-gray-400 mb-2">Nog geen artikelen in deze categorie</h3>
-            <p className="text-gray-500">Ga naar de studio om iets te schrijven over {title}!</p>
+            <p className="text-[var(--text-muted)]">Ga naar de studio om iets te schrijven over {title}!</p>
             <Link href="/studio" className="inline-block mt-6 px-6 py-2 bg-green-600 text-white font-bold rounded-lg hover:bg-green-500 transition-colors">
               Naar Studio
             </Link>

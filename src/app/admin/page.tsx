@@ -109,28 +109,28 @@ export default function AdminPage() {
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0b0f19]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
         <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] px-4 py-8">
+    <div className="min-h-screen bg-[var(--bg-primary)] px-4 py-8">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-3xl font-black text-white tracking-tight">Admin Dashboard</h1>
-            <p className="text-gray-500 text-sm mt-1">DeZestien.nl Redactie Tools</p>
+            <p className="text-[var(--text-muted)] text-sm mt-1">DeZestien.nl Redactie Tools</p>
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-[var(--text-muted)]">
             Ingelogd als <span className="text-green-400">{session?.user?.name}</span>
           </div>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-6 border-b border-gray-800 pb-4">
+        <div className="flex gap-2 mb-6 border-b border-[var(--border-primary)] pb-4">
           <button
             onClick={() => setActiveTab('nieuws')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wide transition-all ${
@@ -166,7 +166,7 @@ export default function AdminPage() {
         {/* TAB: Nieuws Maken */}
         {activeTab === 'nieuws' && (
           <div className="space-y-6">
-            <div className="bg-gray-900/80 rounded-2xl border border-gray-800 p-6">
+            <div className="bg-gray-900/80 rounded-2xl border border-[var(--border-primary)] p-6">
               <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <Newspaper size={20} className="text-green-400" />
                 Artikel Genereren
@@ -178,12 +178,12 @@ export default function AdminPage() {
               <div className="space-y-4">
                 {/* Onderwerp invoer */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-300 mb-2">Onderwerp / Bron</label>
+                  <label className="block text-sm font-bold text-[var(--text-primary)] mb-2">Onderwerp / Bron</label>
                   <textarea
                     value={topic}
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder="Bijv: 'Nintendo Direct februari 2026 - nieuwe Mario game aangekondigd' of plak een nieuwsbron tekst..."
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none transition-colors"
+                    className="w-full bg-gray-800 border border-[var(--border-primary)] rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 resize-none transition-colors"
                     rows={4}
                     disabled={isGenerating}
                   />
@@ -191,7 +191,7 @@ export default function AdminPage() {
 
                 {/* Categorie selectie */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-300 mb-2">Categorie</label>
+                  <label className="block text-sm font-bold text-[var(--text-primary)] mb-2">Categorie</label>
                   <div className="flex flex-wrap gap-2">
                     {['Nieuws', 'Review', 'Special', 'Tech', 'Hardware', 'Indie', 'Opinie', 'Gerucht'].map((cat) => (
                       <button
@@ -201,7 +201,7 @@ export default function AdminPage() {
                         className={`px-3 py-1.5 rounded-lg text-sm font-bold transition-all ${
                           category === cat
                             ? 'bg-green-600 text-white'
-                            : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 border border-gray-700'
+                            : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 border border-[var(--border-primary)]'
                         }`}
                       >
                         {cat}
@@ -212,27 +212,27 @@ export default function AdminPage() {
 
                 {/* YouTube URL (optioneel) */}
                 <div>
-                  <label className="block text-sm font-bold text-gray-300 mb-2 flex items-center gap-2">
+                  <label className="block text-sm font-bold text-[var(--text-primary)] mb-2 flex items-center gap-2">
                     <Youtube size={16} className="text-red-500" />
                     YouTube Video URL
-                    <span className="text-gray-500 font-normal">(optioneel)</span>
+                    <span className="text-[var(--text-muted)] font-normal">(optioneel)</span>
                   </label>
                   <input
                     type="url"
                     value={youtubeUrl}
                     onChange={(e) => setYoutubeUrl(e.target.value)}
                     placeholder="https://www.youtube.com/watch?v=..."
-                    className="w-full bg-gray-800 border border-gray-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                    className="w-full bg-gray-800 border border-[var(--border-primary)] rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
                     disabled={isGenerating}
                   />
-                  <p className="text-xs text-gray-500 mt-1">Video wordt als embed in het artikel geplaatst</p>
+                  <p className="text-xs text-[var(--text-muted)] mt-1">Video wordt als embed in het artikel geplaatst</p>
                 </div>
 
                 {/* Genereer knop */}
                 <button
                   onClick={handleGenerate}
                   disabled={isGenerating || !topic.trim()}
-                  className="flex items-center gap-2 bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-gray-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-green-900/20 disabled:shadow-none"
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-[var(--text-muted)] text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg shadow-green-900/20 disabled:shadow-none"
                 >
                   {isGenerating ? (
                     <>
@@ -290,7 +290,7 @@ export default function AdminPage() {
         {/* TAB: Scanner */}
         {activeTab === 'scanner' && (
           <div className="space-y-6">
-            <div className="bg-gray-900/80 rounded-2xl border border-gray-800 p-6">
+            <div className="bg-gray-900/80 rounded-2xl border border-[var(--border-primary)] p-6">
               <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <Zap size={20} className="text-yellow-400" />
                 RSS Scanner
@@ -311,13 +311,13 @@ export default function AdminPage() {
                   </div>
                   <div>
                     <span className="text-sm font-bold text-white">Limiet overschrijven</span>
-                    <p className="text-xs text-gray-500">Negeert dagmax, nachtmodus en slot-budgetten</p>
+                    <p className="text-xs text-[var(--text-muted)]">Negeert dagmax, nachtmodus en slot-budgetten</p>
                   </div>
                 </label>
 
                 {forceOverride && (
                   <div>
-                    <label className="block text-sm font-bold text-gray-300 mb-2">
+                    <label className="block text-sm font-bold text-[var(--text-primary)] mb-2">
                       Aantal artikelen: <span className="text-orange-400">{forceCount}</span>
                     </label>
                     <input
@@ -328,7 +328,7 @@ export default function AdminPage() {
                       onChange={(e) => setForceCount(parseInt(e.target.value, 10))}
                       className="w-full accent-orange-500"
                     />
-                    <div className="flex justify-between text-xs text-gray-600 mt-1">
+                    <div className="flex justify-between text-xs text-[var(--text-muted)] mt-1">
                       <span>1</span>
                       <span>5</span>
                       <span>10</span>
@@ -342,7 +342,7 @@ export default function AdminPage() {
               <button
                 onClick={handleScan}
                 disabled={isScanning}
-                className={`flex items-center gap-2 ${forceOverride ? 'bg-orange-600 hover:bg-orange-500 shadow-orange-900/20' : 'bg-yellow-600 hover:bg-yellow-500 shadow-yellow-900/20'} disabled:bg-gray-700 disabled:text-gray-500 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg disabled:shadow-none`}
+                className={`flex items-center gap-2 ${forceOverride ? 'bg-orange-600 hover:bg-orange-500 shadow-orange-900/20' : 'bg-yellow-600 hover:bg-yellow-500 shadow-yellow-900/20'} disabled:bg-gray-700 disabled:text-[var(--text-muted)] text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg disabled:shadow-none`}
               >
                 {isScanning ? (
                   <>
@@ -382,30 +382,30 @@ export default function AdminPage() {
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                         <div className="bg-gray-800 rounded-xl p-3 text-center">
                           <p className="text-2xl font-black text-white">{scanResult.scanned}</p>
-                          <p className="text-xs text-gray-500 uppercase tracking-wide">Feeds</p>
+                          <p className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Feeds</p>
                         </div>
                         <div className="bg-gray-800 rounded-xl p-3 text-center">
                           <p className="text-2xl font-black text-white">{scanResult.found}</p>
-                          <p className="text-xs text-gray-500 uppercase tracking-wide">Gevonden</p>
+                          <p className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Gevonden</p>
                         </div>
                         <div className="bg-gray-800 rounded-xl p-3 text-center">
                           <p className="text-2xl font-black text-green-400">{scanResult.processed}</p>
-                          <p className="text-xs text-gray-500 uppercase tracking-wide">Verwerkt</p>
+                          <p className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Verwerkt</p>
                         </div>
                         <div className="bg-gray-800 rounded-xl p-3 text-center">
                           <p className="text-2xl font-black text-green-400">{scanResult.dailyCount}/{scanResult.dailyMax}</p>
-                          <p className="text-xs text-gray-500 uppercase tracking-wide">Dagbudget</p>
+                          <p className="text-xs text-[var(--text-muted)] uppercase tracking-wide">Dagbudget</p>
                         </div>
                       </div>
 
                       {/* Individuele resultaten */}
                       {scanResult.results && scanResult.results.length > 0 && (
                         <div className="bg-gray-800 rounded-xl overflow-hidden">
-                          <div className="px-4 py-3 border-b border-gray-700">
-                            <h3 className="text-sm font-bold text-gray-300">Gegenereerde artikelen</h3>
+                          <div className="px-4 py-3 border-b border-[var(--border-primary)]">
+                            <h3 className="text-sm font-bold text-[var(--text-primary)]">Gegenereerde artikelen</h3>
                           </div>
                           {scanResult.results.map((r, i) => (
-                            <div key={i} className="px-4 py-3 border-b border-gray-700/50 last:border-0 flex items-center gap-3">
+                            <div key={i} className="px-4 py-3 border-b border-[var(--border-primary)]/50 last:border-0 flex items-center gap-3">
                               {r.status === 'ok' ? (
                                 <CheckCircle size={16} className="text-green-400 shrink-0" />
                               ) : (
@@ -434,8 +434,8 @@ export default function AdminPage() {
 
         {/* TAB: Gebruikers */}
         {activeTab === 'users' && (
-          <div className="bg-gray-900/80 rounded-2xl border border-gray-800 overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-800">
+          <div className="bg-gray-900/80 rounded-2xl border border-[var(--border-primary)] overflow-hidden">
+            <div className="px-6 py-4 border-b border-[var(--border-primary)]">
               <h2 className="text-lg font-bold text-white flex items-center gap-2">
                 <Users size={20} className="text-purple-400" />
                 Gebruikers ({users.length})
@@ -452,7 +452,7 @@ export default function AdminPage() {
               </thead>
               <tbody>
                 {users.map((user: any) => (
-                  <tr key={user.id} className="border-t border-gray-800/50 hover:bg-gray-800/30 transition-colors">
+                  <tr key={user.id} className="border-t border-[var(--border-primary)]/50 hover:bg-gray-800/30 transition-colors">
                     <td className="px-6 py-4 text-white font-medium">{user.name}</td>
                     <td className="px-6 py-4 text-gray-400 text-sm">{user.email}</td>
                     <td className="px-6 py-4">

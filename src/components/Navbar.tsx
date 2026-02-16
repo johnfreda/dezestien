@@ -6,6 +6,8 @@ import { Search, Menu, X, LogIn, UserPlus } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import NotificationCenter from './NotificationCenter';
 import NavMana from './NavMana';
+import ThemeToggle from './ThemeToggle';
+import Logo from './Logo';
 
 type NavItem = {
   label: string;
@@ -29,7 +31,7 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0c1525]/95 backdrop-blur-md gradient-border-bottom shadow-xl">
+    <nav className="sticky top-0 z-50 backdrop-blur-md gradient-border-bottom" style={{ background: 'var(--bg-nav)', boxShadow: 'var(--shadow-md)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
@@ -39,24 +41,24 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
             {/* Mobile Hamburger */}
             <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden text-gray-400 hover:text-white transition-colors p-1"
+                className="md:hidden text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors p-1"
                 aria-label="Menu openen"
             >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-1.5 text-2xl font-black tracking-tighter text-white italic" onClick={closeMenu}>
-              <span className="text-xl">⚽</span>
-              DE<span className="text-green-500 logo-glow">ZESTIEN</span>
-              <span className="not-italic text-xs text-gray-500 font-normal">.NL</span>
+            <Link href="/" className="flex items-center gap-2 text-2xl font-black tracking-tighter italic" onClick={closeMenu}>
+              <Logo className="w-8 h-8 flex-shrink-0" />
+              <span className="text-[var(--text-primary)]">DE</span><span className="text-green-500 logo-glow">ZESTIEN</span>
+              <span className="not-italic text-xs text-[var(--text-muted)] font-normal">.NL</span>
             </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:block">
                 <div className="flex items-baseline space-x-1">
                 {navLinks.map((item) => (
-                    <Link key={item.url} href={item.url} className="relative px-3 py-2 rounded-md text-sm font-bold text-gray-400 hover:text-white transition-all uppercase tracking-wide group">
+                    <Link key={item.url} href={item.url} className="relative px-3 py-2 rounded-md text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all uppercase tracking-wide group">
                     {item.label}
                     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-green-500 to-emerald-400 rounded-full group-hover:w-3/4 transition-all duration-300" />
                     </Link>
@@ -68,18 +70,20 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
           {/* RIGHT: Icons & Auth */}
           <div className="flex items-center gap-2 md:gap-4">
             <button aria-label="Zoeken" className="p-1">
-              <Search className="w-5 h-5 text-gray-400 hover:text-white cursor-pointer mr-2 md:mr-0" />
+              <Search className="w-5 h-5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer mr-2 md:mr-0" />
             </button>
+            
+            <ThemeToggle />
             
             {/* Notification Center (only when logged in) */}
             {session && <NotificationCenter />}
             
             {/* Desktop Auth Buttons */}
             {!session && (
-                <div className="hidden md:flex items-center gap-3 border-r border-gray-700 pr-4 mr-1">
+                <div className="hidden md:flex items-center gap-3 border-r border-[var(--border-primary)] pr-4 mr-1">
                     <Link 
                         href="/login" 
-                        className="text-gray-400 hover:text-white text-xs font-bold uppercase tracking-wider transition-colors"
+                        className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-xs font-bold uppercase tracking-wider transition-colors"
                     >
                         Inloggen
                     </Link>
@@ -100,14 +104,14 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
 
       {/* MOBILE MENU DROPDOWN (Full Height) */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-[#0c1525] border-b border-gray-800 absolute top-16 left-0 w-full h-[calc(100vh-64px)] overflow-y-auto animate-in slide-in-from-left-2 z-40 shadow-2xl p-4">
+        <div className="md:hidden bg-[var(--bg-secondary)] border-b border-[var(--border-primary)] absolute top-16 left-0 w-full h-[calc(100vh-64px)] overflow-y-auto animate-in slide-in-from-left-2 z-40 shadow-2xl p-4">
             <div className="flex flex-col space-y-2">
                 {navLinks.map((item, index) => (
                     <Link
                         key={item.url}
                         href={item.url}
                         onClick={closeMenu}
-                        className="stagger-item block px-4 py-4 rounded-xl text-lg font-bold text-gray-200 hover:text-white hover:bg-gray-800 transition-colors uppercase tracking-wide border border-gray-800 hover:border-green-500/50"
+                        className="stagger-item block px-4 py-4 rounded-xl text-lg font-bold text-[var(--text-primary)] hover:text-white hover:bg-gray-800 transition-colors uppercase tracking-wide border border-[var(--border-primary)] hover:border-green-500/50"
                         style={{ animationDelay: `${index * 50}ms` }}
                     >
                         {item.label}
@@ -115,7 +119,7 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
                 ))}
 
                 {!session && (
-                    <div className="grid grid-cols-1 gap-4 pt-6 mt-6 border-t border-gray-800">
+                    <div className="grid grid-cols-1 gap-4 pt-6 mt-6 border-t border-[var(--border-primary)]">
                         <Link 
                             href="/login" 
                             onClick={closeMenu}
