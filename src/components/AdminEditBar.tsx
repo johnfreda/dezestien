@@ -369,7 +369,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
               <div className="mb-2 rounded-lg overflow-hidden border border-gray-700">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={imagePreview || `https://cdn.sanity.io/images/ynww8bw3/production/${post.mainImage.asset._ref.replace('image-', '').replace(/-(\w+)$/, '.$1')}`}
+                  src={imagePreview || `https://cdn.sanity.io/images/vi366jej/production/${post.mainImage.asset._ref.replace('image-', '').replace(/-(\w+)$/, '.$1')}`}
                   alt="Hero preview"
                   className="w-full h-40 object-cover"
                 />
@@ -400,7 +400,7 @@ export default function AdminEditBar({ post, slug }: AdminEditBarProps) {
                 <div className="mb-2 rounded-lg overflow-hidden border border-gray-700 w-32">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={boxImagePreview || `https://cdn.sanity.io/images/ynww8bw3/production/${post.boxImage.asset._ref.replace('image-', '').replace(/-(\w+)$/, '.$1')}`}
+                    src={boxImagePreview || `https://cdn.sanity.io/images/vi366jej/production/${post.boxImage.asset._ref.replace('image-', '').replace(/-(\w+)$/, '.$1')}`}
                     alt="Box art preview"
                     className="w-full h-auto object-cover"
                   />

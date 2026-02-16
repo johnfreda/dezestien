@@ -4,7 +4,7 @@ import { createClient } from '@sanity/client';
 export const maxDuration = 300;
 
 const sanityClient = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'ynww8bw3',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'vi366jej',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: '2024-01-01',
   useCdn: false,
