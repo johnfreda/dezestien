@@ -17,7 +17,7 @@ const navLinks = [
   { label: 'Nieuws', url: '/categorie/nieuws' },
   { label: 'Eredivisie', url: '/categorie/eredivisie' },
   { label: 'Transfers', url: '/categorie/transfers' },
-  { label: 'Champions League', url: '/categorie/champions-league' },
+  { label: 'CL', url: '/categorie/champions-league' },
   { label: 'Oranje', url: '/categorie/oranje' },
   { label: 'Forum', url: '/forum' },
 ];
@@ -46,9 +46,10 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
             </button>
 
             {/* Logo */}
-            <Link href="/" className="text-2xl font-black tracking-tighter text-white italic" onClick={closeMenu}>
+            <Link href="/" className="flex items-center gap-1.5 text-2xl font-black tracking-tighter text-white italic" onClick={closeMenu}>
+              <span className="text-xl">⚽</span>
               DE<span className="text-green-500 logo-glow">ZESTIEN</span>
-              <span className="not-italic text-xs text-gray-500 font-normal ml-1">.NL</span>
+              <span className="not-italic text-xs text-gray-500 font-normal">.NL</span>
             </Link>
 
             {/* Desktop Menu */}

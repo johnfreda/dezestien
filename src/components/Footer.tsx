@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Over DeZestien */}
           <div>
             <div className="text-2xl font-black tracking-tighter italic mb-4">
-              <span className="text-white">DE</span><span className="text-green-500">ZESTIEN</span><span className="text-gray-500">.NL</span>
+              <span className="mr-1.5">⚽</span><span className="text-white">DE</span><span className="text-green-500">ZESTIEN</span><span className="text-gray-500">.NL</span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
               DeZestien.nl is jouw dagelijkse bron voor Nederlands voetbalnieuws.
