@@ -675,7 +675,7 @@ export default async function ArticlePage({ params }: Props) {
                 editorScore={post.score}
                 pros={post.pros}
                 cons={post.cons}
-                matchResult={post.matchResult || post.title}
+                gameTitle={post.matchResult || post.title}
                 boxImageUrl={post.boxImage?.asset ? urlFor(post.boxImage).width(160).height(224).url() : null}
             />
         )}
