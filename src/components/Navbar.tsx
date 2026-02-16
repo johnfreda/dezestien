@@ -111,7 +111,7 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
                         key={item.url}
                         href={item.url}
                         onClick={closeMenu}
-                        className="stagger-item block px-4 py-4 rounded-xl text-lg font-bold text-[var(--text-primary)] hover:text-white hover:bg-gray-800 transition-colors uppercase tracking-wide border border-[var(--border-primary)] hover:border-green-500/50"
+                        className="stagger-item block px-4 py-4 rounded-xl text-lg font-bold text-[var(--text-primary)] hover:text-white hover:bg-[var(--bg-card-hover)] transition-colors uppercase tracking-wide border border-[var(--border-primary)] hover:border-green-500/50"
                         style={{ animationDelay: `${index * 50}ms` }}
                     >
                         {item.label}
@@ -123,7 +123,7 @@ export default function Navbar({ items }: { items?: NavItem[] }) {
                         <Link 
                             href="/login" 
                             onClick={closeMenu}
-                            className="flex items-center justify-center gap-2 bg-gray-800 text-white font-bold py-4 rounded-xl hover:bg-gray-700 transition-colors text-base uppercase"
+                            className="flex items-center justify-center gap-2 bg-[var(--bg-card)] text-[var(--text-primary)] font-bold py-4 rounded-xl hover:bg-[var(--bg-card-hover)] transition-colors text-base uppercase"
                         >
                             <LogIn size={20} /> Inloggen
                         </Link>
