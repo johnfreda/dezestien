@@ -1,0 +1,176 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("ManaBalkNL_POSTGRES_PRISMA_URL")
+  directUrl = env("ManaBalkNL_POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  password      String?
+  image         String?
+  mana          Int       @default(0) // Mana Points (XP)
+  role          String    @default("USER") // USER, MODERATOR, ADMIN
+  isBanned      Boolean   @default(false)
+  bannedAt      DateTime?
+  bannedBy      String?   // ID van admin die heeft gebanned
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  comments      Comment[]
+  manaLogs      ManaLog[]
+  ratings       UserRating[]
+  forumTopics   ForumTopic[]
+  forumReplies  ForumReply[]
+  notifications Notification[]
+  
+  @@index([role])
+  @@index([isBanned])
+}
+
+model BannedEmail {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  reason    String?  @db.Text
+  bannedBy  String?  // ID van admin die heeft gebanned
+  createdAt DateTime @default(now())
+  
+  @@index([email])
+}
+
+model Comment {
+  id             String    @id @default(cuid())
+  content        String    @db.Text
+  articleSlug     String    // Koppeling met Sanity artikel via slug
+  createdAt       DateTime  @default(now())
+  parentCommentId String?   // Voor threading: reactie op een andere reactie
+  
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parentComment  Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id], onDelete: Cascade)
+  replies        Comment[] @relation("CommentReplies")
+  
+  @@index([articleSlug])
+  @@index([parentCommentId])
+}
+
+model ManaLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount    Int
+  reason    String
+  createdAt DateTime @default(now())
+}
+
+model UserRating {
+  id          String   @id @default(cuid())
+  rating      Int      // 0-100
+  platform    String?  // Platform waarop de gebruiker speelt (PS5, PC, etc.)
+  articleSlug String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, articleSlug]) // One rating per user per article
+}
+
+model ArticleView {
+  slug      String   @id
+  count     Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model ForumTopic {
+  id          String       @id @default(cuid())
+  title       String
+  content     String       @db.Text
+  category    String       @default("Algemeen") // Algemeen, Reviews, Nieuws, Hardware, etc.
+  views       Int          @default(0)
+  replyCount  Int          @default(0)
+  isPinned    Boolean      @default(false)
+  isLocked    Boolean      @default(false)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  lastReplyAt DateTime?
+  
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  replies     ForumReply[]
+  
+  @@index([category])
+  @@index([createdAt])
+  @@index([lastReplyAt])
+}
+
+model ForumReply {
+  id            String       @id @default(cuid())
+  content       String       @db.Text
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  parentReplyId String?      // Voor threading: reactie op een andere reactie
+  
+  topicId       String
+  topic         ForumTopic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  userId        String
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parentReply   ForumReply?  @relation("ReplyReplies", fields: [parentReplyId], references: [id], onDelete: Cascade)
+  replies       ForumReply[] @relation("ReplyReplies")
+  
+  @@index([topicId])
+  @@index([createdAt])
+  @@index([parentReplyId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  type      String   // 'reply', 'mention', 'tag'
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  
+  // Wie krijgt de notificatie
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Wie heeft de actie gedaan
+  actorId   String   // ID van de gebruiker die de actie heeft gedaan
+  actorName String?  // Naam van de actor (voor performance)
+  
+  // Context: waar is dit gebeurd?
+  contextType String // 'comment', 'forum_reply'
+  contextId   String  // ID van comment of reply
+  articleSlug String? // Voor comments: slug van artikel
+  topicId    String? // Voor forum: topic ID
+  
+  // Link naar de specifieke reactie
+  targetCommentId String? // ID van de comment waarop gereageerd wordt
+  targetReplyId   String? // ID van de reply waarop gereageerd wordt
+  
+  @@index([userId, read])
+  @@index([userId, createdAt])
+  @@index([contextId])
+}
+
+// Oude tabel (mag blijven, doet geen kwaad)
+model Article {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  excerpt     String?  @db.Text
+  category    String
+  imageUrl    String?
+  author      String   @default("ManaBalk Redactie")
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isHot       Boolean  @default(false)
+}
