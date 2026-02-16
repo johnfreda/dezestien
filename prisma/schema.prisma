@@ -7,8 +7,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("ManaBalkNL_POSTGRES_PRISMA_URL")
-  directUrl = env("ManaBalkNL_POSTGRES_URL_NON_POOLING")
+  url      = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
@@ -168,7 +168,7 @@ model Article {
   excerpt     String?  @db.Text
   category    String
   imageUrl    String?
-  author      String   @default("ManaBalk Redactie")
+  author      String   @default("DeZestien Redactie")
   publishedAt DateTime @default(now())
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
